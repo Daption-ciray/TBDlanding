@@ -5,7 +5,7 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "php artisan serve --host=0.0.0.0 --port=$PORT"
-releaseCommand = "php artisan migrate --force"
+startCommand = "cd /workspace && php artisan serve --host=0.0.0.0 --port=$PORT"
+releaseCommand = "cd /workspace && php artisan migrate --force"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
