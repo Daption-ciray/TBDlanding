@@ -1,5 +1,5 @@
 {{-- Wraith-style compact top bar: key dates + location + CTA --}}
-<div id="topbar" class="topbar border-b border-white/10 bg-black/80 backdrop-blur-md">
+<div id="topbar" class="topbar border-b border-gold-300/20 bg-white/95 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-parchment-300">
             <span>Etkinlik: <span class="text-gold-200 font-medium">{{ $event['date_display'] ?? '3-4 Nisan 2026' }}</span> {{ $event['time_start'] ?? '09:00' }}</span>

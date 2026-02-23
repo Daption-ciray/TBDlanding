@@ -13,8 +13,8 @@
     {{-- Font preloading --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     {{-- Vite build varsa onu kullan, yoksa Tailwind CDN + public/js --}}
     @if(file_exists(public_path('build/manifest.json')))
@@ -26,15 +26,39 @@
                 theme: {
                     extend: {
                         colors: {
-                            'dark': { 900: '#f8fafc', 800: '#f1f5f9', 700: '#e2e8f0', 600: '#cbd5e1' },
-                            'gold': { 100: '#d97706', 200: '#b45309', 300: '#92400e', 400: 'rgba(217,119,6,0.25)' },
-                            'amethyst': { 100: '#4c1d95', 200: '#5b21b6', 300: '#6d28d9', 400: 'rgba(76,29,149,0.25)' },
-                            'parchment': { 100: '#0f172a', 200: '#1e293b', 300: '#334155', 400: '#475569' },
+                            // Arka plan: beyaz ve çok açık gri tonları
+                            'dark': {
+                                900: '#ffffff',
+                                800: '#ffffff',
+                                700: '#f9fafb',
+                                600: '#f3f4f6',
+                            },
+                            // Altın sarısı
+                            'gold': {
+                                100: '#fef08a',
+                                200: '#facc15',
+                                300: '#eab308',
+                                400: 'rgba(250,204,21,0.25)',
+                            },
+                            // Turuncu tonları
+                            'amethyst': {
+                                100: '#fed7aa',
+                                200: '#fdba74',
+                                300: '#f97316',
+                                400: 'rgba(249,115,22,0.25)',
+                            },
+                            // Metinler: siyah ve gri tonları
+                            'parchment': {
+                                100: '#020617',
+                                200: '#111827',
+                                300: '#4b5563',
+                                400: '#9ca3af',
+                            },
                         },
                         fontFamily: {
                             'cinzel': ['"Cinzel Decorative"', 'serif'],
-                            'display': ['Playfair Display', 'serif'],
-                            'inter': ['"Cinzel Decorative"', 'serif'],
+                            'display': ['"Cinzel Decorative"', 'serif'],
+                            'inter': ['Inter', 'sans-serif'],
                             'mono': ['JetBrains Mono', 'monospace'],
                         },
                     }
@@ -43,12 +67,15 @@
         </script>
     @endif
 
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css?v={{ file_exists(public_path('css/custom.css')) ? filemtime(public_path('css/custom.css')) : time() }}">
     @stack('head')
+@php
+    $activeRole = session('livingcode_role', 'adem');
+@endphp
 </head>
-<body class="font-inter {{ request()->routeIs('welcome') ? 'page-tanitim' : '' }}">
+<body class="font-inter {{ $activeRole === 'baba' ? 'theme-baba' : 'theme-adem' }}">
 
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-dark-900 focus:px-4 focus:py-2 focus:rounded">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-parchment-100 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla
     </a>
 

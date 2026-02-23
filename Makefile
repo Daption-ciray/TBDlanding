@@ -1,7 +1,7 @@
 # The Living Code 2026 – Docker & dev
 
 .PHONY: docker-build docker-up docker-down docker-logs docker-migrate docker-shell serve \
-        prod-optimize prod-clear docker-backup docker-health queue-restart
+        prod-optimize prod-clear refresh docker-backup docker-health queue-restart
 
 # === Development ===
 
@@ -47,6 +47,11 @@ prod-clear:
 	docker compose exec app php artisan view:clear
 	docker compose exec app php artisan cache:clear
 	@echo "✅ All caches cleared"
+
+# Güncellemeleri görmek için: önbellek temizle + app container yeniden başlat
+refresh: prod-clear
+	docker compose restart app
+	@echo "✅ App container restarted — sayfayı yenile (Ctrl+F5 veya Cmd+Shift+R)"
 
 queue-restart:
 	docker compose restart queue-worker

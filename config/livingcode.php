@@ -128,6 +128,8 @@ return [
             'tagline' => 'Deneysel · Risk · Prototip',
             'desc' => 'Sınırları zorla, oynanışı öne çıkar. İnovasyonu kucakla.',
             'detail' => 'Kaşif ruhuyla deneysel mekanikleri keşfet, hızlı prototipleme ile vizyonu ayağa kaldır. "Çalışır mı?" sorusunu önce sen sor; başarısızlıktan öğren, iterasyon yap. Oynanışı öne çıkar — BABA ile uyumda asimetri korunur, Şura seni izler.',
+            'figure_image' => 'images/adem_figure.png',
+            'concept_bg' => 'images/adem_bg.jpg', // Rolün arkasındaki konsept görseli (tam arka plan)
         ],
         'baba' => [
             'name' => 'BABA',
@@ -135,6 +137,8 @@ return [
             'tagline' => 'Bütünlük · Sistem · Mimari',
             'desc' => 'Yapıyı kur, tutarlılığı koru. Temelleri sağlam at.',
             'detail' => 'Mimari kararları yönet, teknik borçtan kaçın, sürdürülebilir temeller inşa et. "Nasıl ölçeklenir?" ve "Nasıl sürdürülebilir kalır?" sorularına cevap ver. Sistem tutarlılığını koru — ADEM ile uyumda asimetri korunur, Şura seni izler.',
+            'figure_image' => 'images/baba_figure.png',
+            'concept_bg' => 'images/baba_bg.png', // Rolün arkasındaki konsept görseli (tam arka plan, PNG)
         ],
     ],
 

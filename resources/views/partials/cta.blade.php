@@ -1,9 +1,9 @@
 {{-- Final CTA + Minimal Sponsor --}}
-<section class="py-16 px-6 text-center border-t border-white/10 bg-dark-900">
+@php $activeRole = $role ?? 'adem'; @endphp
+<section class="py-16 px-6 text-center border-t border-white/10 {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-900' }}">
     <div class="max-w-xl mx-auto reveal">
         <p class="text-parchment-200 mb-2 text-sm">
-            <span class="text-gold-200 font-medium">Takımınla</span> başvur,
-            <span class="text-amethyst-100 font-medium">Şura</span>'ya sun.
+            Takımınla başvur.
         </p>
         <p class="text-parchment-400 text-xs mb-6">{{ $event['date_display'] ?? '3-4 Nisan 2026' }} · {{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }}</p>
         <div class="flex flex-col sm:flex-row justify-center gap-3 mb-12">

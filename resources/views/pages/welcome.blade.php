@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials.hero', ['event' => $event, 'countdownTarget' => $countdownTarget, 'stats' => $stats, 'role' => $role ?? 'adem'])
-    @include('partials.hakkinda', ['stats' => $stats, 'event' => $event])
-    @include('partials.konsept', ['role' => $role ?? 'adem'])
-    @include('partials.timeline', ['phases' => $phases])
-    @include('partials.sss', ['faqs' => $faqs, 'contact' => $contact])
-    @include('partials.cta', ['event' => $event, 'sponsorTiers' => $sponsorTiers, 'contact' => $contact])
+    @php $activeRole = $role ?? 'adem'; @endphp
+
+    @include('partials.hero', ['event' => $event, 'countdownTarget' => $countdownTarget, 'stats' => $stats, 'role' => $activeRole])
+    @include('partials.hakkinda', ['stats' => $stats, 'event' => $event, 'role' => $activeRole])
+    @include('partials.konsept', ['role' => $activeRole])
+    @include('partials.timeline', ['phases' => $phases, 'role' => $activeRole])
+    @include('partials.sss', ['faqs' => $faqs, 'contact' => $contact, 'role' => $activeRole])
+    @include('partials.cta', ['event' => $event, 'sponsorTiers' => $sponsorTiers, 'contact' => $contact, 'role' => $activeRole])
 @endsection

@@ -1,15 +1,16 @@
 {{-- Şura sesi: kurallar ve sorular --}}
-<section id="sss" class="section-sura py-16 sm:py-24 px-6 relative bg-dark-800/50">
+@php $activeRole = $role ?? 'adem'; @endphp
+<section
+    id="sss"
+    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-800/50' }}"
+>
     <div class="max-w-3xl mx-auto section-sura-content">
         <span class="section-voice-label text-amethyst-200/90 text-xs font-mono tracking-widest uppercase block mb-2 reveal">Şura</span>
         <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-2 reveal">
             Sıkça Sorulan Sorular
         </h2>
-        <p class="text-parchment-400 text-sm mb-6 reveal">
-            Evrene dair sorular — <span class="term-tooltip text-amethyst-100" data-term="Etkinliğin merkezi jüri konseyi">Şura</span>'nın çerçevesi. Aşağıdaki sorular etkinlik, katılım koşulları, gamification sistemi ve değerlendirme kriterleri hakkında bilgi verir.
-        </p>
-        <p class="text-parchment-300 text-xs mb-10 reveal">
-            Sorularınız mı var? <a href="mailto:{{ $contact['email'] ?? config('livingcode.contact.email') }}" class="text-gold-200 hover:underline">Bize yazın</a> — Şura size yardımcı olacaktır.
+        <p class="text-parchment-400 text-sm mb-10 reveal">
+            Sorularınız için <a href="mailto:{{ $contact['email'] ?? config('livingcode.contact.email') }}" class="text-gold-200 hover:underline">bize yazın</a>.
         </p>
 
         <div class="space-y-2">

@@ -11,28 +11,32 @@
     --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-dark-900: #1a1825;
-    --color-dark-800: #252238;
-    --color-dark-700: #2f2d45;
-    --color-dark-600: #3a3852;
+    /* Arka plan: beyaz ve açık gri tonları */
+    --color-dark-900: #ffffff;
+    --color-dark-800: #f9fafb;
+    --color-dark-700: #f3f4f6;
+    --color-dark-600: #e5e7eb;
 
-    --color-gold-100: #fce68a;
-    --color-gold-200: #f5d55a;
-    --color-gold-300: #d4a843;
-    --color-gold-400: rgba(252, 230, 138, 0.25);
+    /* Altın sarısı tonları (Komünite esintili) */
+    --color-gold-100: #fef08a;
+    --color-gold-200: #facc15;
+    --color-gold-300: #eab308;
+    --color-gold-400: rgba(250, 204, 21, 0.25);
 
-    --color-amethyst-100: #c4b5fd;
-    --color-amethyst-200: #a78bfa;
-    --color-amethyst-300: #8b5cf6;
-    --color-amethyst-400: rgba(196, 181, 253, 0.25);
+    /* Turuncu tonları */
+    --color-amethyst-100: #fed7aa;
+    --color-amethyst-200: #fdba74;
+    --color-amethyst-300: #f97316;
+    --color-amethyst-400: rgba(249, 115, 22, 0.25);
 
-    --color-parchment-100: #faf8f3;
-    --color-parchment-200: #e8e0d6;
-    --color-parchment-300: #c4b8a8;
-    --color-parchment-400: #9b8e7e;
+    /* Metinler: siyah ve gri tonları */
+    --color-parchment-100: #020617;
+    --color-parchment-200: #111827;
+    --color-parchment-300: #4b5563;
+    --color-parchment-400: #9ca3af;
 
-    --font-cinzel: 'Cormorant Garamond', serif;
-    --font-display: 'Playfair Display', serif;
+    --font-cinzel: 'Cinzel Decorative', serif;
+    --font-display: 'Cinzel Decorative', serif;
     --font-inter: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
