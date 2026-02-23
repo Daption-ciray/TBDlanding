@@ -1,9 +1,10 @@
-# Railway/Nixpacks Laravel - Vite 7 Fix
+# Railway/Nixpacks Laravel - Production Ready
 [variables]
     NIXPACKS_NODE_VERSION = "22"
     NIXPACKS_PHP_VERSION = "8.2"
-    # NPM'in devDependencies'i atlamaması için:
     NPM_CONFIG_INCLUDE = "dev"
+    APP_ENV = "production"
+    APP_DEBUG = "false"
 
 [phases.install]
     dependsOn = ["setup"]
@@ -20,4 +21,6 @@
     ]
 
 [deploy]
-    startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+    # 'artisan serve' yerine varsayılan web sunucusunu kullanması için komutu sadeleştiriyoruz.
+    # Migration ve seeding işlemini burada garantiliyoruz.
+    startCommand = "php artisan migrate --force && php artisan db:seed --class=GamificationSeeder --force || true && php-fpm -D && nginx -g 'daemon off;'"
