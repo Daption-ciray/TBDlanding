@@ -1,14 +1,15 @@
-# Railway/Nixpacks için optimize edilmiş Laravel konfigürasyonu
+# Railway/Nixpacks Laravel - Vite 7 Fix
 [variables]
-    NODE_ENV = "production"
     NIXPACKS_NODE_VERSION = "22"
     NIXPACKS_PHP_VERSION = "8.2"
+    # NPM'in devDependencies'i atlamaması için:
+    NPM_CONFIG_INCLUDE = "dev"
 
 [phases.install]
     dependsOn = ["setup"]
     cmds = [
         "composer install --no-dev --optimize-autoloader --no-interaction",
-        "npm ci",
+        "npm install",
         "npm run build"
     ]
 
