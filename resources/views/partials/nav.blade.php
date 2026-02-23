@@ -13,8 +13,8 @@
 
         <div class="hidden md:flex items-center gap-8" role="menubar">
             <a href="{{ route('welcome') }}" class="nav-link {{ $currentRoute === 'welcome' ? 'text-gold-200' : 'text-parchment-200 hover:text-gold-200' }} focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem" @if($currentRoute === 'welcome') aria-current="page" @endif>Tanıtım</a>
-            <a href="{{ route('arena') }}" class="nav-link {{ $currentRoute === 'arena' ? 'text-gold-200' : 'text-parchment-200 hover:text-gold-200' }} focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem" @if($currentRoute === 'arena') aria-current="page" @endif>Arena</a>
-            <a href="{{ route('viewer') }}" class="nav-link {{ $currentRoute === 'viewer' ? 'text-amethyst-100' : 'text-parchment-200 hover:text-amethyst-100' }} focus:outline-none focus:ring-2 focus:ring-amethyst-200 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem" @if($currentRoute === 'viewer') aria-current="page" @endif>İzleyici</a>
+            <a href="{{ url('/arena') }}" class="nav-link {{ $currentRoute === 'arena' ? 'text-gold-200' : 'text-parchment-200 hover:text-gold-200' }} focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem" @if($currentRoute === 'arena') aria-current="page" @endif>Arena</a>
+            <a href="{{ url('/izleyici') }}" class="nav-link {{ $currentRoute === 'viewer' ? 'text-amethyst-100' : 'text-parchment-200 hover:text-amethyst-100' }} focus:outline-none focus:ring-2 focus:ring-amethyst-200 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem" @if($currentRoute === 'viewer') aria-current="page" @endif>İzleyici</a>
             <a href="{{ route('welcome') }}#sss" class="nav-link text-parchment-200 hover:text-gold-200 focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-dark-900 rounded" role="menuitem">SSS</a>
         </div>
 
@@ -34,8 +34,8 @@
     <div id="mobile-menu" class="mobile-menu md:hidden" role="menu" aria-label="Mobil menü">
         <div class="py-4 px-6 flex flex-col gap-3 border-t border-gold-300/10 mt-3">
             <a href="{{ route('welcome') }}" class="text-parchment-200 hover:text-gold-200 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-gold-300 rounded" role="menuitem">Tanıtım</a>
-            <a href="{{ route('arena') }}" class="text-parchment-200 hover:text-gold-200 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-gold-300 rounded" role="menuitem">Arena</a>
-            <a href="{{ route('viewer') }}" class="text-parchment-200 hover:text-amethyst-100 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-amethyst-200 rounded" role="menuitem">İzleyici</a>
+            <a href="{{ url('/arena') }}" class="text-parchment-200 hover:text-gold-200 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-gold-300 rounded" role="menuitem">Arena</a>
+            <a href="{{ url('/izleyici') }}" class="text-parchment-200 hover:text-amethyst-100 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-amethyst-200 rounded" role="menuitem">İzleyici</a>
             <a href="{{ route('welcome') }}#sss" class="text-parchment-200 hover:text-gold-200 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-gold-300 rounded" role="menuitem">SSS</a>
             @if($currentRoute === 'welcome')<a href="{{ route('role-select') }}" class="text-parchment-400 hover:text-gold-200 text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 focus:ring-gold-300 rounded" role="menuitem">Tarafı değiştir</a>@endif
             <a href="#" class="btn-gold px-5 py-2.5 rounded-lg text-xs text-center mt-2 min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gold-300" role="menuitem">Takımla Başvur</a>

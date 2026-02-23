@@ -64,39 +64,39 @@
         {{-- ADEM — sol yarı --}}
         <div class="role-half flex-1 flex flex-col justify-center items-center relative sm:border-r border-gold-300/20 min-h-[50vh] sm:min-h-screen overflow-hidden">
             {{-- Blur'suz net arka plan görseli (ADEM) - Görselin sol tarafı --}}
-            <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: left center; filter: none; opacity: 0.15;"></div>
-            <div class="role-bg-overlay" style="background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(248,250,252,0.9));"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-100/50 via-slate-50/50 to-gold-100/20 z-[2]"></div>
+            <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: left center; filter: none; opacity: 1;"></div>
+            <div class="role-bg-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7));"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-gold-300/20 z-[2]"></div>
             
             <a href="{{ route('welcome', ['role' => 'adem']) }}" class="role-content absolute inset-0 z-10 flex flex-col justify-center items-center p-8 text-center group">
                 <span class="font-mono text-gold-300 text-xs tracking-[0.3em] uppercase mb-4">{{ $roleSelect['pick_side'] ?? 'Tarafını seç' }}</span>
-                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 mb-2 group-hover:scale-105 transition-transform drop-shadow-sm">ADEM</h2>
-                <span class="text-gold-300 text-sm font-cinzel font-bold tracking-[0.25em] mb-4">KAŞİF</span>
-                <p class="text-slate-600 text-sm font-bold max-w-xs mb-2">{{ $roleSelect['adem']['tagline'] ?? 'Deneysel · Risk · Prototip' }}</p>
-                <p class="text-slate-500 text-sm max-w-sm mb-2 font-medium">{{ $roleSelect['adem']['desc'] ?? 'Sınırları zorla, oynanışı öne çıkar.' }}</p>
-                <p class="text-slate-500 text-xs max-w-sm leading-relaxed">{{ $roleSelect['adem']['detail'] ?? '' }}</p>
-                <span class="mt-6 text-gold-300 text-xs font-mono font-bold group-hover:text-gold-200 transition-colors">Giriş →</span>
+                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-white mb-2 group-hover:scale-105 transition-transform drop-shadow-lg">ADEM</h2>
+                <span class="text-gold-300 text-sm font-cinzel font-bold tracking-[0.25em] mb-4 drop-shadow-md">KAŞİF</span>
+                <p class="text-gold-200 text-sm font-bold max-w-xs mb-2 drop-shadow-md">{{ $roleSelect['adem']['tagline'] ?? 'Deneysel · Risk · Prototip' }}</p>
+                <p class="text-slate-100 text-sm max-w-sm mb-2 font-medium drop-shadow-md">{{ $roleSelect['adem']['desc'] ?? 'Sınırları zorla, oynanışı öne çıkar.' }}</p>
+                <p class="text-slate-200 text-xs max-w-sm leading-relaxed drop-shadow-md">{{ $roleSelect['adem']['detail'] ?? '' }}</p>
+                <span class="mt-6 text-gold-300 text-xs font-mono font-bold group-hover:text-gold-200 transition-colors drop-shadow-sm">Giriş →</span>
             </a>
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-gold-300/50 text-2xl">🔥</div>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-gold-300/80 text-2xl drop-shadow-lg">🔥</div>
         </div>
 
         {{-- BABA — sağ yarı --}}
         <div class="role-half flex-1 flex flex-col justify-center items-center relative sm:border-l border-amethyst-100/20 min-h-[50vh] sm:min-h-screen overflow-hidden">
             {{-- Blur'suz net arka plan görseli (BABA) - Görselin sağ tarafı --}}
-            <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: right center; filter: none; opacity: 0.15;"></div>
-            <div class="role-bg-overlay" style="background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(248,250,252,0.9));"></div>
-            <div class="absolute inset-0 bg-gradient-to-bl from-slate-100/50 via-slate-50/50 to-amethyst-100/20 z-[2]"></div>
+            <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: right center; filter: none; opacity: 1;"></div>
+            <div class="role-bg-overlay" style="background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(248,250,252,0.85));"></div>
+            <div class="absolute inset-0 bg-gradient-to-bl from-white/40 via-transparent to-amethyst-400 z-[2]"></div>
             
             <a href="{{ route('welcome', ['role' => 'baba']) }}" class="role-content absolute inset-0 z-10 flex flex-col justify-center items-center p-8 text-center group">
                 <span class="font-mono text-amethyst-300 text-xs tracking-[0.3em] uppercase mb-4">{{ $roleSelect['pick_side'] ?? 'Tarafını seç' }}</span>
-                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-slate-800 mb-2 group-hover:scale-105 transition-transform drop-shadow-sm">BABA</h2>
+                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-2 group-hover:scale-105 transition-transform drop-shadow-sm">BABA</h2>
                 <span class="text-amethyst-300 text-sm font-cinzel font-bold tracking-[0.25em] mb-4">MİMAR</span>
-                <p class="text-slate-600 text-sm font-bold max-w-xs mb-2">{{ $roleSelect['baba']['tagline'] ?? 'Bütünlük · Sistem · Mimari' }}</p>
-                <p class="text-slate-500 text-sm max-w-sm mb-2 font-medium">{{ $roleSelect['baba']['desc'] ?? 'Yapıyı kur, tutarlılığı koru.' }}</p>
-                <p class="text-slate-500 text-xs max-w-sm leading-relaxed">{{ $roleSelect['baba']['detail'] ?? '' }}</p>
+                <p class="text-slate-800 text-sm font-bold max-w-xs mb-2">{{ $roleSelect['baba']['tagline'] ?? 'Bütünlük · Sistem · Mimari' }}</p>
+                <p class="text-slate-700 text-sm max-w-sm mb-2 font-medium">{{ $roleSelect['baba']['desc'] ?? 'Yapıyı kur, tutarlılığı koru.' }}</p>
+                <p class="text-slate-700 text-xs max-w-sm leading-relaxed">{{ $roleSelect['baba']['detail'] ?? '' }}</p>
                 <span class="mt-6 text-amethyst-300 text-xs font-mono font-bold group-hover:text-amethyst-200 transition-colors">Giriş →</span>
             </a>
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-amethyst-300/50 text-2xl">🛡️</div>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-amethyst-300/80 text-2xl drop-shadow-md">🛡️</div>
         </div>
     </div>
 

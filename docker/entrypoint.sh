@@ -37,10 +37,10 @@ if [ ! -L public/storage ]; then
 fi
 
 # Production optimization (when APP_ENV=production)
+# Not caching routes so that route changes apply without container rebuild
 if [ "$APP_ENV" = "production" ]; then
     echo "[entrypoint] Running production optimizations..."
     php artisan config:cache 2>/dev/null || true
-    php artisan route:cache 2>/dev/null || true
     php artisan view:cache 2>/dev/null || true
 fi
 

@@ -10,7 +10,7 @@
             <a href="#" class="btn-wraith-cta inline-flex items-center justify-center px-10 py-4 rounded-lg text-sm font-semibold text-black bg-gold-200 hover:bg-gold-100 transition-all">
                 Takımla Başvur
             </a>
-            <a href="{{ route('viewer') }}" class="inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium text-parchment-200 border border-amethyst-100/30 hover:border-amethyst-100/50 hover:text-amethyst-100 transition-all">
+            <a href="{{ url('/izleyici') }}" class="inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium text-parchment-200 border border-amethyst-100/30 hover:border-amethyst-100/50 hover:text-amethyst-100 transition-all">
                 İzleyici Olarak Katıl
             </a>
         </div>

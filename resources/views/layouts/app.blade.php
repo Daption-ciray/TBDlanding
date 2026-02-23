@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="/css/custom.css">
     @stack('head')
 </head>
-<body class="font-inter">
+<body class="font-inter {{ request()->routeIs('welcome') ? 'page-tanitim' : '' }}">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-dark-900 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla

@@ -12,13 +12,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'roleSelect'])->name('role-select');
 Route::get('/evren', [PageController::class, 'welcome'])->name('welcome');
-// Route::get('/arena', [PageController::class, 'arena'])->name('arena');
-// Route::get('/izleyici', [PageController::class, 'viewer'])->name('viewer');
+Route::get('/arena', [PageController::class, 'arena'])->name('arena');
+Route::get('/izleyici', [PageController::class, 'viewer'])->name('viewer');
 
-// Route::redirect('/evren/oyun', '/arena')->name('game');
-Route::redirect('/arena', '/');
-Route::redirect('/izleyici', '/');
-Route::redirect('/evren/oyun', '/');
+Route::redirect('/evren/oyun', '/arena')->name('game');
 
 // Sura Panel Routes
 Route::prefix('sura')->name('sura.')->group(function () {

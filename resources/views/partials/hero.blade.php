@@ -31,7 +31,7 @@
             <a href="#" class="btn-wraith-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-semibold text-black bg-gold-200 hover:bg-gold-100 transition-all">
                 Takımımla Başvur
             </a>
-            <a href="{{ route('arena') }}" class="btn-wraith-ghost inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium text-parchment-200 border border-white/20 hover:border-gold-200/50 hover:text-gold-200 transition-all">
+            <a href="{{ url('/arena') }}" class="btn-wraith-ghost inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium text-parchment-200 border border-white/20 hover:border-gold-200/50 hover:text-gold-200 transition-all">
                 Arena'ya Git →
             </a>
         </div>
