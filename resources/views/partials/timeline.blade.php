@@ -1,0 +1,32 @@
+{{-- Şura: dört farz — sistem sesi, asimetrik sağ ağırlık --}}
+<section id="sura" class="section-sura py-16 sm:py-24 px-6 relative bg-dark-900">
+    <div class="max-w-5xl mx-auto">
+        <span class="section-voice-label text-amethyst-200/90 text-xs font-mono tracking-widest uppercase block mb-2 reveal"><span class="term-tooltip" data-term="Etkinliğin merkezi jüri konseyi">Şura</span></span>
+        <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-2 reveal">
+            Dört Farz
+        </h2>
+        <p class="text-parchment-400 text-sm mb-4 reveal">
+            Evrenin zaman çizelgesi <span class="term-tooltip text-amethyst-100" data-term="Etkinliğin merkezi jüri konseyi">Şura</span> tarafından belirlenir. Her faz, farklı mekaniklerin aktifleştiği ve farklı zorlukların ortaya çıktığı bir dönemdir.
+        </p>
+        <p class="text-parchment-300 text-xs mb-12 reveal">
+            <strong class="text-gold-200">Genesis</strong> → Başlangıç ve kredi sistemi · 
+            <strong class="text-amethyst-100">Vahiy</strong> → Ortak dil ve sistem onayı · 
+            <strong class="text-red-400">İmtihan</strong> → Müdahale kartları ve diplomasi · 
+            <strong class="text-gold-100">Kıyamet</strong> → Final sunumları ve ödül töreni
+        </p>
+
+        <div class="section-sura-content grid grid-cols-1 md:grid-cols-2 gap-6">
+            @foreach ($phases ?? [] as $i => $phase)
+            @php
+                $num = str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT);
+            @endphp
+            <div class="process-card rounded-xl p-6 border border-white/10 bg-white/[0.03] hover:border-gold-200/20 transition-colors reveal">
+                <div class="text-gold-200/80 font-mono text-sm mb-2">{{ $num }}</div>
+                <div class="text-parchment-300 text-xs mb-1">{{ $phase['day'] }}</div>
+                <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-3">{{ $phase['name'] }}</h3>
+                <p class="text-parchment-200 text-sm leading-relaxed">{{ $phase['desc'] }}</p>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>

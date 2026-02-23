@@ -1,0 +1,140 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel-app
+    container_name: laravel-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+      APP_URL: http://localhost:8000
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: password
+      REDIS_HOST: redis
+      CACHE_STORE: redis
+      SESSION_DRIVER: redis
+      QUEUE_CONNECTION: redis
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    depends_on:
+      db:
+        condition: service_started
+      redis:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "php-fpm-healthcheck || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  web:
+    image: nginx:alpine
+    container_name: laravel-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - app-network
+    depends_on:
+      - app
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/up"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  db:
+    image: postgres:15
+    container_name: laravel-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: password
+    command: >
+      postgres
+        -c max_connections=200
+        -c shared_buffers=256MB
+        -c work_mem=4MB
+        -c maintenance_work_mem=64MB
+        -c effective_cache_size=512MB
+        -c checkpoint_completion_target=0.9
+        -c wal_buffers=16MB
+        -c random_page_cost=1.1
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U laravel"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: laravel-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --maxmemory 128mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redisdata:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  queue-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-queue
+    restart: unless-stopped
+    command: php artisan queue:work redis --sleep=3 --tries=3 --max-time=3600 --memory=128
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: password
+      REDIS_HOST: redis
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: redis
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - app
+      - redis
+      - db
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+  redisdata:
+    driver: local

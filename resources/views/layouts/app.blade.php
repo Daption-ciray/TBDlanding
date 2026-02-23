@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Living Code 2026 – TBD Game Jam. 3-4 Nisan 2026, Nişantaşı Üniversitesi. Kaotik Uyum temasıyla 36 saatlik oyun geliştirme deneyimi.">
+    <meta property="og:title" content="The Living Code 2026 – TBD Game Jam">
+    <meta property="og:description" content="36 saatlik kaotik oyun geliştirme deneyimi. 3-4 Nisan 2026, Nişantaşı Üniversitesi.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>The Living Code 2026 – TBD Game Jam</title>
+    <link rel="icon" href="/images/tbd_logo.png" type="image/png">
+
+    {{-- Font preloading --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    {{-- Vite build varsa onu kullan, yoksa Tailwind CDN + public/js --}}
+    @if(file_exists(public_path('build/manifest.json')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @else
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'dark': { 900: '#f8fafc', 800: '#f1f5f9', 700: '#e2e8f0', 600: '#cbd5e1' },
+                            'gold': { 100: '#d97706', 200: '#b45309', 300: '#92400e', 400: 'rgba(217,119,6,0.25)' },
+                            'amethyst': { 100: '#4c1d95', 200: '#5b21b6', 300: '#6d28d9', 400: 'rgba(76,29,149,0.25)' },
+                            'parchment': { 100: '#0f172a', 200: '#1e293b', 300: '#334155', 400: '#475569' },
+                        },
+                        fontFamily: {
+                            'cinzel': ['"Cinzel Decorative"', 'serif'],
+                            'display': ['Playfair Display', 'serif'],
+                            'inter': ['"Cinzel Decorative"', 'serif'],
+                            'mono': ['JetBrains Mono', 'monospace'],
+                        },
+                    }
+                }
+            }
+        </script>
+    @endif
+
+    <link rel="stylesheet" href="/css/custom.css">
+    @stack('head')
+</head>
+<body class="font-inter">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-dark-900 focus:px-4 focus:py-2 focus:rounded">
+        İçeriğe atla
+    </a>
+
+    @include('partials.topbar', ['event' => config('livingcode.event')])
+    @include('partials.nav')
+
+    <main id="main-content">
+        @yield('content')
+    </main>
+
+    @include('partials.footer')
+
+    <script src="/js/main.js" defer></script>
+    @stack('scripts')
+</body>
+</html>
