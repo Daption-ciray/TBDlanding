@@ -1,0 +1,19 @@
+# Force Node.js 22 for Vite 7 / Tailwind 4
+[phases.setup]
+nixPkgs = ["php82", "composer", "nodejs_22"]
+
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader --no-interaction",
+  "npm install",
+  "npm run build"
+]
+
+[variables]
+NODE_ENV = "production"
+# Railway defaults usually handle PORT, but let's be explicit if needed
+# PORT = "8000"
+
+[deploy]
+# Build process is done in install phase. This is the runtime command.
+startCommand = "php artisan migrate --force && php artisan optimize && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=$PORT"
