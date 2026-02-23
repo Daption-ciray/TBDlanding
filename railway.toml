@@ -1,11 +1,12 @@
-# Railway deployment config – Laravel
-# https://docs.railway.app/reference/config-as-code
-
 [build]
 builder = "nixpacks"
 
-[# Let Nixpacks detect the correct start command (php artisan serve ...)
-# and working directory automatically. We only keep restart policy here.]
 [deploy]
+startCommand = "php artisan migrate --force && php artisan optimize && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan serve --host=0.0.0.0 --port=$PORT"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
+
+[service]
+# Ensure sufficient resources for 500 concurrent users if vertical scaling is needed
+# But usually auto-scaling or horizontal scaling is better.
+# Railway handles this via plan limits.
