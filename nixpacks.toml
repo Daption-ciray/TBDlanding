@@ -1,0 +1,17 @@
+# Nixpacks config for Laravel + Vite on Railway
+# PHP runs composer install; we need Node for npm run build (Vite assets)
+
+[phases.setup]
+nixPkgs = ["php82", "composer", "nodejs-20_x"]
+
+[phases.install]
+cmds = [
+  "composer install --no-dev --optimize-autoloader --no-interaction",
+  "npm ci",
+  "npm run build"
+]
+
+[variables]
+NODE_ENV = "production"
+
+# Start command is set in railway.toml (php artisan serve --port=$PORT)

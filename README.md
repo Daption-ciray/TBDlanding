@@ -54,6 +54,23 @@ python scripts/generate_images.py "Hero bg" --model gemini --aspect 16:9 -o hero
 
 ---
 
+## Railway’e deploy
+
+Proje Railway ile uyumludur. [Railway](https://railway.app) üzerinde yeni bir proje oluşturup bu repoyu bağlayın.
+
+1. **New Project** → **Deploy from GitHub** → bu repoyu seçin.
+2. **PostgreSQL** servisi ekleyin; Railway `DATABASE_URL` ortam değişkenini otomatik tanımlar.
+3. Servis **Variables** kısmında şunları ekleyin:
+   - `APP_KEY`: `php artisan key:generate --show` ile üretin.
+   - `APP_ENV=production`
+   - `APP_DEBUG=false`
+   - `APP_URL`: Railway’in verdiği public URL (örn. `https://...railway.app`).
+4. İsteğe bağlı: **Redis** eklerseniz `REDIS_URL` otomatik gelir; session/cache için kullanılır.
+
+Build (Nixpacks), release (`migrate --force`) ve start (`php artisan serve --port=$PORT`) komutları `railway.toml` ve `Procfile` ile tanımlıdır.
+
+---
+
 ## License
 
 MIT

@@ -22,7 +22,13 @@ return Application::configure(basePath: dirname(__DIR__))
             'viewer.auth' => \App\Http\Middleware\EnsureViewerAuth::class,
         ]);
 
-        $middleware->throttleWithRedis();
+        // Trust Railway / reverse proxy headers (HTTPS, correct host)
+        $middleware->trustProxies(at: '*');
+
+        // Use Redis for throttling only when REDIS_URL is set (e.g. Railway Redis plugin)
+        if (env('REDIS_URL')) {
+            $middleware->throttleWithRedis();
+        }
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->renderable(function (\Throwable $e, Request $request) {
