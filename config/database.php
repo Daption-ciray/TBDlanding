@@ -155,8 +155,8 @@ return [
         'default' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDISHOST', '127.0.0.1'),
-            'username' => env('REDISUSER'),
-            'password' => env('REDISPASSWORD'),
+            'username' => env('REDISUSER', 'default'),
+            'password' => env('REDISPASSWORD', env('REDIS_PASSWORD')),
             'port' => env('REDISPORT', '6379'),
             'database' => env('REDIS_DB', '0'),
             'max_retries' => env('REDIS_MAX_RETRIES', 3),
@@ -168,8 +168,8 @@ return [
         'cache' => [
             'url' => env('REDIS_URL'),
             'host' => env('REDISHOST', '127.0.0.1'),
-            'username' => env('REDISUSER'),
-            'password' => env('REDISPASSWORD'),
+            'username' => env('REDISUSER', 'default'),
+            'password' => env('REDISPASSWORD', env('REDIS_PASSWORD')),
             'port' => env('REDISPORT', '6379'),
             'database' => env('REDIS_CACHE_DB', '1'),
             'max_retries' => env('REDIS_MAX_RETRIES', 3),
