@@ -4,8 +4,8 @@
 [build]
 builder = "nixpacks"
 
+[# Let Nixpacks detect the correct start command (php artisan serve ...)
+# and working directory automatically. We only keep restart policy here.]
 [deploy]
-startCommand = "php /app/artisan serve --host=0.0.0.0 --port=$PORT"
-releaseCommand = "php /app/artisan migrate --force"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
