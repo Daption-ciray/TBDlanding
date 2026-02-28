@@ -1,13 +1,18 @@
 #!/bin/sh
 
-# Set directory permissions
-echo "Setting permissions..."
+# Hata oluşursa durma, devam et (logları görmek için)
+set -e
+
+echo "--- DEPLOYMENT START ---"
+
+# İzinleri ver
+echo "Fixing permissions..."
 chmod -R 777 storage bootstrap/cache
 
-# Wait for DB (Postgres) and run migrations
-echo "Running migrations..."
-php artisan migrate --force
+# Veritabanını TAMAMEN temizle ve yeni tabloları kur
+echo "Cleaning and migrating database (FRESH)..."
+php artisan migrate:fresh --force
 
-# Start the application on the PORT provided by Railway
-echo "Starting application on port $PORT..."
+# Uygulamayı başlat
+echo "Starting Laravel on Port $PORT..."
 php artisan serve --host=0.0.0.0 --port=$PORT
