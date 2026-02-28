@@ -70,10 +70,10 @@
     <link rel="stylesheet" href="/css/custom.css?v={{ file_exists(public_path('css/custom.css')) ? filemtime(public_path('css/custom.css')) : time() }}">
     @stack('head')
 @php
-    $activeRole = session('livingcode_role', 'adem');
+    $activeRole = session('livingcode_role', 'kasif');
 @endphp
 </head>
-<body class="font-inter {{ $activeRole === 'baba' ? 'theme-baba' : 'theme-adem' }}">
+<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-baba' : 'theme-adem' }}">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-parchment-100 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla
