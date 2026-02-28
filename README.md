@@ -1,6 +1,6 @@
 # The Living Code 2026 – TBD Game Jam
 
-Laravel ile geliştirilmiş **The Living Code 2026** etkinlik landing sayfası. Hücre / Şura terminolojisi ve asimetrik UX ile Ana konsepte uyumlu.
+Laravel ile geliştirilmiş **The Living Code 2026** etkinlik landing sayfası. Hücre / Konsey terminolojisi ve asimetrik UX ile Ana konsepte uyumlu.
 
 ---
 

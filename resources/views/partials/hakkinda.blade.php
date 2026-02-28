@@ -3,13 +3,13 @@
     id="hakkinda"
     class="section-hucre py-16 sm:py-24 px-6 relative {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-900' }}"
 >
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto text-center">
         <span class="section-voice-label text-gold-300 text-xs font-mono tracking-widest uppercase block mb-2 reveal">Hakkında</span>
         <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-2 reveal">
-            Takım Olarak Katıl
+            Birim Olarak Katıl
         </h2>
-        <p class="text-parchment-400 text-sm mb-10 reveal">
-            Takımla başvur; <span class="term-tooltip" data-term="Takımların etkinlikteki kimliği">Hücre</span> kimliği al. Her Hücrede <strong class="text-gold-200">ADEM</strong> (Kaşif) ve <strong class="text-gold-300">BABA</strong> (Mimar) birlikte çalışır. Tema: zıt iki kavramı tek oyunda <strong class="text-gold-200">Kaotik Uyum</strong> ile birleştirmek.
+        <p class="text-parchment-400 text-sm mb-10 reveal max-w-2xl mx-auto">
+            Birimini seç ve başvur. Etkinlik sahasında bir <strong class="text-gold-200">KAŞİF</strong> takımı ile bir <strong class="text-gold-300">MİMAR</strong> takımı eşleşerek tek bir **Hücre** protokolünü oluşturur. Tema: bu iki zıt gücü tek sistemde <strong class="text-gold-200">Kaotik Uyum</strong> ile birleştirmektir.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
@@ -17,9 +17,9 @@
                 <div class="info-card-icon mb-5">🎮</div>
                 <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-2">36 Saat</h3>
                 <p class="text-parchment-200 text-sm leading-relaxed mb-4">
-                    Yoğun game jam. Unity, Unreal, Godot serbest. Tek kural: <strong class="text-gold-200">Kaotik Uyum</strong> temasına uygun oyun.
+                    Yoğun bir oyun geliştirme süreci. Oyununuzun <strong class="text-gold-200">Kaotik Uyum</strong> temasına uygun olması ana hedeftir.
                 </p>
-                <div class="flex flex-wrap gap-2 mt-auto">
+                <div class="flex flex-wrap gap-2 mt-auto justify-center">
                     <span class="px-3 py-1 rounded-full text-[0.65rem] bg-gold-400 text-gold-200 font-medium">Unity</span>
                     <span class="px-3 py-1 rounded-full text-[0.65rem] bg-gold-400 text-gold-200 font-medium">Godot</span>
                 </div>
@@ -27,9 +27,9 @@
 
             <div class="info-card rounded-3xl p-8 reveal reveal-delay-1">
                 <div class="info-card-icon mb-5">📜</div>
-                <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-2">Canlı Etkinlikler</h3>
+                <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-2">Konsey Denetimi</h3>
                 <p class="text-parchment-200 text-sm leading-relaxed mb-4">
-                    Mühürlü zarflar, müdahale kartları, diplomasi masası. Sunumlar, workshop’lar, networking.
+                    Etkinlik boyunca Konsey’in rehberliği, workshop’lar ve profesyonel mentorlarla gelişim fırsatı.
                 </p>
             </div>
 
@@ -39,7 +39,7 @@
                 <p class="text-parchment-200 text-sm leading-relaxed mb-4">
                     Sponsor ve mentorlarla etkileşim. Performans gözlemi, takım uyumu.
                 </p>
-                <p class="text-parchment-300 text-xs">{{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }} · {{ $event['date_display'] ?? '3-4 Nisan 2026' }}</p>
+                <p class="text-parchment-300 text-xs">{{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }} · {{ $event['date_display'] ?? '10-11 Nisan 2026' }}</p>
             </div>
         </div>
     </div>

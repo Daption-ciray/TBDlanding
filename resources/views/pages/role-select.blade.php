@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takımını Seç – The Living Code 2026</title>
+    <title>Birimini Seç – The Living Code 2026</title>
     <link rel="icon" href="/images/tbd_logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,6 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    // Komünite esintili turuncu / altın / siyah / beyaz paleti
                     colors: {
                         dark: { 900: '#ffffff', 800: '#f9fafb' },
                         gold: { 100: '#fef08a', 200: '#facc15', 300: '#eab308', 400: 'rgba(250,204,21,0.25)' },
@@ -23,30 +22,25 @@
                     fontFamily: {
                         cinzel: ['"Cinzel Decorative"', 'serif'],
                         display: ['Playfair Display', 'serif'],
-                        inter: ['"Cinzel Decorative"', 'serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                 },
             },
         };
     </script>
-    <link rel="stylesheet" href="/css/custom.css">
     <style>
-        .role-half { transition: flex 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
-        .role-half:hover { flex: 1.15; }
-        .role-half a { display: block; height: 100%; }
-        
-        .role-bg-image {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(8px) brightness(0.75) saturate(1.2);
-            opacity: 1;
-            z-index: 0;
+        .role-half { 
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-        /* Konsept görseli — rollerin tam arkasında, net */
+        .role-half:hover { flex: 1.25; }
+        
         .role-bg-concept {
             position: absolute;
             inset: 0;
@@ -54,120 +48,183 @@
             background-position: center;
             background-repeat: no-repeat;
             z-index: 0;
+            transition: transform 1.2s ease;
         }
+        .role-half:hover .role-bg-concept {
+            transform: scale(1.05);
+        }
+
         .role-bg-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(26,24,37,0.3), rgba(37,34,56,0.2));
             z-index: 1;
         }
-        .role-content { position: relative; z-index: 10; }
-        /* Her tarafta bir insan/karakter görseli alanı */
-        .role-figure {
-            flex-shrink: 0;
-            width: 38%;
-            max-width: 280px;
-            min-height: 280px;
-            min-width: 180px;
-            background-size: contain;
-            background-position: center bottom;
-            background-repeat: no-repeat;
-        }
-        .role-figure img {
+
+        .role-content { 
+            position: relative; 
+            z-index: 10; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-            object-position: center bottom;
+            height: 100%;
         }
-        .role-half-adem .role-figure { order: -1; }
-        .role-half-baba .role-figure { order: 1; }
+
+        .divider-shadow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .divider-left { right: 0; background: linear-gradient(to right, transparent, rgba(0,0,0,0.4)); }
+        .divider-right { left: 0; background: linear-gradient(to left, transparent, rgba(0,0,0,0.4)); }
+
+        .sync-bar {
+            width: 120px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            margin: 10px auto;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .sync-progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            transition: width 1s ease;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(250, 204, 21, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+        }
+        .pulse-priority {
+            animation: pulse-gold 2s infinite;
+        }
+
         @media (max-width: 640px) {
-            .role-half { flex-direction: column; }
-            .role-figure { width: 100%; min-height: 160px; min-width: auto; max-width: 200px; margin: 0 auto; }
-            .role-half-baba .role-content { order: -1; }
-            .role-half-baba .role-figure { order: 0; }
+            .role-half { min-height: 50vh; }
+            .divider-shadow { display: none; }
         }
     </style>
 </head>
-<body class="font-inter bg-slate-100 text-slate-800 min-h-screen overflow-hidden">
+<body class="bg-black text-white min-h-screen overflow-hidden font-sans">
 
-    @php
-        $ademFigure = $roleSelect['adem']['figure_image'] ?? 'images/adem_figure.png';
-        $babaFigure = $roleSelect['baba']['figure_image'] ?? 'images/baba_figure.png';
-        $ademBg = $roleSelect['adem']['concept_bg'] ?? 'images/adem_bg.jpg';
-        $babaBg = $roleSelect['baba']['concept_bg'] ?? 'images/baba_bg.png';
-        $ademFigureExists = file_exists(public_path($ademFigure));
-        $babaFigureExists = file_exists(public_path($babaFigure));
-        $ademBgExists = file_exists(public_path($ademBg));
-        $babaBgExists = file_exists(public_path($babaBg));
-        if (!$ademBgExists) { $ademBg = 'images/adem_bg.png'; $ademBgExists = file_exists(public_path($ademBg)); }
-        if (!$babaBgExists) { $babaBg = 'images/baba_bg.png'; $babaBgExists = file_exists(public_path($babaBg)); }
-    @endphp
     <div class="absolute inset-0 flex flex-col sm:flex-row">
-        {{-- ADEM — sol yarı: konsept görseli arkada, üstünde içerik --}}
-        <div class="role-half role-half-adem flex-1 flex flex-row justify-center items-stretch relative sm:border-r border-gold-300/20 min-h-[50vh] sm:min-h-screen overflow-hidden">
-            @if($ademBgExists)
-                <div class="role-bg-concept" style="background-image: url('{{ asset($ademBg) }}');"></div>
+        {{-- KAŞİF — Sol Taraf --}}
+        <div class="role-half group/adem">
+            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['adem']['concept_bg'] }}');"></div>
+            <div class="role-bg-overlay" style="background: radial-gradient(circle at 30% center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);"></div>
+            <div class="divider-shadow divider-left"></div>
+
+            @if($roleSelect['adem']['sync_percent'] >= 100)
+            <div class="role-content p-8 text-center cursor-not-allowed opacity-60 grayscale">
             @else
-                <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: left center; filter: none; opacity: 1;"></div>
+            <a href="{{ route('welcome', ['role' => 'adem']) }}" class="role-content p-8 text-center">
             @endif
-            <div class="role-bg-overlay" style="background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.65));"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-gold-300/20 z-[2]"></div>
-            {{-- Sol tarafta insan/karakter alanı --}}
-            <div class="role-figure flex items-end justify-center pt-20 pb-4 px-4 z-[5]">
-                @if($ademFigureExists)
-                    <img src="{{ asset($ademFigure) }}" alt="ADEM — Kaşif" class="drop-shadow-2xl">
-                @else
-                    <div class="w-full h-full min-h-[200px] flex items-center justify-center text-gold-300/60 text-6xl" aria-hidden="true">🔥</div>
-                @endif
+                <div class="max-w-md transform group-hover/adem:scale-105 transition-transform duration-500 pt-24">
+                    <span class="font-mono text-gold-300 text-[10px] tracking-[0.4em] uppercase mb-4 block opacity-80">KEŞİF YOLU</span>
+                    
+                    @if($roleSelect['adem']['status'] === 'Kritik İhtiyaç' && $roleSelect['adem']['sync_percent'] < 100)
+                    <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
+                        ÖNCELİKLİ BAĞLANTI: KRİTİK İHTİYAÇ
+                    </div>
+                    @elseif($roleSelect['adem']['status'] === 'Yüksek Talep' && $roleSelect['adem']['sync_percent'] < 100)
+                    <div class="inline-block px-3 py-1 bg-red-500/80 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
+                        YÜKSEK TALEP
+                    </div>
+                    @endif
+
+                    <h2 class="font-cinzel text-5xl sm:text-6xl md:text-7xl font-black text-white mb-1 drop-shadow-2xl">KAŞİF</h2>
+                    <div class="w-10 h-0.5 bg-gold-300 mx-auto mb-4 opacity-40"></div>
+                    
+                    <div class="mb-6">
+                        <div class="sync-bar"><div class="sync-progress bg-gold-200" style="width: {{ $roleSelect['adem']['sync_percent'] }}%"></div></div>
+                        <p class="font-mono text-[9px] tracking-widest text-gold-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['adem']['sync_percent'] }}</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['adem']['quota'] }} Birim Seçilecek</p>
+                    </div>
+
+                    <p class="text-gold-200 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['adem']['tagline'] }}</p>
+                    <p class="text-slate-200 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
+                        {{ $roleSelect['adem']['desc'] }}
+                    </p>
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/adem:bg-gold-200 group-hover/adem:text-black transition-all uppercase">
+                        @if($roleSelect['adem']['sync_percent'] >= 100)
+                            SİSTEM KAPALI: KOTA DOLDU
+                        @else
+                            SİSTEME BAĞLAN →
+                        @endif
+                    </div>
+                </div>
+            @if($roleSelect['adem']['sync_percent'] >= 100)
             </div>
-            <a href="{{ route('welcome', ['role' => 'adem']) }}" class="role-content flex-1 flex flex-col justify-center items-center p-6 sm:p-8 text-center group">
-                <span class="font-mono text-gold-300 text-xs tracking-[0.3em] uppercase mb-4">{{ $roleSelect['pick_side'] ?? 'Tarafını seç' }}</span>
-                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-white mb-2 group-hover:scale-105 transition-transform drop-shadow-lg">ADEM</h2>
-                <span class="text-gold-300 text-sm font-cinzel font-bold tracking-[0.25em] mb-4 drop-shadow-md">KAŞİF</span>
-                <p class="text-gold-200 text-sm font-bold max-w-xs mb-2 drop-shadow-md">{{ $roleSelect['adem']['tagline'] ?? 'Deneysel · Risk · Prototip' }}</p>
-                <p class="text-slate-100 text-sm max-w-sm mb-2 font-medium drop-shadow-md">{{ $roleSelect['adem']['desc'] ?? 'Sınırları zorla, oynanışı öne çıkar.' }}</p>
-                <p class="text-slate-200 text-xs max-w-sm leading-relaxed drop-shadow-md">{{ $roleSelect['adem']['detail'] ?? '' }}</p>
-                <span class="mt-6 text-gold-300 text-xs font-mono font-bold group-hover:text-gold-200 transition-colors drop-shadow-sm">Giriş →</span>
+            @else
             </a>
+            @endif
         </div>
 
-        {{-- BABA — sağ yarı: konsept görseli arkada, üstünde içerik --}}
-        <div class="role-half role-half-baba flex-1 flex flex-row justify-center items-stretch relative sm:border-l border-gold-300/20 min-h-[50vh] sm:min-h-screen overflow-hidden">
-            {{-- Solid base: hafif koyu, tamamen siyah değil --}}
-            <div class="absolute inset-0 bg-[#020617] opacity-90 z-[0]"></div>
-            @if($babaBgExists)
-                <div class="role-bg-concept" style="background-image: url('{{ asset($babaBg) }}'); z-index: 1; opacity: 0.65; filter: saturate(1.05) contrast(1.05) brightness(1);"></div>
+        {{-- MİMAR — Sağ Taraf --}}
+        <div class="role-half group/baba">
+            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['baba']['concept_bg'] }}');"></div>
+            <div class="role-bg-overlay" style="background: radial-gradient(circle at 70% center, rgba(2,6,23,0.1) 0%, rgba(2,6,23,0.9) 100%);"></div>
+            <div class="divider-shadow divider-right"></div>
+
+            @if($roleSelect['baba']['sync_percent'] >= 100)
+            <div class="role-content p-8 text-center cursor-not-allowed opacity-60 grayscale">
             @else
-                <div class="role-bg-image" style="background-image: url('{{ asset('images/creation_of_adam_modern.png') }}'); background-position: right center; filter: none; opacity: 1;"></div>
+            <a href="{{ route('welcome', ['role' => 'baba']) }}" class="role-content p-8 text-center">
             @endif
-            <div class="role-bg-overlay" style="z-index: 2; background: linear-gradient(to bottom, rgba(2,6,23,0.40), rgba(2,6,23,0.80));"></div>
-            <div class="absolute inset-0 bg-gradient-to-bl from-transparent via-transparent to-gold-300/20 z-[3]"></div>
-            <a href="{{ route('welcome', ['role' => 'baba']) }}" class="role-content flex-1 flex flex-col justify-center items-center p-6 sm:p-8 text-center group">
-                <span class="font-mono text-gold-300 text-xs tracking-[0.3em] uppercase mb-4 drop-shadow-md">{{ $roleSelect['pick_side'] ?? 'Tarafını seç' }}</span>
-                <h2 class="font-cinzel text-4xl sm:text-5xl md:text-6xl font-black text-white mb-2 group-hover:scale-105 transition-transform drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">BABA</h2>
-                <span class="text-gold-300 text-sm font-cinzel font-bold tracking-[0.25em] mb-4 drop-shadow-md">MİMAR</span>
-                <p class="text-slate-100 text-sm font-bold max-w-xs mb-2 drop-shadow-md">{{ $roleSelect['baba']['tagline'] ?? 'Bütünlük · Sistem · Mimari' }}</p>
-                <p class="text-slate-100 text-sm max-w-sm mb-2 font-medium drop-shadow-md">{{ $roleSelect['baba']['desc'] ?? 'Yapıyı kur, tutarlılığı koru.' }}</p>
-                <p class="text-slate-200 text-xs max-w-sm leading-relaxed drop-shadow-md">{{ $roleSelect['baba']['detail'] ?? '' }}</p>
-                <span class="mt-6 text-gold-300 text-xs font-mono font-bold group-hover:text-gold-200 transition-colors">Giriş →</span>
-            </a>
-            {{-- Sağ tarafta insan/karakter alanı --}}
-            <div class="role-figure flex items-end justify-center pt-20 pb-4 px-4 z-[5]">
-                @if($babaFigureExists)
-                    <img src="{{ asset($babaFigure) }}" alt="BABA — Mimar" class="drop-shadow-2xl opacity-90">
-                @else
-                    <div class="w-full h-full min-h-[200px] flex items-center justify-center text-gold-300/60 text-6xl" aria-hidden="true">🛡️</div>
-                @endif
+                <div class="max-w-md transform group-hover/baba:scale-105 transition-transform duration-500 pt-24">
+                    <span class="font-mono text-gold-300 text-[10px] tracking-[0.4em] uppercase mb-4 block opacity-80">MİMARİ DÜZEN</span>
+                    
+                    @if($roleSelect['baba']['status'] === 'Kritik İhtiyaç' && $roleSelect['baba']['sync_percent'] < 100)
+                    <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
+                        ÖNCELİKLİ BAĞLANTI: KRİTİK İHTİYAÇ
+                    </div>
+                    @elseif($roleSelect['baba']['status'] === 'Yüksek Talep' && $roleSelect['baba']['sync_percent'] < 100)
+                    <div class="inline-block px-3 py-1 bg-red-500/80 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
+                        YÜKSEK TALEP
+                    </div>
+                    @endif
+
+                    <h2 class="font-cinzel text-5xl sm:text-6xl md:text-7xl font-black text-white mb-1 drop-shadow-2xl">MİMAR</h2>
+                    <div class="w-10 h-0.5 bg-gold-300 mx-auto mb-4 opacity-40"></div>
+
+                    <div class="mb-6">
+                        <div class="sync-bar"><div class="sync-progress bg-amethyst-200" style="width: {{ $roleSelect['baba']['sync_percent'] }}%"></div></div>
+                        <p class="font-mono text-[9px] tracking-widest text-amethyst-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['baba']['sync_percent'] }}</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['baba']['quota'] }} Birim Seçilecek</p>
+                    </div>
+
+                    <p class="text-slate-100 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['baba']['tagline'] }}</p>
+                    <p class="text-slate-300 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
+                        {{ $roleSelect['baba']['desc'] }}
+                    </p>
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/baba:bg-gold-200 group-hover/baba:text-black transition-all uppercase">
+                        @if($roleSelect['baba']['sync_percent'] >= 100)
+                            SİSTEM KAPALI: KOTA DOLDU
+                        @else
+                            SİSTEME BAĞLAN →
+                        @endif
+                    </div>
+                </div>
+            @if($roleSelect['baba']['sync_percent'] >= 100)
             </div>
+            @else
+            </a>
+            @endif
         </div>
     </div>
 
-    {{-- Üst ortada başlık --}}
-    <div class="fixed top-0 left-0 right-0 z-20 py-4 text-center pointer-events-none">
-        <p class="font-mono text-slate-500 text-xs tracking-widest font-bold">{{ $roleSelect['subtitle'] ?? 'THE LIVING CODE 2026' }}</p>
-        <h1 class="font-display text-slate-800 text-lg font-bold mt-1 drop-shadow-sm">{{ $roleSelect['title'] ?? 'Takımını Seç' }}</h1>
+    {{-- Minimal Header --}}
+    <div class="fixed top-0 left-0 right-0 z-20 py-8 text-center pointer-events-none">
+        <p class="font-mono text-gold-300/40 text-[10px] tracking-[0.8em] uppercase">{{ $roleSelect['subtitle'] }}</p>
     </div>
 
 </body>

@@ -11,15 +11,13 @@ use Illuminate\Support\Facades\RateLimiter;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
-        api: __DIR__.'/../routes/api.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->alias([
-            'sura.auth' => \App\Http\Middleware\EnsureSuraAuth::class,
-            'team.auth' => \App\Http\Middleware\EnsureTeamAuth::class,
-            'viewer.auth' => \App\Http\Middleware\EnsureViewerAuth::class,
+        // Google Form API ucu için CSRF'i atla
+        $middleware->validateCsrfTokens(except: [
+            'api/google-form-sync'
         ]);
 
         // Trust Railway / reverse proxy headers (HTTPS, correct host)

@@ -1,26 +1,6 @@
-# Railway/Nixpacks Laravel - Production Ready
-[variables]
-    NIXPACKS_NODE_VERSION = "22"
-    NIXPACKS_PHP_VERSION = "8.2"
-    NPM_CONFIG_INCLUDE = "dev"
-    APP_ENV = "production"
-    APP_DEBUG = "false"
-
-[phases.install]
-    dependsOn = ["setup"]
-    cmds = [
-        "composer install --no-dev --optimize-autoloader --no-interaction",
-        "npm install",
-        "npm run build"
-    ]
+# Nixpacks configuration
+[phases.setup]
+nixPkgs = ["php83", "php83Extensions.gd", "php83Extensions.intl", "php83Extensions.mbstring", "php83Extensions.pcntl", "php83Extensions.pdo_mysql", "php83Extensions.zip", "nodejs", "npm"]
 
 [phases.build]
-    dependsOn = ["install"]
-    cmds = [
-        "php artisan optimize"
-    ]
-
-[deploy]
-    # 'artisan serve' yerine varsayılan web sunucusunu kullanması için komutu sadeleştiriyoruz.
-    # Migration ve seeding işlemini burada garantiliyoruz.
-    startCommand = "php artisan migrate --force && php artisan db:seed --class=GamificationSeeder --force || true && php-fpm -D && nginx -g 'daemon off;'"
+cmds = ["composer install --no-dev --optimize-autoloader", "npm install && npm run build"]

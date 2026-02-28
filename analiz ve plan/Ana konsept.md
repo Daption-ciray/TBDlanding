@@ -1,8 +1,8 @@
-THE LIVING CODE 2025 – GAMEJAM ANA RAPORU
+THE LIVING CODE 2026 – GAMEJAM ANA RAPORU
 
 1. GENEL VİZYON
 
-The Living Code 2025 GameJam, klasik bir oyun geliştirme etkinliği değil; oynanabilir bir sistem tasarımı deneyi, kontrollü kaos ve asimetrik işbirliği üzerine kurulmuş canlı bir evrendir. Katılımcılar yalnızca oyun üretmez, aynı zamanda bu evrenin içindeki politik, ekonomik ve teknik etkileşimlerin aktif birer parçası haline gelir.
+The Living Code 2026 GameJam, klasik bir oyun geliştirme etkinliği değil; oynanabilir bir sistem tasarımı deneyi, kontrollü kaos ve asimetrik işbirliği üzerine kurulmuş canlı bir evrendir. Katılımcılar yalnızca oyun üretmez, aynı zamanda bu evrenin içindeki politik, ekonomik ve teknik etkileşimlerin aktif birer parçası haline gelir.
 
 Bu rapor; tematik çerçeve, organizasyonel yapı, fiziksel temas noktaları ve operasyonel kontrol mekanizmalarını tek bir bütüncül sistem olarak tanımlar.
 
@@ -17,10 +17,10 @@ Evrenin ana teması Kaotik Uyumdur. Takımlar, birbiriyle zıt iki kavramı (tü
 2.2 Roller ve Asimetri
 
 Her takım (“Hücre”), iki ana role sahiptir:
-	•	ADEM (Kaşif): Deneysel, risk alan, oynanış ve prototip odaklı rol
-	•	BABA (Mimar): Yapısal bütünlük, sistem tutarlılığı ve mimari kararlar
+	•	KAŞİF (Explorer): Deneysel, risk alan, oynanış ve prototip odaklı rol
+	•	MİMAR (Architect): Yapısal bütünlük, sistem tutarlılığı ve mimari kararlar
 
-Bu iki rol arasındaki bağ, Şura tarafından sürekli denetlenir. Asimetri bilinçli olarak korunur.
+Bu iki rol arasındaki bağ, Konsey tarafından sürekli denetlenir. Asimetri bilinçli olarak korunur.
 
 ⸻
 
@@ -43,23 +43,23 @@ Kartlar yalnızca oyun içi değil, organizasyonel gerçekliği de etkiler.
 
 ⸻
 
-4. MERKEZİ OTORİTE: ŞURA (KONSEY)
+4. MERKEZİ OTORİTE: KONSEY
 
-Şura, evrenin merkezi otoritesi ve hakemidir. Tarafsız görünür; fakat sistemin dengesini korumak adına aktif müdahalede bulunur.
+Konsey, evrenin merkezi otoritesi ve hakemidir. Tarafsız görünür; fakat sistemin dengesini korumak adına aktif müdahalede bulunur.
 
-4.1 Şura Dashboard
+4.1 Konsey Dashboard
 
 Merkezi takip paneli üzerinden şu başlıklar izlenir:
 	•	Kredi ve Oracle randevu hakları
-	•	Rol uyumu (ADEM–BABA)
+	•	Rol uyumu (KAŞİF–MİMAR)
 	•	Kaotik Uyum analizi
 	•	Ritüel zaman pencereleri senkronizasyonu
 
 4.2 Diplomasi Masası ve Market
 
-İMTİHAN fazında aktifleşir.
+KURGU fazında aktifleşir.
 
-Şura Pazarı:
+Konsey Pazarı:
 	•	Takımlar kazandıkları kredilerle kart satın alır
 
 Oyun Teorisi – Mahkûm İkilemi:
@@ -71,7 +71,7 @@ Oyun Teorisi – Mahkûm İkilemi:
 
 5. KRİZ VE DENGE MEKANİZMALARI
 
-Şura, sistem stabilitesi bozulduğunda mühürlü protokolleri devreye alır:
+Konsey, sistem stabilitesi bozulduğunda mühürlü protokolleri devreye alır:
 	1.	İlahi Adalet (Catch-up): Arka arkaya zarar gören takımlara destek
 	2.	Sistem Yaması: Teknik olarak kırıcı müdahalelerin düzeltilmesi
 	3.	Glitch Hour: Tüm sistemde kısa süreli kontrollü kaos (rol değişimleri vb.)
@@ -80,25 +80,23 @@ Oyun Teorisi – Mahkûm İkilemi:
 
 6. PUANLAMA VE DEĞERLENDİRME
 
-Final değerlendirmesi Mahşer Meydanı’nda yapılır.
+Final değerlendirmesi Kaynak Kod (Source Code) aşamasında yapılır.
 
-Kriter	Ağırlık	Odak
-Bütünlük	%35	Tema, rol ve sistem uyumu
-Asimetri Kalitesi	%25	Sabotajların tasarıma entegrasyonu
-Oynanabilirlik	%20	Kaos altında okunabilir hedef
+Puanlama Ağırlıkları:
+- Jüri Oyu (%60): Problem (15), Çözüm (15), Teknik (20), Yenilik (15), Etki (15), Sunum (20)
+- Seyirci Oyu (%25): Eğlence, Anlaşılabilirlik, Vibe
+- Swap-Play (%15): Finalistlerin karşılıklı test puanları
 
 Final Formülü:
-
-Final = ∑(Kriter × Ağırlık) + Diplomasi Bonusu − İhanet Bedeli
-
+FinalSkor = (Jüri × 0.60) + (Seyirci × 0.25) + (Swap × 0.15)
 
 ⸻
 
 7. OPERASYONEL ZAMAN ÇİZELGESİ
-	•	Genesis (Cuma): Kredi sistemi, ilk prototipler
-	•	Vahiy (Cumartesi): Ortak dil ve çekirdek sistem onayı
-	•	İmtihan (Cumartesi): Müdahale kartları ve diplomasi zirvesi
-	•	Kıyamet (Pazar): Sistem mühürlenir, final sunumları
+	•	Sisteme Giriş (Cumartesi 09:00): Kayıt, Hücre birleşimi, kurallar
+	•	Kurgu (The Construct): Geliştirme, NPC spawn, yan görevler
+	•	Optimizasyon: Mentorluk, stabilizasyon, hata ayıklama
+	•	Kaynak Kod (Source Code): Final sunumları, oylama, mühürleme
 
 ⸻
 

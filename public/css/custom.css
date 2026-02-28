@@ -892,12 +892,12 @@ body.has-topbar .navbar {
     letter-spacing: 0.02em;
 }
 
-/* ===== Asimetrik UX: Hücre vs Şura (Ana konsept) ===== */
+/* ===== Asimetrik UX: Hücre vs Konsey (Ana konsept) ===== */
 .section-voice-label {
     opacity: 0.9;
 }
 
-/* Hücre: katılımcı sesi — sol aksan, içerik sola yaslı his */
+/* Hücre: katılımcı sesi — Tam merkezli */
 .section-hucre {
     position: relative;
 }
@@ -915,13 +915,12 @@ body.has-topbar .navbar {
 }
 @media (min-width: 768px) {
     .section-hucre .section-hucre-content {
-        max-width: 85%;
-        margin-right: auto;
-        margin-left: 0;
+        max-width: 100%;
+        margin: 0 auto;
     }
 }
 
-/* Şura: sistem sesi — sağ aksan, içerik sağa yaslı his */
+/* Konsey: sistem sesi — Tam merkezli */
 .section-sura {
     position: relative;
 }
@@ -939,9 +938,8 @@ body.has-topbar .navbar {
 }
 @media (min-width: 768px) {
     .section-sura .section-sura-content {
-        margin-left: auto;
-        margin-right: 0;
-        max-width: 90%;
+        margin: 0 auto;
+        max-width: 100%;
     }
 }
 
@@ -1037,6 +1035,22 @@ body.has-topbar .navbar {
 .theme-baba h6,
 .theme-baba li {
     color: #e5e7eb;
+}
+
+/* Fix: Gold buttons should always have black text for readability */
+.theme-baba .btn-gold,
+.theme-baba .btn-wraith-cta,
+.theme-baba .btn-topbar,
+.theme-baba .btn-wraith-cta.text-black {
+    color: #020617 !important;
+}
+
+/* Fix: Contrast for secondary links in dark theme */
+.theme-baba .text-parchment-400 {
+    color: #9ca3af !important;
+}
+.theme-baba .text-parchment-400:hover {
+    color: #facc15 !important;
 }
 
 /* ===== Wraith-style: Footer ===== */

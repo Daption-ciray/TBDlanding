@@ -31,17 +31,14 @@
             36 saatlik game jam. Takımla başvur,
             <span class="term-tooltip {{ $activeRole === 'baba' ? 'text-amethyst-200' : 'text-gold-200' }}" data-term="Takımların etkinlikteki kimliği">Hücre</span>
             ol,
-            <span class="term-tooltip {{ $activeRole === 'baba' ? 'text-amethyst-300' : 'text-gold-300' }}" data-term="Etkinliğin jüri konseyi">Şura</span>
+            <span class="term-tooltip {{ $activeRole === 'baba' ? 'text-amethyst-300' : 'text-gold-300' }}" data-term="Etkinliğin jüri konseyi">Konsey</span>
             dört fazda yol göstersin. Tema:
             <strong class="{{ $activeRole === 'baba' ? 'text-amethyst-200' : 'text-gold-200' }}">Kaotik Uyum</strong>.
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center gap-4 reveal">
             <a href="#" class="btn-wraith-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-semibold text-black {{ $activeRole === 'baba' ? 'bg-amethyst-300 hover:bg-amethyst-200' : 'bg-gold-200 hover:bg-gold-100' }} transition-all">
-                Takımımla Başvur
-            </a>
-            <a href="{{ url('/arena') }}" class="btn-wraith-ghost inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium {{ $activeRole === 'baba' ? 'text-slate-100 border-slate-500 hover:border-amethyst-200/60 hover:text-amethyst-200' : 'text-parchment-200 border-white/20 hover:border-gold-200/50 hover:text-gold-200' }} transition-all">
-                Arena'ya Git →
+                {{ $activeRole === 'baba' ? 'İzleyici Olarak Başvur' : 'Takımla Başvur' }}
             </a>
         </div>
 

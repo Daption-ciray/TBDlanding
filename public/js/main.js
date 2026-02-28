@@ -739,7 +739,7 @@ function initViewerZone() {
                 const data = await res.json().catch(() => ({}));
                 if (data.success) {
                     if (claimModal) claimModal.classList.add('hidden');
-                    alert(data.message || 'Talebiniz alındı. Şura onayından sonra XP eklenecek.');
+                    alert(data.message || 'Talebiniz alındı. Konsey onayından sonra XP eklenecek.');
                 } else {
                     if (claimError) claimError.textContent = data.error || data.message || 'Gönderilemedi.';
                 }

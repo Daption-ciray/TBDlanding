@@ -2,10 +2,13 @@
 @php $activeRole = $role ?? 'adem'; @endphp
 <section class="py-16 px-6 text-center border-t border-white/10 {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-900' }}">
     <div class="max-w-xl mx-auto reveal">
-        <p class="text-parchment-200 mb-2 text-sm">
-            Takımınla başvur.
+        <p class="text-parchment-200 mb-2 text-sm italic">
+            "Sisteme hoş geldin, Kaşif. Yapıyı koru, Mimar."
         </p>
-        <p class="text-parchment-400 text-xs mb-6">{{ $event['date_display'] ?? '3-4 Nisan 2026' }} · {{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }}</p>
+        <p class="text-parchment-200 mb-2 text-sm">
+            Birimini Kaydet.
+        </p>
+        <p class="text-parchment-400 text-xs mb-6">{{ $event['date_display'] ?? '10-11 Nisan 2026' }} · {{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }}</p>
         <div class="flex flex-col sm:flex-row justify-center gap-3 mb-12">
             <a href="#" class="btn-wraith-cta inline-flex items-center justify-center px-10 py-4 rounded-lg text-sm font-semibold text-black bg-gold-200 hover:bg-gold-100 transition-all">
                 Takımla Başvur
