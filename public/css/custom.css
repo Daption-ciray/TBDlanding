@@ -377,40 +377,40 @@ body.has-topbar .navbar {
     box-shadow: 0 12px 40px rgba(26, 21, 16, 0.1), 0 0 24px rgba(212, 168, 67, 0.12);
 }
 
-/* BABA teması: koyu arka plan üzerinde kart ve metinler */
-.baba-theme .info-card {
+/* BABA (Mimar) teması: koyu arka plan üzerinde kart ve metinler */
+.theme-baba .info-card {
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
     border-color: rgba(250, 204, 21, 0.35);
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
 }
 
-.baba-theme .info-card:hover {
+.theme-baba .info-card:hover {
     border-color: rgba(250, 204, 21, 0.55);
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
 }
 
-.baba-theme .section-title-wraith,
-.baba-theme .section-voice-label,
-.baba-theme .info-card p,
-.baba-theme .info-card span,
-.baba-theme .info-card h3 {
+.theme-baba .section-title-wraith,
+.theme-baba .section-voice-label,
+.theme-baba .info-card p,
+.theme-baba .info-card span,
+.theme-baba .info-card h3 {
     color: #e5e7eb;
 }
 
-.baba-theme .section-voice-label {
+.theme-baba .section-voice-label {
     color: #facc15;
 }
 
-.baba-theme .text-parchment-100,
-.baba-theme .text-parchment-200,
-.baba-theme .text-parchment-300,
-.baba-theme .text-parchment-400 {
+.theme-baba .text-parchment-100,
+.theme-baba .text-parchment-200,
+.theme-baba .text-parchment-300,
+.theme-baba .text-parchment-400 {
     color: #e5e7eb !important;
 }
 
-.baba-theme .text-gold-100,
-.baba-theme .text-gold-200,
-.baba-theme .text-gold-300 {
+.theme-baba .text-gold-100,
+.theme-baba .text-gold-200,
+.theme-baba .text-gold-300 {
     color: #fde68a !important;
 }
 
@@ -612,21 +612,21 @@ body.has-topbar .navbar {
     border-color: rgba(212, 168, 67, 0.4);
 }
 
-.baba-theme .faq-item {
+.theme-baba .faq-item {
     background: rgba(15, 23, 42, 0.95);
     border-color: rgba(250, 204, 21, 0.35);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
-.baba-theme .faq-item:hover {
+.theme-baba .faq-item:hover {
     border-color: rgba(250, 204, 21, 0.55);
 }
 
-.baba-theme .faq-question {
+.theme-baba .faq-question {
     color: #e5e7eb;
 }
 
-.baba-theme .faq-answer p {
+.theme-baba .faq-answer p {
     color: #cbd5f5;
 }
 
@@ -948,17 +948,17 @@ body.has-topbar .navbar {
     transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-.baba-theme .process-card {
+.theme-baba .process-card {
     background: rgba(15, 23, 42, 0.98);
     border-color: rgba(250, 204, 21, 0.35);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
 }
 
-.baba-theme .process-card:hover {
+.theme-baba .process-card:hover {
     border-color: rgba(250, 204, 21, 0.55);
 }
 
-.baba-theme .role-card {
+.theme-baba .role-card {
     background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.35), transparent 55%),
         radial-gradient(circle at bottom right, rgba(76, 29, 149, 0.4), transparent 60%),
         rgba(15, 23, 42, 0.98);
@@ -966,23 +966,23 @@ body.has-topbar .navbar {
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
 }
 
-.baba-theme .role-card:hover {
+.theme-baba .role-card:hover {
     border-color: rgba(250, 204, 21, 0.55);
 }
 
-.baba-theme .role-card-figure {
+.theme-baba .role-card-figure {
     background: radial-gradient(circle at center, rgba(15, 23, 42, 0.1), transparent 65%);
 }
 
-.baba-theme .role-card h3,
-.baba-theme .role-card p,
-.baba-theme .role-card span {
+.theme-baba .role-card h3,
+.theme-baba .role-card p,
+.theme-baba .role-card span {
     color: #e5e7eb;
 }
 
-.baba-theme .role-card .text-gold-100,
-.baba-theme .role-card .text-gold-200,
-.baba-theme .role-card .text-gold-300 {
+.theme-baba .role-card .text-gold-100,
+.theme-baba .role-card .text-gold-200,
+.theme-baba .role-card .text-gold-300 {
     color: #fde68a !important;
 }
 
