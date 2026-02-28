@@ -172,13 +172,13 @@
 
                 <div class="info-card rounded-2xl p-7 reveal reveal-delay-1 text-center">
                     <div class="text-4xl mb-4">🃏</div>
-                    <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-3">Müdahale Kartları</h3>
+                    <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold mb-3">Müdahale Kartları</h3>
                     <p class="text-parchment-300 text-xs">Destek ve stratejik hamleler için kullanılan özel sistem araçları.</p>
                 </div>
 
                 <div class="info-card rounded-2xl p-7 reveal reveal-delay-2 text-center">
                     <div class="text-4xl mb-4">🤝</div>
-                    <h3 class="font-cinzel text-gold-100 text-xl font-bold mb-3">İletişim Masası</h3>
+                    <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold mb-3">İletişim Masası</h3>
                     <p class="text-parchment-200 text-sm leading-relaxed">Hücreler arası etkileşim ve stratejik işbirliği alanı.</p>
                 </div>
             </div>
