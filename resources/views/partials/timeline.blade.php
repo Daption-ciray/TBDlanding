@@ -1,8 +1,8 @@
 {{-- Konsey: dört farz — sistem sesi, asimetrik sağ ağırlık --}}
-@php $activeRole = $role ?? 'adem'; @endphp
+@php $activeRole = $role ?? 'kasif'; @endphp
 <section
     id="sura"
-    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-900' }}"
+    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-900 kasif-theme' }}"
 >
     <div class="max-w-5xl mx-auto text-center">
         <span class="section-voice-label text-amethyst-200/90 text-xs font-mono tracking-widest uppercase block mb-2 reveal"><span class="term-tooltip" data-term="Etkinliğin jüri konseyi">Konsey</span></span>

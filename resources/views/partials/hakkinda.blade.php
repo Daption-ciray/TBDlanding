@@ -1,7 +1,7 @@
-@php $activeRole = $role ?? 'adem'; @endphp
+@php $activeRole = $role ?? 'kasif'; @endphp
 <section
     id="hakkinda"
-    class="section-hucre py-16 sm:py-24 px-6 relative {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-900' }}"
+    class="section-hucre py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-900 kasif-theme' }}"
 >
     <div class="max-w-6xl mx-auto text-center">
         <span class="section-voice-label text-gold-300 text-xs font-mono tracking-widest uppercase block mb-2 reveal">Hakkında</span>

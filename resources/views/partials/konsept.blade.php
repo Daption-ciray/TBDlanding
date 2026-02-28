@@ -1,12 +1,12 @@
-@php $role = $role ?? 'adem'; @endphp
+@php $role = $role ?? 'kasif'; @endphp
 <section
     id="konsept"
-    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-800/50' }}"
+    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50' }}"
 >
     <div class="max-w-6xl mx-auto">
         {{-- Puanlama Şeması --}}
         <div class="mb-24">
-            <span class="section-voice-label text-gold-300 text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Değerlendirme Sistemi</span>
+            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-300' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Değerlendirme Sistemi</span>
             <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-8 reveal text-center">
                 Puanlama Şeması
             </h2>
@@ -15,9 +15,9 @@
                 <div class="info-card rounded-2xl p-6 reveal">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">⚖️</span>
-                        <h3 class="font-cinzel text-gold-100 text-xl font-bold">Jüri Oyu</h3>
+                        <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold">Jüri Oyu</h3>
                     </div>
-                    <div class="text-4xl font-bold text-gold-200 mb-2">%60</div>
+                    <div class="text-4xl font-bold {{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} mb-2">%60</div>
                     <p class="text-parchment-300 text-xs leading-relaxed">
                         Ürün mantığı, teknik uygulama, yenilik ve sunum kalitesi Konsey tarafından puanlanır.
                     </p>
@@ -25,9 +25,9 @@
                 <div class="info-card rounded-2xl p-6 reveal reveal-delay-1">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">👥</span>
-                        <h3 class="font-cinzel text-gold-100 text-xl font-bold">Seyirci Oyu</h3>
+                        <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold">Seyirci Oyu</h3>
                     </div>
-                    <div class="text-4xl font-bold text-gold-200 mb-2">%25</div>
+                    <div class="text-4xl font-bold {{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} mb-2">%25</div>
                     <p class="text-parchment-300 text-xs leading-relaxed">
                         Etkinlik alanındaki izleyicilerin eğlence ve vibe üzerinden verdiği oylar.
                     </p>
@@ -35,9 +35,9 @@
                 <div class="info-card rounded-2xl p-6 reveal reveal-delay-2">
                     <div class="flex items-center gap-3 mb-4">
                         <span class="text-3xl">🔄</span>
-                        <h3 class="font-cinzel text-gold-100 text-xl font-bold">Swap-Play</h3>
+                        <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold">Swap-Play</h3>
                     </div>
-                    <div class="text-4xl font-bold text-gold-200 mb-2">%15</div>
+                    <div class="text-4xl font-bold {{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} mb-2">%15</div>
                     <p class="text-parchment-300 text-xs leading-relaxed">
                         Finalistlerin birbirlerinin oyunlarını test ederek verdiği teknik puanlar.
                     </p>
@@ -45,31 +45,31 @@
             </div>
 
             {{-- Detaylı Değerlendirme Protokolü --}}
-            <div class="max-w-4xl mx-auto bg-gold-400/5 border border-gold-300/10 rounded-2xl p-8 reveal">
-                <h3 class="font-cinzel text-gold-100 text-lg font-bold mb-6 text-center uppercase tracking-widest">Değerlendirme Protokolü</h3>
+            <div class="max-w-4xl mx-auto {{ $role === 'mimar' ? 'bg-amethyst-400/5 border-amethyst-300/10' : 'bg-gold-400/5 border-gold-300/10' }} border rounded-2xl p-8 reveal">
+                <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-lg font-bold mb-6 text-center uppercase tracking-widest">Değerlendirme Protokolü</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 text-left">
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Problem & İçgörü (15 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Problem & İçgörü (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Çözülen sorunun netliği ve gerçek dünya ihtiyacı.</p>
                     </div>
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Teknik Uygulama (20 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Teknik Uygulama (20 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Kod kalitesi, stabilite ve demonun çalışma durumu.</p>
                     </div>
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Çözüm Tasarımı (15 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Çözüm Tasarımı (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Ürün mantığı ve kullanıcı deneyimi (UX) akışı.</p>
                     </div>
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Yenilik & Farklılık (15 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Yenilik & Farklılık (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Özgünlük ve benzerlerinden ayrışan yaklaşımlar.</p>
                     </div>
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Etki & Ölçek (15 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Etki & Ölçek (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Potansiyel değer ve uygulanabilirlik derinliği.</p>
                     </div>
                     <div>
-                        <h4 class="text-gold-200 text-sm font-bold mb-2">Sunum Kalitesi (20 Puan)</h4>
+                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Sunum Kalitesi (20 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Fikrin aktarımı ve demo sürecinin profesyonelliği.</p>
                     </div>
                 </div>
@@ -78,23 +78,23 @@
 
         {{-- Rol Dağılımı --}}
         <div class="mt-48 pt-12">
-            <span class="section-voice-label text-gold-300 text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Organizasyon Birimleri</span>
+            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-300' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Organizasyon Birimleri</span>
             <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-8 reveal text-center">
                 Rol Dağılımı
             </h2>
             <p class="text-parchment-400 text-sm mb-4 reveal text-center max-w-2xl mx-auto">
                 Zıt iki kavramı tek oyunda birleştir. Denge kuran kazanır.
             </p>
-            <p class="text-gold-200/70 text-[10px] font-mono uppercase tracking-[0.2em] mb-10 reveal text-center max-w-xl mx-auto border border-gold-300/20 py-3 rounded-lg bg-gold-400/5">
+            <p class="{{ $role === 'mimar' ? 'text-amethyst-200/70 border-amethyst-300/20 bg-amethyst-400/5' : 'text-gold-200/70 border-gold-300/20 bg-gold-400/5' }} text-[10px] font-mono uppercase tracking-[0.2em] mb-10 reveal text-center max-w-xl mx-auto border py-3 rounded-lg">
                 ⚠ Konsey uyarısı: Sistem dengesi için 10 KAŞİF ve 10 MİMAR takımı seçilecektir. Taraf seçerken sistem doluluğunu gözetmeniz önerilir.
             </p>
 
             {{-- Rol toggle --}}
             <div class="flex items-center justify-center gap-3 mb-10 reveal">
-                <a href="?role=adem" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'adem' ? 'bg-gold-400 text-parchment-100 border border-gold-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-gold-300/30' }}">
+                <a href="?role=kasif" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'kasif' ? 'bg-gold-400 text-parchment-100 border border-gold-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-gold-300/30' }}">
                     KAŞİF
                 </a>
-                <a href="?role=baba" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'baba' ? 'bg-parchment-100 text-gold-200 border border-gold-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-parchment-300/40' }}">
+                <a href="?role=mimar" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'mimar' ? 'bg-parchment-100 text-amethyst-200 border border-amethyst-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-parchment-300/40' }}">
                     MİMAR
                 </a>
                 <span class="text-parchment-400 text-xs ml-2 hidden sm:inline">← birimini seç</span>
@@ -134,7 +134,7 @@
                         @if($babaExists)
                             <img src="{{ asset($babaImg) }}" alt="MİMAR — Architect" class="w-full h-full object-contain object-bottom">
                         @else
-                            <span class="text-5xl opacity-60 mb-2">💻</span>
+                            <span class="text-5xl opacity-60 mb-2">🛠️</span>
                         @endif
                     </div>
                     <div class="flex-1 min-w-0 text-right md:text-left">

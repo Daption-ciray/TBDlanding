@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @php $activeRole = $role ?? 'adem'; @endphp
+    @php $activeRole = $role ?? 'kasif'; @endphp
 
     @include('partials.hero', ['event' => $event, 'countdownTarget' => $countdownTarget, 'stats' => $stats, 'role' => $activeRole])
     @include('partials.hakkinda', ['stats' => $stats, 'event' => $event, 'role' => $activeRole])

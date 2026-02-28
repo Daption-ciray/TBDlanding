@@ -1,8 +1,8 @@
 {{-- Konsey sesi: kurallar ve sorular --}}
-@php $activeRole = $role ?? 'adem'; @endphp
+@php $activeRole = $role ?? 'kasif'; @endphp
 <section
     id="sss"
-    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'baba' ? 'bg-[#020617] baba-theme' : 'bg-dark-800/50' }}"
+    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50 kasif-theme' }}"
 >
     <div class="max-w-4xl mx-auto section-sura-content !ml-auto !mr-auto">
         <div class="text-center mb-12">
