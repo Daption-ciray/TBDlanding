@@ -1,6 +1,6 @@
 # Nixpacks configuration
 [phases.setup]
-nixPkgs = ["php83", "php83Extensions.gd", "php83Extensions.intl", "php83Extensions.mbstring", "php83Extensions.pcntl", "php83Extensions.pdo_mysql", "php83Extensions.zip", "nodejs", "npm"]
+nixPkgs = ["php83", "php83Extensions.gd", "php83Extensions.intl", "php83Extensions.mbstring", "php83Extensions.pcntl", "php83Extensions.pdo_pgsql", "php83Extensions.pdo_mysql", "php83Extensions.zip", "nodejs", "npm"]
 
 [phases.build]
 cmds = ["composer install --no-dev --optimize-autoloader", "npm install && npm run build"]
