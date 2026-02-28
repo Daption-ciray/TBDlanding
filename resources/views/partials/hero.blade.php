@@ -40,7 +40,7 @@
             <a href="#" class="btn-wraith-cta inline-flex items-center justify-center px-10 py-4 rounded-lg text-sm font-semibold text-black {{ $activeRole === 'mimar' ? 'bg-amethyst-300 hover:bg-amethyst-200' : 'bg-gold-200 hover:bg-gold-100' }} transition-all">
                 Takımla Başvur
             </a>
-            <a href="#" class="inline-flex items-center justify-center px-8 py-4 rounded-lg text-sm font-medium text-parchment-200 border {{ $activeRole === 'mimar' ? 'border-amethyst-100/30 hover:border-amethyst-100/50 hover:text-amethyst-100' : 'border-gold-300/30 hover:border-gold-300/50 hover:text-gold-300' }} transition-all">
+            <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-xs font-medium text-parchment-200 border {{ $activeRole === 'mimar' ? 'border-amethyst-100/30 hover:border-amethyst-100/50 hover:text-amethyst-100' : 'border-gold-300/30 hover:border-gold-300/50 hover:text-gold-300' }} transition-all">
                 İzleyici Olarak Başvur
             </a>
         </div>
