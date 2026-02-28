@@ -1,7 +1,7 @@
 @php $role = $role ?? 'kasif'; @endphp
 <section
     id="konsept"
-    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50' }}"
+    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50 kasif-theme' }}"
 >
     <div class="max-w-6xl mx-auto">
         {{-- Puanlama Şeması --}}
@@ -48,28 +48,31 @@
             <div class="max-w-4xl mx-auto {{ $role === 'mimar' ? 'bg-amethyst-400/5 border-amethyst-300/10' : 'bg-gold-400/5 border-gold-300/10' }} border rounded-2xl p-8 reveal">
                 <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-lg font-bold mb-6 text-center uppercase tracking-widest">Değerlendirme Protokolü</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6 text-left">
+                    @php
+                        $h4Class = $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200';
+                    @endphp
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Problem & İçgörü (15 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Problem & İçgörü (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Çözülen sorunun netliği ve gerçek dünya ihtiyacı.</p>
                     </div>
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Teknik Uygulama (20 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Teknik Uygulama (20 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Kod kalitesi, stabilite ve demonun çalışma durumu.</p>
                     </div>
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Çözüm Tasarımı (15 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Çözüm Tasarımı (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Ürün mantığı ve kullanıcı deneyimi (UX) akışı.</p>
                     </div>
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Yenilik & Farklılık (15 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Yenilik & Farklılık (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Özgünlük ve benzerlerinden ayrışan yaklaşımlar.</p>
                     </div>
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Etki & Ölçek (15 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Etki & Ölçek (15 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Potansiyel değer ve uygulanabilirlik derinliği.</p>
                     </div>
                     <div>
-                        <h4 class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-200' }} text-sm font-bold mb-2">Sunum Kalitesi (20 Puan)</h4>
+                        <h4 class="{{ $h4Class }} text-sm font-bold mb-2">Sunum Kalitesi (20 Puan)</h4>
                         <p class="text-parchment-300 text-xs leading-relaxed">Fikrin aktarımı ve demo sürecinin profesyonelliği.</p>
                     </div>
                 </div>
@@ -101,11 +104,12 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="role-card role-card-adem rounded-2xl p-8 reveal flex flex-col md:flex-row md:items-end gap-6">
+                {{-- KAŞİF CARD --}}
+                <div class="role-card rounded-2xl p-8 reveal flex flex-col md:flex-row md:items-end gap-6 {{ $role === 'kasif' ? 'border-l-4 border-gold-300 bg-white/5' : 'border-l-4 border-slate-800 opacity-80' }}">
                     <div class="role-card-figure flex-shrink-0 w-32 h-40 md:w-36 md:h-44 flex items-end justify-center bg-gold-400/10 rounded-xl overflow-hidden">
-                        @php $ademImg = 'images/adem_figure.png'; $ademExists = file_exists(public_path($ademImg)); @endphp
-                        @if($ademExists)
-                            <img src="{{ asset($ademImg) }}" alt="KAŞİF — Explorer" class="w-full h-full object-contain object-bottom">
+                        @php $kasifImg = 'images/adem_figure.png'; $kasifExists = file_exists(public_path($kasifImg)); @endphp
+                        @if($kasifExists)
+                            <img src="{{ asset($kasifImg) }}" alt="KAŞİF — Explorer" class="w-full h-full object-contain object-bottom">
                         @else
                             <span class="text-5xl opacity-50 mb-2">⚡</span>
                         @endif
@@ -128,11 +132,12 @@
                     </div>
                 </div>
 
-                <div class="role-card role-card-baba rounded-2xl p-8 reveal reveal-delay-1 flex flex-col md:flex-row-reverse md:items-end gap-6">
+                {{-- MİMAR CARD --}}
+                <div class="role-card rounded-2xl p-8 reveal flex flex-col md:flex-row-reverse md:items-end gap-6 {{ $role === 'mimar' ? 'border-l-4 border-amethyst-300 bg-amethyst-400/10' : 'border-l-4 border-slate-800 opacity-80' }}">
                     <div class="role-card-figure flex-shrink-0 w-32 h-40 md:w-36 md:h-44 flex items-end justify-center bg-dark-700 rounded-xl overflow-hidden">
-                        @php $babaImg = 'images/baba_figure.png'; $babaExists = file_exists(public_path($babaImg)); @endphp
-                        @if($babaExists)
-                            <img src="{{ asset($babaImg) }}" alt="MİMAR — Architect" class="w-full h-full object-contain object-bottom">
+                        @php $mimarImg = 'images/baba_figure.png'; $mimarExists = file_exists(public_path($mimarImg)); @endphp
+                        @if($mimarExists)
+                            <img src="{{ asset($mimarImg) }}" alt="MİMAR — Architect" class="w-full h-full object-contain object-bottom">
                         @else
                             <span class="text-5xl opacity-60 mb-2">🛠️</span>
                         @endif
@@ -141,20 +146,20 @@
                         <div class="flex items-center justify-end md:justify-start gap-4 mb-5">
                             <div class="md:hidden">
                                 <h3 class="font-cinzel text-parchment-100 text-2xl font-bold tracking-wide">MİMAR</h3>
-                                <span class="text-parchment-300 text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
+                                <span class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-parchment-300' }} text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
                             </div>
-                            <div class="w-14 h-14 rounded-2xl bg-parchment-100 border border-gold-300/40 flex items-center justify-center text-3xl text-gold-200">🛠️</div>
+                            <div class="w-14 h-14 rounded-2xl {{ $role === 'mimar' ? 'bg-amethyst-300 border-amethyst-200' : 'bg-parchment-100 border-gold-300/40' }} border flex items-center justify-center text-3xl text-gold-200">🛠️</div>
                             <div class="hidden md:block">
                                 <h3 class="font-cinzel text-parchment-100 text-2xl font-bold tracking-wide">MİMAR</h3>
-                                <span class="text-parchment-300 text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
+                                <span class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-parchment-300' }} text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
                             </div>
                         </div>
                         <p class="text-parchment-200 text-sm leading-relaxed mb-5">
                             Mimari ve bütünlük. Sistemi tutarlı tut, yapıyı sağlam kur.
                         </p>
                         <div class="flex flex-wrap justify-end md:justify-start gap-2">
-                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] bg-parchment-100/60 text-gold-200 border border-gold-300/50 font-medium">Mimari</span>
-                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] bg-parchment-100/60 text-gold-200 border border-gold-300/50 font-medium">Sistem</span>
+                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100' : 'bg-parchment-100/60 text-gold-200' }} border border-gold-300/50 font-medium">Mimari</span>
+                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100' : 'bg-parchment-100/60 text-gold-200' }} border border-gold-300/50 font-medium">Sistem</span>
                         </div>
                     </div>
                 </div>

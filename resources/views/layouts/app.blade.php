@@ -70,7 +70,7 @@
     <link rel="stylesheet" href="/css/custom.css?v={{ file_exists(public_path('css/custom.css')) ? filemtime(public_path('css/custom.css')) : time() }}">
     @stack('head')
 @php
-    // Railway Trigger: Force rebuild for theme updates
+    // Railway Trigger: Role name cleanup
     $activeRole = session('livingcode_role', 'kasif');
 @endphp
 </head>
