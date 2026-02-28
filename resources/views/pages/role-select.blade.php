@@ -147,7 +147,7 @@
                     <div class="mb-6">
                         <div class="sync-bar"><div class="sync-progress bg-gold-200" style="width: {{ $roleSelect['kasif']['sync_percent'] }}%"></div></div>
                         <p class="font-mono text-[9px] tracking-widest text-gold-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['kasif']['sync_percent'] }}</p>
-                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['kasif']['quota'] }} Birim Seçilecek</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">İLK 50 ADAY ARASINDAN 10 BİRİM</p>
                     </div>
 
                     <p class="text-gold-200 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['kasif']['tagline'] }}</p>
@@ -199,7 +199,7 @@
                     <div class="mb-6">
                         <div class="sync-bar"><div class="sync-progress bg-amethyst-200" style="width: {{ $roleSelect['mimar']['sync_percent'] }}%"></div></div>
                         <p class="font-mono text-[9px] tracking-widest text-amethyst-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['mimar']['sync_percent'] }}</p>
-                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['mimar']['quota'] }} Birim Seçilecek</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">İLK 50 ADAY ARASINDAN 10 BİRİM</p>
                     </div>
 
                     <p class="text-slate-100 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['mimar']['tagline'] }}</p>
