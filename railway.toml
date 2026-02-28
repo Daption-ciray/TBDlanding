@@ -3,6 +3,6 @@
 builder = "nixpacks"
 
 [deploy]
-startCommand = "chmod -R 777 storage bootstrap/cache && php artisan migrate:fresh --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"
+startCommand = "sh start.sh"
 healthCheckPath = "/up"
 healthCheckTimeout = 120
