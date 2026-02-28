@@ -102,26 +102,26 @@ return [
         'title' => 'Birimini Seç',
         'subtitle' => 'THE LIVING CODE 2026',
         'pick_side' => 'Tarafını seç — Evrene bağlan',
-        'adem' => [
+        'kasif' => [
             'name' => 'KAŞİF',
             'label' => 'EXPLORER',
             'tagline' => 'Deneysel · Risk · Prototip',
             'desc' => 'Sınırları zorla, akışı keşfet. İnovasyonu kucakla.',
-            'quota' => 10,
+            'quota' => 50,
             'status' => 'Yüksek Talep',
-            'sync_percent' => 85,
+            'sync_percent' => 0,
             'detail' => 'Deneysel mekanikleri keşfet, hızlı prototipleme ile vizyonu ayağa kaldır. Oynanışı öne çıkar — MİMAR ile uyumda asimetri korunur.',
             'figure_image' => 'images/adem_figure.png',
             'concept_bg' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1920',
         ],
-        'baba' => [
+        'mimar' => [
             'name' => 'MİMAR',
             'label' => 'ARCHITECT',
             'tagline' => 'Bütünlük · Sistem · Mimari',
             'desc' => 'Yapıyı kur, tutarlılığı koru. Temelleri sağlam at.',
-            'quota' => 10,
+            'quota' => 50,
             'status' => 'Kritik İhtiyaç',
-            'sync_percent' => 40,
+            'sync_percent' => 0,
             'detail' => 'Mimari kararları yönet, teknik borçtan kaçın, sürdürülebilir temeller inşa et. Sistem tutarlılığını koru — KAŞİF ile uyumda asimetri korunur.',
             'figure_image' => 'images/baba_figure.png',
             'concept_bg' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1920',
@@ -130,14 +130,14 @@ return [
 
     /* Rol bazlı landing: KAŞİF ve MİMAR için farklı hero / vurgu */
     'landing_by_role' => [
-        'adem' => [
+        'kasif' => [
             'hero_tagline' => '<Kaşif olarak evrene bağlan />',
             'hero_lead' => 'Sen risk alan taraftasın. Akışı keşfet, sınırları zorla — Konsey seni izliyor; MİMAR ile uyumun kritik.',
             'hero_cta_primary' => 'Hücreni Kaydet',
             'hero_cta_secondary' => 'Konsey\'i Gör',
             'accent' => 'gold',
         ],
-        'baba' => [
+        'mimar' => [
             'hero_tagline' => '<Mimar olarak evrene bağlan />',
             'hero_lead' => 'Sen yapıyı kuran taraftasın. Sistemi tutarlı tut, mimariyi koru — Konsey seni izliyor; KAŞİF ile uyumun kritik.',
             'hero_cta_primary' => 'Hücreni Kaydet',

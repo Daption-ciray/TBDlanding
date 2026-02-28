@@ -10,32 +10,36 @@ use Illuminate\View\View;
 class PageController extends Controller
 {
     /**
-     * Giriş: CS tarzı taraf seçimi (ADEM vs BABA).
+     * Giriş: Kaşif ve Mimar seçimi.
      */
     public function roleSelect(): View
     {
         $roleSelect = config('livingcode.role_select');
         
-        // Benzersiz IP tıklamalarını (İlgi Oranı) çek
-        $ademInterest = RoleInteraction::getUniqueClicks('adem');
-        $babaInterest = RoleInteraction::getUniqueClicks('baba');
-        
-        // Gerçek kayıtları (Kota) çek
-        $ademRegistrations = RoleInteraction::getRegistrations('adem');
-        $babaRegistrations = RoleInteraction::getRegistrations('baba');
+        try {
+            // Benzersiz IP tıklamalarını (İlgi Oranı) çek
+            $kasifInterest = RoleInteraction::getUniqueClicks('kasif');
+            $mimarInterest = RoleInteraction::getUniqueClicks('mimar');
+            
+            // Gerçek kayıtları (Kota) çek
+            $kasifRegistrations = RoleInteraction::getRegistrations('kasif');
+            $mimarRegistrations = RoleInteraction::getRegistrations('mimar');
+        } catch (\Throwable $e) {
+            // Veritabanı veya tablo yoksa varsayılan 0
+            $kasifInterest = $mimarInterest = $kasifRegistrations = $mimarRegistrations = 0;
+            Log::warning('Database not ready: ' . $e->getMessage());
+        }
 
         // Oranları ve Durumları Hesapla
-        foreach (['adem', 'baba'] as $key) {
-            $interest = ($key === 'adem') ? $ademInterest : $babaInterest;
-            $regs = ($key === 'adem') ? $ademRegistrations : $babaRegistrations;
-            $quota = 50; // KOTA SABİT 50
+        foreach (['kasif', 'mimar'] as $key) {
+            $interest = ($key === 'kasif') ? $kasifInterest : $mimarInterest;
+            $regs = ($key === 'kasif') ? $kasifRegistrations : $mimarRegistrations;
+            $quota = 50; 
 
-            // Sync Percent: Gerçek Kayıt / 50
             $roleSelect[$key]['sync_percent'] = min(100, round(($regs / $quota) * 100));
             $roleSelect[$key]['quota'] = $quota;
 
-            // Status: İlgiye (tıklamaya) göre dinamik belirle
-            $otherInterest = ($key === 'adem') ? $babaInterest : $ademInterest;
+            $otherInterest = ($key === 'kasif') ? $mimarInterest : $kasifInterest;
             
             if ($interest < $otherInterest) {
                 $roleSelect[$key]['status'] = 'Kritik İhtiyaç';
@@ -57,43 +61,44 @@ class PageController extends Controller
      */
     public function registerFromGoogleForm(Request $request)
     {
-        // Google Form'dan gönderilecek gizli bir anahtar (Güvenlik için)
         $secret = $request->header('X-TBD-SECRET');
         if ($secret !== 'TBD_SECURE_KEY_2026') {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $role = $request->input('role'); // 'adem' veya 'baba'
-        $email = $request->input('email'); // Tekillik için email kullanabiliriz
+        $role = $request->input('role'); // 'kasif' veya 'mimar'
+        $email = $request->input('email');
 
-        if (in_array($role, ['adem', 'baba'])) {
-            // Kayıt türünde etkileşim oluştur
-            RoleInteraction::updateOrCreate(
-                ['role_key' => $role, 'ip_address' => $email, 'type' => 'registration'],
-                ['updated_at' => now()]
-            );
-            return response()->json(['success' => true]);
+        if (in_array($role, ['kasif', 'mimar'])) {
+            try {
+                RoleInteraction::updateOrCreate(
+                    ['role_key' => $role, 'ip_address' => $email, 'type' => 'registration'],
+                    ['updated_at' => now()]
+                );
+                return response()->json(['success' => true]);
+            } catch (\Throwable $e) {
+                return response()->json(['error' => 'Database error'], 500);
+            }
         }
 
         return response()->json(['error' => 'Invalid role'], 400);
     }
 
     /**
-     * Tanıtım sayfası — seçilen role göre (ADEM/BABA) vurgu.
+     * Tanıtım sayfası — seçilen role göre (Kaşif/Mimar) vurgu.
      */
     public function welcome(Request $request): View
     {
-        $role = $request->query('role') ?? session('livingcode_role', 'adem');
-        if (! in_array($role, ['adem', 'baba'], true)) {
-            $role = 'adem';
+        $role = $request->query('role') ?? session('livingcode_role', 'kasif');
+        if (! in_array($role, ['kasif', 'mimar'], true)) {
+            $role = 'kasif';
         }
 
-        // IP Bazlı Benzersiz Tıklama Kaydı (Manipülasyonu Önler)
         try {
             RoleInteraction::logClick($role, $request->ip());
             session(['livingcode_role' => $role]);
         } catch (\Throwable $e) {
-            Log::warning('welcome: interaction logging failed', ['error' => $e->getMessage(), 'role' => $role, 'ip' => $request->ip()]);
+            Log::warning('welcome: interaction logging failed', ['error' => $e->getMessage(), 'role' => $role]);
         }
 
         return view('pages.welcome', [

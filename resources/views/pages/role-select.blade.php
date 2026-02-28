@@ -118,24 +118,24 @@
 
     <div class="absolute inset-0 flex flex-col sm:flex-row">
         {{-- KAŞİF — Sol Taraf --}}
-        <div class="role-half group/adem">
-            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['adem']['concept_bg'] }}');"></div>
+        <div class="role-half group/kasif">
+            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['kasif']['concept_bg'] }}');"></div>
             <div class="role-bg-overlay" style="background: radial-gradient(circle at 30% center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);"></div>
             <div class="divider-shadow divider-left"></div>
 
-            @if($roleSelect['adem']['sync_percent'] >= 100)
+            @if($roleSelect['kasif']['sync_percent'] >= 100)
             <div class="role-content p-8 text-center cursor-not-allowed opacity-60 grayscale">
             @else
-            <a href="{{ route('welcome', ['role' => 'adem']) }}" class="role-content p-8 text-center">
+            <a href="{{ route('welcome', ['role' => 'kasif']) }}" class="role-content p-8 text-center">
             @endif
-                <div class="max-w-md transform group-hover/adem:scale-105 transition-transform duration-500 pt-24">
+                <div class="max-w-md transform group-hover/kasif:scale-105 transition-transform duration-500 pt-24">
                     <span class="font-mono text-gold-300 text-[10px] tracking-[0.4em] uppercase mb-4 block opacity-80">KEŞİF YOLU</span>
                     
-                    @if($roleSelect['adem']['status'] === 'Kritik İhtiyaç' && $roleSelect['adem']['sync_percent'] < 100)
+                    @if($roleSelect['kasif']['status'] === 'Kritik İhtiyaç' && $roleSelect['kasif']['sync_percent'] < 100)
                     <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
                         ÖNCELİKLİ BAĞLANTI: KRİTİK İHTİYAÇ
                     </div>
-                    @elseif($roleSelect['adem']['status'] === 'Yüksek Talep' && $roleSelect['adem']['sync_percent'] < 100)
+                    @elseif($roleSelect['kasif']['status'] === 'Yüksek Talep' && $roleSelect['kasif']['sync_percent'] < 100)
                     <div class="inline-block px-3 py-1 bg-red-500/80 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
                         YÜKSEK TALEP
                     </div>
@@ -145,24 +145,24 @@
                     <div class="w-10 h-0.5 bg-gold-300 mx-auto mb-4 opacity-40"></div>
                     
                     <div class="mb-6">
-                        <div class="sync-bar"><div class="sync-progress bg-gold-200" style="width: {{ $roleSelect['adem']['sync_percent'] }}%"></div></div>
-                        <p class="font-mono text-[9px] tracking-widest text-gold-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['adem']['sync_percent'] }}</p>
-                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['adem']['quota'] }} Birim Seçilecek</p>
+                        <div class="sync-bar"><div class="sync-progress bg-gold-200" style="width: {{ $roleSelect['kasif']['sync_percent'] }}%"></div></div>
+                        <p class="font-mono text-[9px] tracking-widest text-gold-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['kasif']['sync_percent'] }}</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['kasif']['quota'] }} Birim Seçilecek</p>
                     </div>
 
-                    <p class="text-gold-200 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['adem']['tagline'] }}</p>
+                    <p class="text-gold-200 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['kasif']['tagline'] }}</p>
                     <p class="text-slate-200 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
-                        {{ $roleSelect['adem']['desc'] }}
+                        {{ $roleSelect['kasif']['desc'] }}
                     </p>
-                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/adem:bg-gold-200 group-hover/adem:text-black transition-all uppercase">
-                        @if($roleSelect['adem']['sync_percent'] >= 100)
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/kasif:bg-gold-200 group-hover/kasif:text-black transition-all uppercase">
+                        @if($roleSelect['kasif']['sync_percent'] >= 100)
                             SİSTEM KAPALI: KOTA DOLDU
                         @else
                             SİSTEME BAĞLAN →
                         @endif
                     </div>
                 </div>
-            @if($roleSelect['adem']['sync_percent'] >= 100)
+            @if($roleSelect['kasif']['sync_percent'] >= 100)
             </div>
             @else
             </a>
@@ -170,24 +170,24 @@
         </div>
 
         {{-- MİMAR — Sağ Taraf --}}
-        <div class="role-half group/baba">
-            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['baba']['concept_bg'] }}');"></div>
+        <div class="role-half group/mimar">
+            <div class="role-bg-concept" style="background-image: url('{{ $roleSelect['mimar']['concept_bg'] }}');"></div>
             <div class="role-bg-overlay" style="background: radial-gradient(circle at 70% center, rgba(2,6,23,0.1) 0%, rgba(2,6,23,0.9) 100%);"></div>
             <div class="divider-shadow divider-right"></div>
 
-            @if($roleSelect['baba']['sync_percent'] >= 100)
+            @if($roleSelect['mimar']['sync_percent'] >= 100)
             <div class="role-content p-8 text-center cursor-not-allowed opacity-60 grayscale">
             @else
-            <a href="{{ route('welcome', ['role' => 'baba']) }}" class="role-content p-8 text-center">
+            <a href="{{ route('welcome', ['role' => 'mimar']) }}" class="role-content p-8 text-center">
             @endif
-                <div class="max-w-md transform group-hover/baba:scale-105 transition-transform duration-500 pt-24">
+                <div class="max-w-md transform group-hover/mimar:scale-105 transition-transform duration-500 pt-24">
                     <span class="font-mono text-gold-300 text-[10px] tracking-[0.4em] uppercase mb-4 block opacity-80">MİMARİ DÜZEN</span>
                     
-                    @if($roleSelect['baba']['status'] === 'Kritik İhtiyaç' && $roleSelect['baba']['sync_percent'] < 100)
+                    @if($roleSelect['mimar']['status'] === 'Kritik İhtiyaç' && $roleSelect['mimar']['sync_percent'] < 100)
                     <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
                         ÖNCELİKLİ BAĞLANTI: KRİTİK İHTİYAÇ
                     </div>
-                    @elseif($roleSelect['baba']['status'] === 'Yüksek Talep' && $roleSelect['baba']['sync_percent'] < 100)
+                    @elseif($roleSelect['mimar']['status'] === 'Yüksek Talep' && $roleSelect['mimar']['sync_percent'] < 100)
                     <div class="inline-block px-3 py-1 bg-red-500/80 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
                         YÜKSEK TALEP
                     </div>
@@ -197,24 +197,24 @@
                     <div class="w-10 h-0.5 bg-gold-300 mx-auto mb-4 opacity-40"></div>
 
                     <div class="mb-6">
-                        <div class="sync-bar"><div class="sync-progress bg-amethyst-200" style="width: {{ $roleSelect['baba']['sync_percent'] }}%"></div></div>
-                        <p class="font-mono text-[9px] tracking-widest text-amethyst-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['baba']['sync_percent'] }}</p>
-                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['baba']['quota'] }} Birim Seçilecek</p>
+                        <div class="sync-bar"><div class="sync-progress bg-amethyst-200" style="width: {{ $roleSelect['mimar']['sync_percent'] }}%"></div></div>
+                        <p class="font-mono text-[9px] tracking-widest text-amethyst-200/60 uppercase">Sistem Doluluğu: %{{ $roleSelect['mimar']['sync_percent'] }}</p>
+                        <p class="font-mono text-[9px] tracking-widest text-slate-400 uppercase mt-1">{{ $roleSelect['mimar']['quota'] }} Birim Seçilecek</p>
                     </div>
 
-                    <p class="text-slate-100 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['baba']['tagline'] }}</p>
+                    <p class="text-slate-100 text-sm font-cinzel font-bold tracking-[0.2em] mb-2">{{ $roleSelect['mimar']['tagline'] }}</p>
                     <p class="text-slate-300 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
-                        {{ $roleSelect['baba']['desc'] }}
+                        {{ $roleSelect['mimar']['desc'] }}
                     </p>
-                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/baba:bg-gold-200 group-hover/baba:text-black transition-all uppercase">
-                        @if($roleSelect['baba']['sync_percent'] >= 100)
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/mimar:bg-gold-200 group-hover/mimar:text-black transition-all uppercase">
+                        @if($roleSelect['mimar']['sync_percent'] >= 100)
                             SİSTEM KAPALI: KOTA DOLDU
                         @else
                             SİSTEME BAĞLAN →
                         @endif
                     </div>
                 </div>
-            @if($roleSelect['baba']['sync_percent'] >= 100)
+            @if($roleSelect['mimar']['sync_percent'] >= 100)
             </div>
             @else
             </a>
