@@ -17,13 +17,13 @@ class PageController extends Controller
         $roleSelect = config('livingcode.role_select');
         
         try {
-            // Benzersiz IP tıklamalarını (İlgi Oranı) çek
-            $kasifInterest = RoleInteraction::getUniqueClicks('kasif');
-            $mimarInterest = RoleInteraction::getUniqueClicks('mimar');
+            // Benzersiz tıklamaları (İlgi Oranı) çek - hem eski hem yeni isimler
+            $kasifInterest = RoleInteraction::whereIn('role_key', ['kasif', 'adem'])->where('type', 'click')->count();
+            $mimarInterest = RoleInteraction::whereIn('role_key', ['mimar', 'baba'])->where('type', 'click')->count();
             
-            // Gerçek kayıtları (Kota) çek
-            $kasifRegistrations = RoleInteraction::getRegistrations('kasif');
-            $mimarRegistrations = RoleInteraction::getRegistrations('mimar');
+            // Gerçek kayıtları (Kota) çek - hem eski hem yeni isimler
+            $kasifRegistrations = RoleInteraction::whereIn('role_key', ['kasif', 'adem'])->where('type', 'registration')->count();
+            $mimarRegistrations = RoleInteraction::whereIn('role_key', ['mimar', 'baba'])->where('type', 'registration')->count();
         } catch (\Throwable $e) {
             // Veritabanı veya tablo yoksa varsayılan 0
             $kasifInterest = $mimarInterest = $kasifRegistrations = $mimarRegistrations = 0;
