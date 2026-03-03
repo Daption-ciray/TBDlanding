@@ -9,9 +9,9 @@ echo "--- DEPLOYMENT START ---"
 echo "Fixing permissions..."
 chmod -R 777 storage bootstrap/cache
 
-# Veritabanını GÜNCELLE (Mevcut verileri silmez, sadece yeni tabloları ekler)
-echo "Migrating database..."
-php artisan migrate --force
+# Veritabanını SIFIRLA VE YENİDEN KUR (DİKKAT: TÜM VERİLER SİLİNİR!)
+echo "Resetting and Migrating database..."
+php artisan migrate:fresh --force
 
 # Uygulamayı başlat
 echo "Starting Laravel on Port $PORT..."
