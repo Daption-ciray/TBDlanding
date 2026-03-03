@@ -40,13 +40,22 @@ class PageController extends Controller
             $roleSelect[$key]['quota'] = $quota;
 
             $otherInterest = ($key === 'kasif') ? $mimarInterest : $kasifInterest;
+            $diff = $interest - $otherInterest;
             
-            if ($interest < $otherInterest) {
-                $roleSelect[$key]['status'] = 'Kritik İhtiyaç';
-            } elseif ($interest > $otherInterest) {
-                $roleSelect[$key]['status'] = 'Yüksek Talep';
+            if ($diff >= 15) {
+                $roleSelect[$key]['status'] = 'ÇOK YÜKSEK TALEP';
+            } elseif ($diff >= 8) {
+                $roleSelect[$key]['status'] = 'YÜKSEK TALEP';
+            } elseif ($diff >= 1) {
+                $roleSelect[$key]['status'] = 'ARTAN TALEP';
+            } elseif ($diff <= -15) {
+                $roleSelect[$key]['status'] = 'KRİTİK İHTİYAÇ';
+            } elseif ($diff <= -8) {
+                $roleSelect[$key]['status'] = 'ACİL İHTİYAÇ';
+            } elseif ($diff <= -1) {
+                $roleSelect[$key]['status'] = 'GEREKLİ İHTİYAÇ';
             } else {
-                $roleSelect[$key]['status'] = 'Stabil';
+                $roleSelect[$key]['status'] = 'STABİL';
             }
         }
 
