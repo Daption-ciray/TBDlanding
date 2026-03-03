@@ -34,7 +34,7 @@ class PageController extends Controller
         foreach (['kasif', 'mimar'] as $key) {
             $interest = ($key === 'kasif') ? $kasifInterest : $mimarInterest;
             $regs = ($key === 'kasif') ? $kasifRegistrations : $mimarRegistrations;
-            $quota = 50; 
+            $quota = config("livingcode.role_select.$key.quota", 50); 
 
             $roleSelect[$key]['sync_percent'] = min(100, round(($regs / $quota) * 100));
             $roleSelect[$key]['quota'] = $quota;
@@ -84,11 +84,13 @@ class PageController extends Controller
         if ($role === 'baba') $role = 'mimar';
 
         $email = $request->input('email') ?? $request->input('mail') ?? 'no-email';
+        // Her başvurunun benzersiz olması için formun gönderdiği ID'yi kullanıyoruz
+        $submissionId = $request->input('submission_id') ?? $email;
 
         if (in_array($role, ['kasif', 'mimar'])) {
             try {
                 $interaction = RoleInteraction::updateOrCreate(
-                    ['role_key' => $role, 'ip_address' => $email, 'type' => 'registration'],
+                    ['role_key' => $role, 'ip_address' => $submissionId, 'type' => 'registration'],
                     ['updated_at' => now()]
                 );
                 
