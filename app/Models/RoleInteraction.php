@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleInteraction extends Model
 {
-    protected $fillable = ['role_key', 'ip_address', 'type'];
+    protected $fillable = ['role_key', 'ip_address', 'type', 'updated_at'];
 
     /**
      * Benzersiz IP tıklaması kaydet.

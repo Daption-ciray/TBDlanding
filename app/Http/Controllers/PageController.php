@@ -61,26 +61,55 @@ class PageController extends Controller
      */
     public function registerFromGoogleForm(Request $request)
     {
-        $secret = $request->header('X-TBD-SECRET');
+        Log::info('Google Form Sync Request Received', [
+            'headers' => $request->headers->all(),
+            'body' => $request->all(),
+            'ip' => $request->ip()
+        ]);
+
+        $secret = $request->header('X-TBD-SECRET') ?? $request->input('secret');
         if ($secret !== 'TBD_SECURE_KEY_2026') {
+            Log::warning('Google Form Sync: Unauthorized access attempt', [
+                'header_secret' => $request->header('X-TBD-SECRET'),
+                'body_secret' => $request->input('secret'),
+                'ip' => $request->ip()
+            ]);
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        $role = $request->input('role'); // 'kasif' veya 'mimar'
-        $email = $request->input('email');
+        $role = strtolower((string) ($request->input('role') ?? '')); // 'kasif' veya 'mimar'
+        
+        // Alias desteği (adem=kasif, baba=mimar)
+        if ($role === 'adem') $role = 'kasif';
+        if ($role === 'baba') $role = 'mimar';
+
+        $email = $request->input('email') ?? $request->input('mail') ?? 'no-email';
 
         if (in_array($role, ['kasif', 'mimar'])) {
             try {
-                RoleInteraction::updateOrCreate(
+                $interaction = RoleInteraction::updateOrCreate(
                     ['role_key' => $role, 'ip_address' => $email, 'type' => 'registration'],
                     ['updated_at' => now()]
                 );
+                
+                Log::info('Google Form Sync: Registration successful', [
+                    'role' => $role, 
+                    'email' => $email,
+                    'id' => $interaction->id
+                ]);
+
                 return response()->json(['success' => true]);
             } catch (\Throwable $e) {
-                return response()->json(['error' => 'Database error'], 500);
+                Log::error('Google Form Sync: Database error', [
+                    'error' => $e->getMessage(),
+                    'role' => $role,
+                    'email' => $email
+                ]);
+                return response()->json(['error' => 'Database error', 'message' => $e->getMessage()], 500);
             }
         }
 
+        Log::warning('Google Form Sync: Invalid role received', ['role' => $role]);
         return response()->json(['error' => 'Invalid role'], 400);
     }
 
