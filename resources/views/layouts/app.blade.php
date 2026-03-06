@@ -26,12 +26,12 @@
                 theme: {
                     extend: {
                         colors: {
-                            // Arka plan: beyaz ve çok açık gri tonları
+                            // Arka plan: Koyu tonlar
                             'dark': {
-                                900: '#ffffff',
-                                800: '#ffffff',
-                                700: '#f9fafb',
-                                600: '#f3f4f6',
+                                900: '#020617',
+                                800: '#0f172a',
+                                700: '#1e293b',
+                                600: '#334155',
                             },
                             // Altın sarısı
                             'gold': {
@@ -47,12 +47,12 @@
                                 300: '#f97316',
                                 400: 'rgba(249,115,22,0.25)',
                             },
-                            // Metinler: siyah ve gri tonları
+                            // Metinler: Daima açık renkler
                             'parchment': {
-                                100: '#020617',
-                                200: '#111827',
-                                300: '#4b5563',
-                                400: '#9ca3af',
+                                100: '#ffffff',
+                                200: '#f1f5f9',
+                                300: '#cbd5e1',
+                                400: '#94a3b8',
                             },
                         },
                         fontFamily: {

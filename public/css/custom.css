@@ -5,15 +5,15 @@
 
 /* ===== Theme Variables ===== */
 :root {
-    /* Light Mode (Default) */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f3f4f6;
-    --bg-card: rgba(255, 255, 255, 0.96);
-    --text-primary: #020617;
-    --text-secondary: #111827;
-    --text-muted: #4b5563;
-    --border-color: rgba(0, 0, 0, 0.1);
+    /* "Light" Mode (Now a dark-themed "Parchment/Gold" mode) */
+    --bg-primary: #0f172a;    /* Deep Navy */
+    --bg-secondary: #1e293b;  /* Slate */
+    --bg-tertiary: #334155;
+    --bg-card: rgba(30, 41, 59, 0.8);
+    --text-primary: #f8fafc;  /* White/Slate-50 */
+    --text-secondary: #e2e8f0; /* Slate-200 */
+    --text-muted: #94a3b8;    /* Slate-400 */
+    --border-color: rgba(255, 255, 255, 0.1);
     
     /* Role Colors (Light Mode) */
     --accent-primary: #facc15; /* Gold */
@@ -21,14 +21,15 @@
 }
 
 body.dark {
-    --bg-primary: #020617;
-    --bg-secondary: #0f172a;
-    --bg-tertiary: #1e293b;
-    --bg-card: rgba(15, 23, 42, 0.96);
-    --text-primary: #f8fafc;
-    --text-secondary: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border-color: rgba(255, 255, 255, 0.1);
+    /* "Dark" Mode (Pure Black) */
+    --bg-primary: #020617;    /* Pure Black */
+    --bg-secondary: #0a0f1e;
+    --bg-tertiary: #111827;
+    --bg-card: rgba(2, 6, 23, 0.9);
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --border-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Role Specific Adjustments */
@@ -38,66 +39,67 @@ body.theme-adem {
 }
 
 body.theme-baba {
-    --accent-primary: #a855f7; /* Amethyst/Purple */
-    --accent-secondary: #6366f1; /* Indigo */
+    --accent-primary: #c084fc; /* Brighter Amethyst */
+    --accent-secondary: #818cf8; /* Brighter Indigo */
 }
 
 /* Global Styles using variables */
 body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar {
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-card) !important;
+    border-bottom: 1px solid var(--border-color) !important;
 }
 
-.info-card, .role-card, .process-card, .sponsor-card, .faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
+.info-card, .role-card, .process-card, .sponsor-card, .faq-item, .stat-pill, .countdown-compact {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
 }
 
-.text-parchment-100 { color: var(--text-primary) !important; }
-.text-parchment-200 { color: var(--text-secondary) !important; }
-.text-parchment-300 { color: var(--text-muted) !important; }
-.text-parchment-400 { color: var(--text-muted) !important; }
+.text-parchment-100 { color: #ffffff !important; }
+.text-parchment-200 { color: #f1f5f9 !important; }
+.text-parchment-300 { color: #cbd5e1 !important; }
+.text-parchment-400 { color: #94a3b8 !important; }
 
 /* Role Accent Colors */
 .text-gold-200, .glow-gold { color: var(--accent-primary) !important; }
 .bg-gold-200 { background-color: var(--accent-primary) !important; }
 .border-gold-300 { border-color: var(--accent-primary) !important; }
 
-/* Baba Theme Overrides (if needed) */
-body.theme-baba .text-amethyst-300 { color: var(--accent-primary) !important; }
-body.theme-baba .bg-amethyst-300 { background-color: var(--accent-primary) !important; }
+/* Force light text on buttons even if gold background */
+.btn-gold, .btn-wraith-cta, .btn-topbar {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
 
 /* Custom Overrides for Sections */
 .hero-wraith-bg {
-    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%) !important;
 }
 
-body.dark .hero-wraith-bg {
-    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-}
-
-/* Fix for stat pills in dark mode */
-body.dark .stat-pill, body.dark .countdown-compact {
-    background: var(--bg-tertiary) !important;
-    border-color: var(--border-color);
-}
-
-/* Fix for navbar in dark mode */
-body.dark .navbar {
-    background: rgba(2, 6, 23, 0.8) !important;
+/* Fix for navbar in both modes */
+.navbar {
+    background: rgba(2, 6, 23, 0.85) !important;
+    backdrop-filter: blur(12px);
 }
 
 /* Fix for footer */
-.footer {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border-color);
+.footer, .footer-wraith {
+    background: var(--bg-primary) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.footer-link, .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.footer-link:hover, .nav-link:hover {
+    color: var(--accent-primary) !important;
 }
 body.has-topbar {
     padding-top: 7.5rem; /* topbar + nav */

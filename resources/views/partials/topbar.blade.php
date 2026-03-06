@@ -9,7 +9,7 @@
             <span>Lokasyon: <span class="text-parchment-100">{{ $event['venue'] ?? 'Nişantaşı Üniversitesi' }}, {{ $event['venue_city'] ?? 'İstanbul' }}</span></span>
         </div>
         <div class="flex items-center gap-3">
-            <a href="{{ route('welcome') }}#hero" class="btn-topbar rounded-md px-4 py-2 font-medium text-black {{ $activeRole === 'mimar' ? 'bg-amethyst-200 hover:bg-amethyst-100' : 'bg-gold-200 hover:bg-gold-100' }} transition-colors">İzleyici Olarak Başvur</a>
+            <a href="{{ route('welcome') }}#hero" class="btn-topbar rounded-md px-4 py-2 font-medium text-white {{ $activeRole === 'mimar' ? 'bg-amethyst-200 hover:bg-amethyst-100' : 'bg-gold-200 hover:bg-gold-100' }} transition-colors">İzleyici Olarak Başvur</a>
             <button type="button" id="topbar-close" class="topbar-close p-1.5 text-parchment-400 hover:text-parchment-100 transition-colors" aria-label="Kapat">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>

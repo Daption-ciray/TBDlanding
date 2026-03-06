@@ -14,10 +14,10 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { 900: '#ffffff', 800: '#f9fafb' },
+                        dark: { 900: '#020617', 800: '#0f172a' },
                         gold: { 100: '#fef08a', 200: '#facc15', 300: '#eab308', 400: 'rgba(250,204,21,0.25)' },
                         amethyst: { 100: '#fed7aa', 200: '#fdba74', 300: '#f97316', 400: 'rgba(249,115,22,0.25)' },
-                        parchment: { 100: '#020617', 200: '#111827', 300: '#4b5563', 400: '#9ca3af' },
+                        parchment: { 100: '#ffffff', 200: '#f1f5f9', 300: '#cbd5e1', 400: '#94a3b8' },
                     },
                     fontFamily: {
                         cinzel: ['"Cinzel Decorative"', 'serif'],
@@ -145,11 +145,11 @@
                                 DURUM: ARTAN TALEP
                             </div>
                         @elseif($roleSelect['kasif']['status'] === 'KRİTİK İHTİYAÇ')
-                            <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
+                            <div class="inline-block px-3 py-1 bg-gold-200 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
                                 DURUM: KRİTİK İHTİYAÇ
                             </div>
                         @elseif($roleSelect['kasif']['status'] === 'ACİL İHTİYAÇ')
-                            <div class="inline-block px-3 py-1 bg-gold-300 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
+                            <div class="inline-block px-3 py-1 bg-gold-300 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
                                 DURUM: ACİL İHTİYAÇ
                             </div>
                         @elseif($roleSelect['kasif']['status'] === 'GEREKLİ İHTİYAÇ')
@@ -166,7 +166,7 @@
                     <p class="text-slate-200 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
                         {{ $roleSelect['kasif']['desc'] }}
                     </p>
-                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/kasif:bg-gold-200 group-hover/kasif:text-black transition-all uppercase">
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/kasif:bg-gold-200 group-hover/kasif:text-white transition-all uppercase">
                         @if($roleSelect['kasif']['sync_percent'] >= 100)
                             SİSTEM KAPALI: KOTA DOLDU
                         @else
@@ -209,11 +209,11 @@
                                 DURUM: ARTAN TALEP
                             </div>
                         @elseif($roleSelect['mimar']['status'] === 'KRİTİK İHTİYAÇ')
-                            <div class="inline-block px-3 py-1 bg-gold-200 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
+                            <div class="inline-block px-3 py-1 bg-gold-200 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 pulse-priority rounded-sm">
                                 DURUM: KRİTİK İHTİYAÇ
                             </div>
                         @elseif($roleSelect['mimar']['status'] === 'ACİL İHTİYAÇ')
-                            <div class="inline-block px-3 py-1 bg-gold-300 text-black font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
+                            <div class="inline-block px-3 py-1 bg-gold-300 text-white font-mono text-[9px] font-bold tracking-tighter mb-2 rounded-sm">
                                 DURUM: ACİL İHTİYAÇ
                             </div>
                         @elseif($roleSelect['mimar']['status'] === 'GEREKLİ İHTİYAÇ')
@@ -230,7 +230,7 @@
                     <p class="text-slate-300 text-xs max-w-xs mx-auto leading-relaxed mb-8 opacity-80">
                         {{ $roleSelect['mimar']['desc'] }}
                     </p>
-                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/mimar:bg-gold-200 group-hover/mimar:text-black transition-all uppercase">
+                    <div class="inline-block px-8 py-2.5 border border-gold-300/30 font-mono text-[10px] tracking-[0.2em] text-gold-300 group-hover/mimar:bg-gold-200 group-hover/mimar:text-white transition-all uppercase">
                         @if($roleSelect['mimar']['sync_percent'] >= 100)
                             SİSTEM KAPALI: KOTA DOLDU
                         @else
