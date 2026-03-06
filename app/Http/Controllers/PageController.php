@@ -63,16 +63,6 @@ class PageController extends Controller
     }
 
     /**
-     * Tema değiştirme (Dark/Light).
-     */
-    public function toggleTheme(Request $request)
-    {
-        $theme = $request->input('theme', 'light');
-        session(['livingcode_theme' => $theme]);
-        return response()->json(['success' => true]);
-    }
-
-    /**
      * Tanıtım sayfası — seçilen role göre (Kaşif/Mimar) vurgu.
      */
     public function welcome(Request $request): View

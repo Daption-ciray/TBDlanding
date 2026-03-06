@@ -71,10 +71,9 @@
     @stack('head')
 @php
     $activeRole = session('livingcode_role', 'kasif');
-    $activeTheme = session('livingcode_theme', 'light');
 @endphp
 </head>
-<body class="font-inter {{ $activeTheme }} {{ $activeRole === 'mimar' ? 'theme-baba' : 'theme-adem' }}">
+<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-baba' : 'theme-adem' }}">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-parchment-100 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla
@@ -90,49 +89,6 @@
     @include('partials.footer')
 
     <script src="/js/main.js" defer></script>
-    <script>
-        // Theme Toggle Logic
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-            
-            // Initial state based on body class
-            if (document.body.classList.contains('dark')) {
-                themeToggleLightIcon.classList.remove('hidden');
-            } else {
-                themeToggleDarkIcon.classList.remove('hidden');
-            }
-
-            themeToggleBtn.addEventListener('click', function() {
-                // Toggle icons
-                themeToggleDarkIcon.classList.toggle('hidden');
-                themeToggleLightIcon.classList.toggle('hidden');
-
-                // Toggle body class
-                if (document.body.classList.contains('dark')) {
-                    document.body.classList.remove('dark');
-                    document.body.classList.add('light');
-                    saveTheme('light');
-                } else {
-                    document.body.classList.remove('light');
-                    document.body.classList.add('dark');
-                    saveTheme('dark');
-                }
-            });
-
-            function saveTheme(theme) {
-                fetch('{{ route('toggle-theme') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ theme: theme })
-                });
-            }
-        });
-    </script>
     @stack('scripts')
 </body>
 </html>
