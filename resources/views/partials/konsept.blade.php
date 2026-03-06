@@ -6,7 +6,7 @@
     <div class="max-w-6xl mx-auto">
         {{-- Puanlama Şeması --}}
         <div class="mb-24">
-            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-300' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Değerlendirme Sistemi</span>
+            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Değerlendirme Sistemi</span>
             <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-8 reveal text-center">
                 Puanlama Şeması
             </h2>
@@ -81,7 +81,7 @@
 
         {{-- Rol Dağılımı --}}
         <div class="mt-48 pt-12">
-            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-300' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Organizasyon Birimleri</span>
+            <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-200' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal text-center">Organizasyon Birimleri</span>
             <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-8 reveal text-center">
                 Rol Dağılımı
             </h2>
@@ -97,7 +97,7 @@
                 <a href="?role=kasif" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'kasif' ? 'bg-gold-400 text-parchment-100 border border-gold-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-gold-300/30' }}">
                     KAŞİF
                 </a>
-                <a href="?role=mimar" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'mimar' ? 'bg-parchment-100 text-amethyst-200 border border-amethyst-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-parchment-300/40' }}">
+                <a href="?role=mimar" class="role-toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100 border border-amethyst-300/40' : 'bg-white/5 text-parchment-300 border border-white/10 hover:border-amethyst-300/30' }}">
                     MİMAR
                 </a>
                 <span class="text-parchment-400 text-xs ml-2 hidden sm:inline">← birimini seç</span>
@@ -107,7 +107,7 @@
                 {{-- KAŞİF CARD --}}
                 <div class="role-card rounded-2xl p-8 reveal flex flex-col md:flex-row md:items-end gap-6 {{ $role === 'kasif' ? 'border-l-4 border-gold-300 bg-white/5' : 'border-l-4 border-slate-800 opacity-80' }}">
                     <div class="role-card-figure flex-shrink-0 w-32 h-40 md:w-36 md:h-44 flex items-end justify-center bg-gold-400/10 rounded-xl overflow-hidden">
-                        @php $kasifImg = 'images/adem_figure.png'; $kasifExists = file_exists(public_path($kasifImg)); @endphp
+                        @php $kasifImg = 'images/kasif_figure.png'; $kasifExists = file_exists(public_path($kasifImg)); @endphp
                         @if($kasifExists)
                             <img src="{{ asset($kasifImg) }}" alt="KAŞİF — Explorer" class="w-full h-full object-contain object-bottom">
                         @else
@@ -134,8 +134,8 @@
 
                 {{-- MİMAR CARD --}}
                 <div class="role-card rounded-2xl p-8 reveal flex flex-col md:flex-row-reverse md:items-end gap-6 {{ $role === 'mimar' ? 'border-l-4 border-amethyst-300 bg-amethyst-400/10' : 'border-l-4 border-slate-800 opacity-80' }}">
-                    <div class="role-card-figure flex-shrink-0 w-32 h-40 md:w-36 md:h-44 flex items-end justify-center bg-dark-700 rounded-xl overflow-hidden">
-                        @php $mimarImg = 'images/baba_figure.png'; $mimarExists = file_exists(public_path($mimarImg)); @endphp
+                    <div class="role-card-figure flex-shrink-0 w-32 h-40 md:w-36 md:h-44 flex items-end justify-center {{ $role === 'mimar' ? 'bg-amethyst-400/10' : 'bg-dark-700' }} rounded-xl overflow-hidden">
+                        @php $mimarImg = 'images/mimar_figure.png'; $mimarExists = file_exists(public_path($mimarImg)); @endphp
                         @if($mimarExists)
                             <img src="{{ asset($mimarImg) }}" alt="MİMAR — Architect" class="w-full h-full object-contain object-bottom">
                         @else
@@ -148,7 +148,7 @@
                                 <h3 class="font-cinzel text-parchment-100 text-2xl font-bold tracking-wide">MİMAR</h3>
                                 <span class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-parchment-300' }} text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
                             </div>
-                            <div class="w-14 h-14 rounded-2xl {{ $role === 'mimar' ? 'bg-amethyst-300 border-amethyst-200' : 'bg-parchment-100 border-gold-300/40' }} border flex items-center justify-center text-3xl text-gold-200">🛠️</div>
+                            <div class="w-14 h-14 rounded-2xl {{ $role === 'mimar' ? 'bg-amethyst-400 border-amethyst-300/40' : 'bg-white/5 border-white/10' }} border flex items-center justify-center text-3xl">🛠️</div>
                             <div class="hidden md:block">
                                 <h3 class="font-cinzel text-parchment-100 text-2xl font-bold tracking-wide">MİMAR</h3>
                                 <span class="{{ $role === 'mimar' ? 'text-amethyst-200' : 'text-parchment-300' }} text-[0.6rem] font-cinzel tracking-[0.25em] uppercase">Architect</span>
@@ -158,18 +158,18 @@
                             Mimari ve bütünlük. Sistemi tutarlı tut, yapıyı sağlam kur.
                         </p>
                         <div class="flex flex-wrap justify-end md:justify-start gap-2">
-                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100' : 'bg-parchment-100/60 text-gold-200' }} border border-gold-300/50 font-medium">Mimari</span>
-                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100' : 'bg-parchment-100/60 text-gold-200' }} border border-gold-300/50 font-medium">Sistem</span>
+                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100 border-amethyst-300/30' : 'bg-white/5 text-parchment-300 border-white/10' }} border font-medium">Mimari</span>
+                            <span class="px-3 py-1.5 rounded-lg text-[0.65rem] {{ $role === 'mimar' ? 'bg-amethyst-400 text-amethyst-100 border-amethyst-300/30' : 'bg-white/5 text-parchment-300 border-white/10' }} border font-medium">Sistem</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="info-card rounded-2xl p-7 text-center reveal border-amethyst-100/20 bg-amethyst-300/5">
-                    <span class="section-voice-label text-amethyst-200/80 text-[0.65rem] font-mono tracking-widest uppercase block mb-2">Konsey</span>
+                <div class="info-card rounded-2xl p-7 text-center reveal {{ $role === 'mimar' ? 'border-amethyst-100/20 bg-amethyst-300/5' : 'border-gold-100/20 bg-gold-300/5' }}">
+                    <span class="section-voice-label {{ $role === 'mimar' ? 'text-amethyst-200/80' : 'text-gold-200/80' }} text-[0.65rem] font-mono tracking-widest uppercase block mb-2">Konsey</span>
                     <div class="text-4xl mb-4">⚖️</div>
-                    <h3 class="font-cinzel text-amethyst-100 text-xl font-bold mb-3">KONSEY</h3>
+                    <h3 class="font-cinzel {{ $role === 'mimar' ? 'text-amethyst-100' : 'text-gold-100' }} text-xl font-bold mb-3">KONSEY</h3>
                     <p class="text-parchment-200 text-sm leading-relaxed mt-2">
                         Etkinliğin hakemi. Hücreleri denetler ve puanlama sürecini yönetir.
                     </p>

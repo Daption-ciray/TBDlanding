@@ -111,7 +111,7 @@ return [
             'status' => 'Yüksek Talep',
             'sync_percent' => 0,
             'detail' => 'Deneysel mekanikleri keşfet, hızlı prototipleme ile vizyonu ayağa kaldır. Oynanışı öne çıkar — MİMAR ile uyumda asimetri korunur.',
-            'figure_image' => 'images/adem_figure.png',
+            'figure_image' => 'images/kasif_figure.png',
             'concept_bg' => 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1920',
         ],
         'mimar' => [
@@ -123,7 +123,7 @@ return [
             'status' => 'Kritik İhtiyaç',
             'sync_percent' => 0,
             'detail' => 'Mimari kararları yönet, teknik borçtan kaçın, sürdürülebilir temeller inşa et. Sistem tutarlılığını koru — KAŞİF ile uyumda asimetri korunur.',
-            'figure_image' => 'images/baba_figure.png',
+            'figure_image' => 'images/mimar_figure.png',
             'concept_bg' => 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1920',
         ],
     ],

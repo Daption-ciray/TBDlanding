@@ -40,12 +40,12 @@
                                 300: '#eab308',
                                 400: 'rgba(250,204,21,0.25)',
                             },
-                            // Turuncu tonları
+                            // Mimar accent (purple)
                             'amethyst': {
-                                100: '#fed7aa',
-                                200: '#fdba74',
-                                300: '#f97316',
-                                400: 'rgba(249,115,22,0.25)',
+                                100: '#e9d5ff',
+                                200: '#c084fc',
+                                300: '#a855f7',
+                                400: 'rgba(168,85,247,0.25)',
                             },
                             // Metinler: Daima açık renkler
                             'parchment': {
@@ -73,7 +73,7 @@
     $activeRole = session('livingcode_role', 'kasif');
 @endphp
 </head>
-<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-baba' : 'theme-adem' }}">
+<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-mimar' : 'theme-kasif' }}">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-parchment-100 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla

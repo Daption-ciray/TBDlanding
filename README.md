@@ -46,7 +46,7 @@ Key al: https://aistudio.google.com/apikey
 ### Kullanım
 
 ```bash
-python scripts/generate_images.py "ADEM karakter, altın tonlar"
+python scripts/generate_images.py "KAŞİF karakter, altın tonlar"
 python scripts/generate_images.py "Hero bg" --model gemini --aspect 16:9 -o hero_bg.png
 ```
 

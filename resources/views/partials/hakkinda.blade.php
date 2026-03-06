@@ -4,7 +4,7 @@
     class="section-hucre py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-900 kasif-theme' }}"
 >
     <div class="max-w-6xl mx-auto text-center">
-        <span class="section-voice-label text-gold-300 text-xs font-mono tracking-widest uppercase block mb-2 reveal">Hakkında</span>
+        <span class="section-voice-label {{ $activeRole === 'mimar' ? 'text-amethyst-200' : 'text-gold-300' }} text-xs font-mono tracking-widest uppercase block mb-2 reveal">Hakkında</span>
         <h2 class="section-title-wraith text-2xl sm:text-3xl font-cinzel font-bold text-parchment-100 mb-2 reveal">
             Birim Olarak Katıl
         </h2>

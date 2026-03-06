@@ -17,10 +17,10 @@ class PageController extends Controller
         $roleSelect = config('livingcode.role_select');
         
         try {
-            // Benzersiz tıklamaları (İlgi Oranı) çek - hem eski hem yeni isimler
+            // Benzersiz tıklamaları (İlgi Oranı) çek
             // Not: Google Form entegrasyonu kaldırıldığı için artık oranlar tamamen bu veriden hesaplanıyor.
-            $kasifInterest = RoleInteraction::whereIn('role_key', ['kasif', 'adem'])->where('type', 'click')->count();
-            $mimarInterest = RoleInteraction::whereIn('role_key', ['mimar', 'baba'])->where('type', 'click')->count();
+            $kasifInterest = RoleInteraction::where('role_key', 'kasif')->where('type', 'click')->count();
+            $mimarInterest = RoleInteraction::where('role_key', 'mimar')->where('type', 'click')->count();
         } catch (\Throwable $e) {
             // Veritabanı veya tablo yoksa varsayılan 0
             $kasifInterest = $mimarInterest = 0;
@@ -77,8 +77,8 @@ class PageController extends Controller
             session(['livingcode_role' => $role]);
 
             // Rol bazlı durum ve oran hesapla
-            $kasifInterest = RoleInteraction::whereIn('role_key', ['kasif', 'adem'])->where('type', 'click')->count();
-            $mimarInterest = RoleInteraction::whereIn('role_key', ['mimar', 'baba'])->where('type', 'click')->count();
+            $kasifInterest = RoleInteraction::where('role_key', 'kasif')->where('type', 'click')->count();
+            $mimarInterest = RoleInteraction::where('role_key', 'mimar')->where('type', 'click')->count();
             
             $interest = ($role === 'kasif') ? $kasifInterest : $mimarInterest;
             $otherInterest = ($role === 'kasif') ? $mimarInterest : $kasifInterest;

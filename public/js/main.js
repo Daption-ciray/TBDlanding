@@ -255,8 +255,8 @@ function initLeaderboard() {
 }
 
 function buildTeamRow(t, i) {
-    const roleColor = t.role === 'adem' ? 'text-gold-200' : 'text-amethyst-100';
-    const roleBg = t.role === 'adem' ? 'bg-gold-400 text-gold-200' : 'bg-amethyst-300 text-amethyst-100';
+    const roleColor = t.role === 'kasif' ? 'text-gold-200' : 'text-amethyst-100';
+    const roleBg = t.role === 'kasif' ? 'bg-gold-400 text-gold-200' : 'bg-amethyst-300 text-amethyst-100';
     const topClass = i < 3 ? 'leaderboard-top-' + (i + 1) : '';
     const rankBg = i === 0 ? 'bg-gold-400 text-gold-200' : (i === 1 ? 'bg-parchment-300/20 text-parchment-200' : (i === 2 ? 'bg-amber-900/30 text-amber-400' : 'bg-white/5 text-parchment-300'));
 
@@ -373,7 +373,7 @@ function buildFeedItem(item) {
     const typeLabel = isRank ? 'sıralama' : (typeLabels[item.type] || 'sistem');
 
     const teamRole = item.team_role || '';
-    const teamBg = teamRole === 'adem' ? 'bg-gold-400/50 text-gold-200' : 'bg-amethyst-300/50 text-amethyst-100';
+    const teamBg = teamRole === 'kasif' ? 'bg-gold-400/50 text-gold-200' : 'bg-amethyst-300/50 text-amethyst-100';
     let tag = '';
     if (item.team_name) tag += `<span class="text-[0.65rem] px-1.5 py-0.5 rounded ${teamBg}">${escHtml(item.team_name)}</span>`;
     if (item.viewer_name) tag += `<span class="text-[0.65rem] px-1.5 py-0.5 rounded bg-amethyst-300/30 text-amethyst-100">👁️ ${escHtml(item.viewer_name)}</span>`;
