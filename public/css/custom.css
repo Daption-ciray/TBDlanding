@@ -3,55 +3,101 @@
 /* Google Fonts - Cinzel Decorative (başlıklar) + Inter (gövde) */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ===== Root Variables — Aydınlık Tema (Komünite esintili turuncu / altın / siyah / beyaz) ===== */
+/* ===== Theme Variables ===== */
 :root {
-    /* Arka planlar: tam beyaz ve çok açık gri tonları */
+    /* Light Mode (Default) */
     --bg-primary: #ffffff;
     --bg-secondary: #f9fafb;
     --bg-tertiary: #f3f4f6;
     --bg-card: rgba(255, 255, 255, 0.96);
-
-    /* Altın ve turuncu tonları */
-    --gold: #facc15;          /* parlak altın sarısı */
-    --gold-light: #fef08a;    /* daha açık altın */
-    --gold-dim: #eab308;      /* koyu altın */
-    --gold-glow: rgba(250, 204, 21, 0.22);
-
-    --orange: #f97316;        /* canlı turuncu */
-    --orange-dim: #ea580c;    /* koyu turuncu */
-    --orange-glow: rgba(249, 115, 22, 0.22);
-
-    /* Vurgu kırmızısı çok hafif kullanılıyor */
-    --crimson: #dc2626;
-    --crimson-dim: rgba(220, 38, 38, 0.12);
-
-    /* Metinler: neredeyse siyah ve gri tonları */
-    --text-primary: #020617;    /* neredeyse siyah */
-    --text-secondary: #111827;  /* koyu gri */
-    --text-muted: #4b5563;      /* orta gri */
-
-    /* Sınır parlaması: altın tabanlı */
-    --border-glow: rgba(250, 204, 21, 0.38);
+    --text-primary: #020617;
+    --text-secondary: #111827;
+    --text-muted: #4b5563;
+    --border-color: rgba(0, 0, 0, 0.1);
+    
+    /* Role Colors (Light Mode) */
+    --accent-primary: #facc15; /* Gold */
+    --accent-secondary: #f97316; /* Orange */
 }
 
-/* ===== Global ===== */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+body.dark {
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #1e293b;
+    --bg-card: rgba(15, 23, 42, 0.96);
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
 }
 
-html {
-    scroll-behavior: smooth;
+/* Role Specific Adjustments */
+body.theme-adem {
+    --accent-primary: #facc15;
+    --accent-secondary: #f97316;
 }
 
+body.theme-baba {
+    --accent-primary: #a855f7; /* Amethyst/Purple */
+    --accent-secondary: #6366f1; /* Indigo */
+}
+
+/* Global Styles using variables */
 body {
-    font-family: 'Inter', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    overflow-x: hidden;
-    margin: 0;
-    padding-top: 3.5rem; /* fixed nav height */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-card, .role-card, .process-card, .sponsor-card, .faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.text-parchment-100 { color: var(--text-primary) !important; }
+.text-parchment-200 { color: var(--text-secondary) !important; }
+.text-parchment-300 { color: var(--text-muted) !important; }
+.text-parchment-400 { color: var(--text-muted) !important; }
+
+/* Role Accent Colors */
+.text-gold-200, .glow-gold { color: var(--accent-primary) !important; }
+.bg-gold-200 { background-color: var(--accent-primary) !important; }
+.border-gold-300 { border-color: var(--accent-primary) !important; }
+
+/* Baba Theme Overrides (if needed) */
+body.theme-baba .text-amethyst-300 { color: var(--accent-primary) !important; }
+body.theme-baba .bg-amethyst-300 { background-color: var(--accent-primary) !important; }
+
+/* Custom Overrides for Sections */
+.hero-wraith-bg {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+body.dark .hero-wraith-bg {
+    background: radial-gradient(circle at center, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+/* Fix for stat pills in dark mode */
+body.dark .stat-pill, body.dark .countdown-compact {
+    background: var(--bg-tertiary) !important;
+    border-color: var(--border-color);
+}
+
+/* Fix for navbar in dark mode */
+body.dark .navbar {
+    background: rgba(2, 6, 23, 0.8) !important;
+}
+
+/* Fix for footer */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
 }
 body.has-topbar {
     padding-top: 7.5rem; /* topbar + nav */

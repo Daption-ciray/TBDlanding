@@ -15,11 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Google Form API ucu için CSRF'i atla
-        $middleware->validateCsrfTokens(except: [
-            'api/google-form-sync'
-        ]);
-
         // Trust Railway / reverse proxy headers (HTTPS, correct host)
         $middleware->trustProxies(at: '*');
 
