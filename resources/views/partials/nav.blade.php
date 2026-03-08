@@ -5,6 +5,10 @@
     $accentRing = $navRole === 'mimar' ? 'focus:ring-amethyst-300' : 'focus:ring-gold-300';
     $accentHover = $navRole === 'mimar' ? 'hover:text-amethyst-200' : 'hover:text-gold-200';
     $ringBorder = $navRole === 'mimar' ? 'ring-amethyst-300/30 group-hover:ring-amethyst-200/50' : 'ring-gold-300/30 group-hover:ring-gold-200/50';
+    $secondaryLabel = $navRole === 'mimar' ? 'text-parchment-200' : 'text-parchment-300';
+    $switchLink = $navRole === 'mimar'
+        ? 'text-amethyst-200 hover:text-amethyst-100'
+        : 'text-gold-200 hover:text-gold-100';
 @endphp
 <nav id="navbar" class="navbar fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3" role="navigation" aria-label="Ana navigasyon">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -12,7 +16,7 @@
             <img src="/images/tbd_logo.png" alt="TBD Logo" class="w-9 h-9 rounded-full ring-1 {{ $ringBorder }} transition-all" loading="lazy" width="36" height="36">
             <div class="hidden sm:block">
                 <span class="font-cinzel {{ $accentText }} font-bold text-sm block leading-none">TBD</span>
-                <span class="text-parchment-300 text-[0.6rem] tracking-wider">ISTANBUL</span>
+                <span class="{{ $secondaryLabel }} text-[0.6rem] tracking-wider">ISTANBUL</span>
             </div>
         </a>
 
@@ -23,7 +27,7 @@
 
         <div class="flex items-center gap-3">
             @if($currentRoute === 'welcome')
-            <a href="{{ route('role-select') }}" class="text-parchment-400 {{ $accentHover }} text-xs hidden sm:inline-block focus:outline-none focus:ring-2 {{ $accentRing }} rounded">Tarafı değiştir</a>
+            <a href="{{ route('role-select') }}" class="{{ $switchLink }} text-xs hidden sm:inline-block focus:outline-none focus:ring-2 {{ $accentRing }} rounded">Tarafı değiştir</a>
             @endif
 
             <a href="https://docs.google.com/forms/d/1K4EvhIRr2e64HHnLS5evHZBKUiDQwjR1FaAGcZecm4Y/viewform" target="_blank" class="btn-gold px-5 py-2 rounded-lg text-xs hidden sm:inline-block focus:outline-none focus:ring-2 {{ $accentRing }}">Takımla Başvur</a>
@@ -39,7 +43,7 @@
         <div class="py-4 px-6 flex flex-col gap-3 border-white/10 mt-3">
             <a href="{{ route('welcome') }}" class="text-parchment-200 {{ $accentHover }} text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 {{ $accentRing }} rounded" role="menuitem">Tanıtım</a>
             <a href="{{ route('welcome') }}#sss" class="text-parchment-200 {{ $accentHover }} text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 {{ $accentRing }} rounded" role="menuitem">SSS</a>
-            @if($currentRoute === 'welcome')<a href="{{ route('role-select') }}" class="text-parchment-400 {{ $accentHover }} text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 {{ $accentRing }} rounded" role="menuitem">Tarafı değiştir</a>@endif
+            @if($currentRoute === 'welcome')<a href="{{ route('role-select') }}" class="{{ $switchLink }} text-sm py-2 min-h-[44px] flex items-center focus:outline-none focus:ring-2 {{ $accentRing }} rounded" role="menuitem">Tarafı değiştir</a>@endif
             <a href="#" class="btn-gold px-5 py-2.5 rounded-lg text-xs text-center mt-2 min-h-[44px] flex items-center justify-center focus:outline-none focus:ring-2 {{ $accentRing }}" role="menuitem">Takımla Başvur</a>
         </div>
     </div>
