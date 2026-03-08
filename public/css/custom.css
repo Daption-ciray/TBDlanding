@@ -22,11 +22,29 @@
 
 /* Role Specific Adjustments */
 body.theme-kasif {
+    /* Kaşif: aydınlık, altın tonlu tema */
+    --bg-primary: #f9fafb;
+    --bg-secondary: #f3f4f6;
+    --bg-tertiary: #e5e7eb;
+    --bg-card: rgba(255, 255, 255, 0.96);
+    --text-primary: #020617;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --border-color: rgba(15, 23, 42, 0.08);
     --accent-primary: #facc15;
     --accent-secondary: #eab308;
 }
 
 body.theme-mimar {
+    /* Mimar: koyu, mor tonlu tema */
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #1e293b;
+    --bg-card: rgba(15, 23, 42, 0.96);
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
     --accent-primary: #c084fc;
     --accent-secondary: #a855f7;
 }
