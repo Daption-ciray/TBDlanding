@@ -1,6 +1,6 @@
 {{-- Final CTA + Minimal Sponsor --}}
 @php $activeRole = $role ?? 'kasif'; @endphp
-<section class="py-16 px-6 text-center border-t border-white/10 {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-900 kasif-theme' }}">
+<section class="py-16 px-6 text-center border-t border-white/10 {{ $activeRole === 'mimar' ? 'bg-[#020617]' : 'bg-[#f9fafb]' }}">
     <div class="max-w-xl mx-auto reveal">
         <p class="text-parchment-200 mb-2 text-sm italic">
             "Sisteme hoş geldin, Kaşif. Yapıyı koru, Mimar."

@@ -1,7 +1,7 @@
 @php $role = $role ?? 'kasif'; @endphp
 <section
     id="konsept"
-    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50 kasif-theme' }}"
+    class="section-hucre py-8 sm:py-12 px-6 relative {{ $role === 'mimar' ? 'bg-[#020617]' : 'bg-[#f3f4f6]' }}"
 >
     <div class="max-w-6xl mx-auto">
         {{-- Puanlama Şeması --}}

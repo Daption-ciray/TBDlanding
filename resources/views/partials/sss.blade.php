@@ -2,7 +2,7 @@
 @php $activeRole = $role ?? 'kasif'; @endphp
 <section
     id="sss"
-    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617] mimar-theme' : 'bg-dark-800/50 kasif-theme' }}"
+    class="section-sura py-16 sm:py-24 px-6 relative {{ $activeRole === 'mimar' ? 'bg-[#020617]' : 'bg-[#f3f4f6]' }}"
 >
     <div class="max-w-4xl mx-auto section-sura-content !ml-auto !mr-auto">
         <div class="text-center mb-12">

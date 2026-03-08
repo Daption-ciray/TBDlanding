@@ -56,34 +56,23 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar {
-    background: var(--bg-card) !important;
-    border-bottom: 1px solid var(--border-color) !important;
-}
 
-.info-card, .role-card, .process-card, .sponsor-card, .faq-item, .stat-pill, .countdown-compact {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--text-primary) !important;
-}
+/* Kasif (light) parchment text — dark tones */
+.theme-kasif .text-parchment-100 { color: #020617 !important; }
+.theme-kasif .text-parchment-200 { color: #1f2937 !important; }
+.theme-kasif .text-parchment-300 { color: #4b5563 !important; }
+.theme-kasif .text-parchment-400 { color: #6b7280 !important; }
 
-.text-parchment-100 { color: #ffffff !important; }
-.text-parchment-200 { color: #f1f5f9 !important; }
-.text-parchment-300 { color: #cbd5e1 !important; }
-.text-parchment-400 { color: #94a3b8 !important; }
+/* Mimar (dark) parchment text — light tones */
+.theme-mimar .text-parchment-100 { color: #ffffff !important; }
+.theme-mimar .text-parchment-200 { color: #e5e7eb !important; }
+.theme-mimar .text-parchment-300 { color: #cbd5e1 !important; }
+.theme-mimar .text-parchment-400 { color: #94a3b8 !important; }
 
-/* Force light text on buttons even if gold background */
+/* Buttons */
 .btn-gold, .btn-wraith-cta, .btn-topbar {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
-/* Custom Overrides for Sections */
-
-/* Fix for navbar in both modes */
-.navbar {
-    background: rgba(2, 6, 23, 0.85) !important;
-    backdrop-filter: blur(12px);
+    color: #020617 !important;
+    text-shadow: none;
 }
 
 /* Fix for footer */
@@ -99,14 +88,96 @@ body {
 .footer-link:hover, .nav-link:hover {
     color: var(--accent-primary) !important;
 }
+
+/* ===== Kasif Light Theme Specifics ===== */
+.theme-kasif .navbar {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(20px);
+}
+
+.theme-kasif .topbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1f2937;
+}
+
+.theme-kasif .topbar span,
+.theme-kasif .topbar a {
+    color: #374151;
+}
+
+.theme-kasif .mobile-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.theme-kasif .info-card,
+.theme-kasif .role-card,
+.theme-kasif .process-card,
+.theme-kasif .faq-item,
+.theme-kasif .stat-pill,
+.theme-kasif .countdown-compact {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #020617 !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.theme-kasif .info-card:hover,
+.theme-kasif .role-card:hover,
+.theme-kasif .process-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(234, 179, 8, 0.3) !important;
+}
+
+.theme-kasif .faq-item:hover {
+    border-color: rgba(234, 179, 8, 0.35) !important;
+}
+
+.theme-kasif .info-card p,
+.theme-kasif .info-card span,
+.theme-kasif .info-card h3,
+.theme-kasif .role-card p,
+.theme-kasif .role-card span,
+.theme-kasif .role-card h3,
+.theme-kasif .process-card p,
+.theme-kasif .process-card h3,
+.theme-kasif .process-card div,
+.theme-kasif .faq-question span,
+.theme-kasif .faq-answer p {
+    color: #1f2937;
+}
+
+.theme-kasif .section-title-wraith,
+.theme-kasif h2.section-title-wraith {
+    color: #020617 !important;
+}
+
+.theme-kasif .footer-wraith {
+    background: #f9fafb !important;
+    border-top-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-kasif .hero-wraith-bg {
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(252, 230, 138, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(234, 179, 8, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%) !important;
+}
+
+.theme-kasif .stat-pill:hover {
+    border-color: rgba(234, 179, 8, 0.35) !important;
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+.theme-kasif .countdown-compact {
+    background: rgba(255, 255, 255, 0.95) !important;
+}
 body.has-topbar {
     padding-top: 7.5rem; /* topbar + nav */
 }
 
-/* MİMAR temasında üstte/bastaki boşluklarda beyaz görünmesin */
-.theme-mimar {
-    background-color: #020617;
-}
 
 /* ===== Noise Texture Overlay (hafif, aydınlık tema) ===== */
 body::before {
@@ -134,8 +205,8 @@ h6 {
 /* ===== Navbar ===== */
 .navbar {
     backdrop-filter: blur(20px) saturate(1.5);
-    background: rgba(250, 248, 243, 0.92);
-    border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
     transition: top 0.3s ease, background 0.4s ease;
 }
 body.has-topbar .navbar {
@@ -143,8 +214,7 @@ body.has-topbar .navbar {
 }
 
 .navbar.scrolled {
-    background: rgba(250, 248, 243, 0.98);
-    box-shadow: 0 4px 24px rgba(26, 21, 16, 0.08), 0 1px 0 rgba(212, 168, 67, 0.15);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .nav-link {
@@ -447,12 +517,6 @@ body.has-topbar .navbar {
     color: #c084fc;
 }
 
-.theme-mimar .text-parchment-100,
-.theme-mimar .text-parchment-200,
-.theme-mimar .text-parchment-300,
-.theme-mimar .text-parchment-400 {
-    color: #e5e7eb !important;
-}
 
 .theme-mimar .text-gold-100,
 .theme-mimar .text-gold-200,
@@ -844,13 +908,13 @@ body.has-topbar .navbar {
     transform: translateX(4px);
 }
 
-/* ===== Wraith-style: Topbar (aydınlık tema) ===== */
+/* ===== Wraith-style: Topbar ===== */
 .topbar {
     position: sticky;
     top: 0;
     z-index: 40;
-    background: rgba(250, 248, 243, 0.98) !important;
-    border-bottom: 1px solid rgba(212, 168, 67, 0.2) !important;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
 }
 .topbar.hidden {
@@ -897,16 +961,9 @@ body.has-topbar .navbar {
 
 .stat-pill {
     transition: border-color 0.2s ease, background 0.2s ease;
-    background: rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 1px 6px rgba(26, 21, 16, 0.06);
-}
-.stat-pill:hover {
-    border-color: rgba(212, 168, 67, 0.4);
-    background: rgba(255, 255, 255, 0.95) !important;
 }
 .countdown-compact {
-    background: rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 1px 6px rgba(26, 21, 16, 0.06);
+    transition: border-color 0.2s ease;
 }
 
 /* MİMAR hero: stat pill & countdown koyu tema */
@@ -1044,8 +1101,9 @@ body.has-topbar .navbar {
 }
 
 .theme-mimar .navbar {
-    background: rgba(15, 23, 42, 0.98);
-    border-bottom-color: rgba(168, 85, 247, 0.25);
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-bottom-color: rgba(168, 85, 247, 0.25) !important;
+    backdrop-filter: blur(20px);
 }
 
 .theme-mimar .nav-link {
@@ -1091,13 +1149,6 @@ body.has-topbar .navbar {
     color: #020617 !important;
 }
 
-/* Fix: Contrast for secondary links in dark theme */
-.theme-mimar .text-parchment-400 {
-    color: #9ca3af !important;
-}
-.theme-mimar .text-parchment-400:hover {
-    color: #c084fc !important;
-}
 
 /* ===== Wraith-style: Footer ===== */
 .footer-wraith {
@@ -1127,15 +1178,18 @@ body.has-topbar .navbar {
     background: var(--gold);
 }
 
-/* Aydınlık tema: beyaz border'ları okunaklı yap */
-.border-white\/10 {
-    border-color: rgba(26, 21, 16, 0.12) !important;
+/* Kasif: border-white/* overrides for light background */
+.theme-kasif .border-white\/10,
+.theme-kasif .border-white\/5,
+.theme-kasif .border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.08) !important;
 }
-.border-white\/5 {
-    border-color: rgba(26, 21, 16, 0.08) !important;
-}
-.border-white\/20 {
-    border-color: rgba(26, 21, 16, 0.18) !important;
+
+/* Kasif: bg-white/* overlays should be light gray */
+.theme-kasif .bg-white\/5,
+.theme-kasif .bg-white\/\[0\.02\],
+.theme-kasif .bg-white\/\[0\.03\] {
+    background-color: rgba(0, 0, 0, 0.02) !important;
 }
 
 /* ===== Mobile Menu ===== */
@@ -1143,9 +1197,9 @@ body.has-topbar .navbar {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
-    background: rgba(250, 248, 243, 0.98);
+    background: var(--bg-card);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .mobile-menu.open {
