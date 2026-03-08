@@ -493,35 +493,161 @@ body.has-topbar .navbar {
     box-shadow: 0 12px 40px rgba(26, 21, 16, 0.1), 0 0 24px rgba(212, 168, 67, 0.12);
 }
 
-/* MİMAR teması: koyu arka plan üzerinde kart ve metinler */
-.theme-mimar .info-card {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
-    border-color: rgba(168, 85, 247, 0.3);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+/* ===== Mimar Dark Theme Specifics ===== */
+.theme-mimar .navbar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
+    backdrop-filter: blur(20px);
 }
 
-.theme-mimar .info-card:hover {
-    border-color: rgba(168, 85, 247, 0.5);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
+.theme-mimar .topbar {
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb;
+}
+
+.theme-mimar .topbar span {
+    color: #cbd5e1;
+}
+
+.theme-mimar .topbar a {
+    color: #c084fc;
+}
+
+.theme-mimar .mobile-menu {
+    background: rgba(15, 23, 42, 0.98);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.theme-mimar .info-card,
+.theme-mimar .role-card,
+.theme-mimar .process-card,
+.theme-mimar .sponsor-card {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.theme-mimar .faq-item {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-mimar .stat-pill,
+.theme-mimar .countdown-compact {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.theme-mimar .info-card:hover,
+.theme-mimar .role-card:hover,
+.theme-mimar .process-card:hover {
+    border-color: rgba(168, 85, 247, 0.45) !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+}
+
+.theme-mimar .faq-item:hover {
+    border-color: rgba(168, 85, 247, 0.45) !important;
+}
+
+.theme-mimar .stat-pill:hover {
+    border-color: rgba(168, 85, 247, 0.4) !important;
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+.theme-mimar .info-card p,
+.theme-mimar .info-card span,
+.theme-mimar .info-card h3,
+.theme-mimar .role-card p,
+.theme-mimar .role-card span,
+.theme-mimar .role-card h3,
+.theme-mimar .process-card p,
+.theme-mimar .process-card h3,
+.theme-mimar .process-card div,
+.theme-mimar .faq-question span,
+.theme-mimar .faq-answer p {
+    color: #e5e7eb;
 }
 
 .theme-mimar .section-title-wraith,
-.theme-mimar .section-voice-label,
-.theme-mimar .info-card p,
-.theme-mimar .info-card span,
-.theme-mimar .info-card h3 {
-    color: #e5e7eb;
+.theme-mimar h2.section-title-wraith {
+    color: #ffffff !important;
 }
 
 .theme-mimar .section-voice-label {
     color: #c084fc;
 }
 
-
 .theme-mimar .text-gold-100,
 .theme-mimar .text-gold-200,
 .theme-mimar .text-gold-300 {
     color: #e9d5ff !important;
+}
+
+.theme-mimar .hero-wraith-bg {
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(88, 28, 135, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(30, 64, 175, 0.25) 0%, transparent 55%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%) !important;
+}
+
+.theme-mimar .footer-wraith {
+    background: #020617 !important;
+    border-top-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.theme-mimar .footer {
+    background: #020617 !important;
+    border-top-color: rgba(168, 85, 247, 0.2);
+}
+
+.theme-mimar .footer-link {
+    color: #cbd5e1;
+}
+
+.theme-mimar .footer-link:hover {
+    color: #c084fc;
+}
+
+.theme-mimar .nav-link {
+    color: #e5e7eb;
+}
+
+.theme-mimar .nav-link:hover {
+    color: #c084fc;
+}
+
+/* Mimar: border-white/* overrides for dark background */
+.theme-mimar .border-white\/10,
+.theme-mimar .border-white\/5,
+.theme-mimar .border-white\/20 {
+    border-color: rgba(168, 85, 247, 0.15) !important;
+}
+
+/* MİMAR genel metin rengi */
+.theme-mimar,
+.theme-mimar p,
+.theme-mimar span,
+.theme-mimar h1,
+.theme-mimar h2,
+.theme-mimar h3,
+.theme-mimar h4,
+.theme-mimar h5,
+.theme-mimar h6,
+.theme-mimar li {
+    color: #e5e7eb;
+}
+
+.theme-mimar .btn-gold,
+.theme-mimar .btn-wraith-cta,
+.theme-mimar .btn-topbar,
+.theme-mimar .btn-wraith-cta.text-black {
+    color: #020617 !important;
 }
 
 .info-card:hover::before {
@@ -722,23 +848,6 @@ body.has-topbar .navbar {
     border-color: rgba(212, 168, 67, 0.4);
 }
 
-.theme-mimar .faq-item {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(168, 85, 247, 0.3);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-}
-
-.theme-mimar .faq-item:hover {
-    border-color: rgba(168, 85, 247, 0.5);
-}
-
-.theme-mimar .faq-question {
-    color: #e5e7eb;
-}
-
-.theme-mimar .faq-answer p {
-    color: #cbd5f5;
-}
 
 .faq-question {
     cursor: pointer;
@@ -939,20 +1048,6 @@ body.has-topbar .navbar {
     pointer-events: none;
 }
 
-/* KAŞİF vs MİMAR hero teması — sadece görsel hava farkı */
-.hero-theme-mimar .hero-wraith-bg {
-    background:
-        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(88, 28, 135, 0.45) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(30, 64, 175, 0.35) 0%, transparent 55%),
-        linear-gradient(180deg, #020617 0%, #020617 40%, #020617 100%);
-}
-
-.hero-theme-mimar .hero-wraith-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.95) 70%);
-}
 
 .code-tagline {
     font-family: 'JetBrains Mono', monospace;
@@ -966,22 +1061,6 @@ body.has-topbar .navbar {
     transition: border-color 0.2s ease;
 }
 
-/* MİMAR hero: stat pill & countdown koyu tema */
-.hero-theme-mimar .stat-pill {
-    background: rgba(15, 23, 42, 0.96) !important;
-    border-color: rgba(168, 85, 247, 0.3);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
-}
-
-.hero-theme-mimar .stat-pill span {
-    color: #e5e7eb;
-}
-
-.hero-theme-mimar .countdown-compact {
-    background: rgba(15, 23, 42, 0.98) !important;
-    border-color: rgba(168, 85, 247, 0.25);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
-}
 
 .btn-wraith-cta {
     box-shadow: 0 2px 12px rgba(212, 168, 67, 0.25);
@@ -1051,113 +1130,9 @@ body.has-topbar .navbar {
     transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-.theme-mimar .process-card {
-    background: rgba(15, 23, 42, 0.98);
-    border-color: rgba(168, 85, 247, 0.3);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
-}
-
-.theme-mimar .process-card:hover {
-    border-color: rgba(168, 85, 247, 0.5);
-}
-
-.theme-mimar .role-card {
-    background: radial-gradient(circle at top left, rgba(88, 28, 135, 0.35), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(76, 29, 149, 0.4), transparent 60%),
-        rgba(15, 23, 42, 0.98);
-    border-color: rgba(168, 85, 247, 0.3);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
-}
-
-.theme-mimar .role-card:hover {
-    border-color: rgba(168, 85, 247, 0.5);
-}
-
-.theme-mimar .role-card-figure {
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.1), transparent 65%);
-}
-
-.theme-mimar .role-card h3,
-.theme-mimar .role-card p,
-.theme-mimar .role-card span {
-    color: #e5e7eb;
-}
-
-.theme-mimar .role-card .text-gold-100,
-.theme-mimar .role-card .text-gold-200,
-.theme-mimar .role-card .text-gold-300 {
-    color: #e9d5ff !important;
-}
-
-/* Topbar, navbar, footer — MİMAR koyu teması */
-.theme-mimar .topbar {
-    background: rgba(15, 23, 42, 0.98) !important;
-    border-bottom-color: rgba(168, 85, 247, 0.25) !important;
-    color: #e5e7eb;
-}
-
-.theme-mimar .topbar a {
-    color: #c084fc;
-}
-
-.theme-mimar .navbar {
-    background: rgba(15, 23, 42, 0.98) !important;
-    border-bottom-color: rgba(168, 85, 247, 0.25) !important;
-    backdrop-filter: blur(20px);
-}
-
-.theme-mimar .nav-link {
-    color: #e5e7eb;
-}
-
-.theme-mimar .nav-link:hover {
-    color: #c084fc;
-}
-
-.theme-mimar .footer {
-    background: linear-gradient(180deg, #020617, #020617);
-    border-top-color: rgba(168, 85, 247, 0.25);
-}
-
-.theme-mimar .footer-link {
-    color: #e5e7eb;
-}
-
-.theme-mimar .footer-link:hover {
-    color: #c084fc;
-}
-
-/* MİMAR genel metin rengi — koyu yazı yok */
-.theme-mimar,
-.theme-mimar p,
-.theme-mimar span,
-.theme-mimar h1,
-.theme-mimar h2,
-.theme-mimar h3,
-.theme-mimar h4,
-.theme-mimar h5,
-.theme-mimar h6,
-.theme-mimar li {
-    color: #e5e7eb;
-}
-
-/* Fix: Buttons should always have readable text */
-.theme-mimar .btn-gold,
-.theme-mimar .btn-wraith-cta,
-.theme-mimar .btn-topbar,
-.theme-mimar .btn-wraith-cta.text-black {
-    color: #020617 !important;
-}
-
-
 /* ===== Wraith-style: Footer ===== */
 .footer-wraith {
     background: var(--bg-primary);
-}
-
-.theme-mimar .footer-wraith {
-    background: #020617;
-    border-top-color: rgba(168, 85, 247, 0.25);
 }
 
 /* ===== Scrollbar ===== */
