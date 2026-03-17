@@ -18,8 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         // Trust reverse proxy headers (HTTPS, correct host)
         $middleware->trustProxies(at: '*');
 
-        // Use Redis for throttling only when REDIS_URL is set
-        if (env('REDIS_URL')) {
+        // Use Redis for throttling when available
+        if (env('REDIS_HOST') && env('CACHE_STORE') === 'redis') {
             $middleware->throttleWithRedis();
         }
     })

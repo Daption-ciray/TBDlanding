@@ -1,5 +1,4 @@
 # FTP'ye gonderilmeyecek dosya ve klasorler
-# (lftp veya ncftpput kullaniyorsaniz bu dosyayi --exclude-glob ile kullanin)
 
 .git/
 .git/**
@@ -13,11 +12,6 @@ tests/**
 .editorconfig
 .gitignore
 .gitattributes
-docker-compose.yml
-Dockerfile
-nixpacks.toml
-railway.toml
-start.sh
 phpunit.xml
 vite.config.js
 package.json
@@ -27,4 +21,5 @@ README.md
 deployment/
 deployment/**
 analiz ve plan/
+docs/
 storage/logs/*.log
