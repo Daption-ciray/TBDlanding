@@ -23,11 +23,11 @@
     --color-gold-300: #eab308;
     --color-gold-400: rgba(250, 204, 21, 0.25);
 
-    /* Turuncu tonları */
-    --color-amethyst-100: #fed7aa;
-    --color-amethyst-200: #fdba74;
-    --color-amethyst-300: #f97316;
-    --color-amethyst-400: rgba(249, 115, 22, 0.25);
+    /* Mimar accent (purple) */
+    --color-amethyst-100: #e9d5ff;
+    --color-amethyst-200: #c084fc;
+    --color-amethyst-300: #a855f7;
+    --color-amethyst-400: rgba(168, 85, 247, 0.25);
 
     /* Metinler: siyah ve gri tonları */
     --color-parchment-100: #020617;

@@ -13,7 +13,7 @@ return new class extends Migration
 
         Schema::create('role_interactions', function (Blueprint $table) {
             $table->id();
-            $table->string('role_key'); // 'adem' or 'baba'
+            $table->string('role_key'); // 'kasif' or 'mimar'
             $table->string('ip_address');
             $table->enum('type', ['click', 'registration'])->default('click');
             $table->timestamps();

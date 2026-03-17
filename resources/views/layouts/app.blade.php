@@ -26,12 +26,12 @@
                 theme: {
                     extend: {
                         colors: {
-                            // Arka plan: beyaz ve çok açık gri tonları
+                            // Arka plan: Koyu tonlar
                             'dark': {
-                                900: '#ffffff',
-                                800: '#ffffff',
-                                700: '#f9fafb',
-                                600: '#f3f4f6',
+                                900: '#020617',
+                                800: '#0f172a',
+                                700: '#1e293b',
+                                600: '#334155',
                             },
                             // Altın sarısı
                             'gold': {
@@ -40,19 +40,19 @@
                                 300: '#eab308',
                                 400: 'rgba(250,204,21,0.25)',
                             },
-                            // Turuncu tonları
+                            // Mimar accent (purple)
                             'amethyst': {
-                                100: '#fed7aa',
-                                200: '#fdba74',
-                                300: '#f97316',
-                                400: 'rgba(249,115,22,0.25)',
+                                100: '#e9d5ff',
+                                200: '#c084fc',
+                                300: '#a855f7',
+                                400: 'rgba(168,85,247,0.25)',
                             },
-                            // Metinler: siyah ve gri tonları
+                            // Metinler: Daima açık renkler
                             'parchment': {
-                                100: '#020617',
-                                200: '#111827',
-                                300: '#4b5563',
-                                400: '#9ca3af',
+                                100: '#ffffff',
+                                200: '#f1f5f9',
+                                300: '#cbd5e1',
+                                400: '#94a3b8',
                             },
                         },
                         fontFamily: {
@@ -70,11 +70,10 @@
     <link rel="stylesheet" href="/css/custom.css?v={{ file_exists(public_path('css/custom.css')) ? filemtime(public_path('css/custom.css')) : time() }}">
     @stack('head')
 @php
-    // Railway Trigger: Role name cleanup
     $activeRole = session('livingcode_role', 'kasif');
 @endphp
 </head>
-<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-baba' : 'theme-adem' }}">
+<body class="font-inter {{ $activeRole === 'mimar' ? 'theme-mimar' : 'theme-kasif' }}">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold-200 focus:text-parchment-100 focus:px-4 focus:py-2 focus:rounded">
         İçeriğe atla

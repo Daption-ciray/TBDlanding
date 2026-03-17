@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('role_clicks', function (Blueprint $table) {
             $table->id();
-            $table->string('role_key')->unique(); // 'adem' or 'baba'
+            $table->string('role_key')->unique(); // 'kasif' or 'mimar'
             $table->unsignedInteger('click_count')->default(0);
             $table->timestamps();
         });
 
         // Başlangıç değerlerini ata
         \DB::table('role_clicks')->insert([
-            ['role_key' => 'adem', 'click_count' => 0, 'created_at' => now(), 'updated_at' => now()],
-            ['role_key' => 'baba', 'click_count' => 0, 'created_at' => now(), 'updated_at' => now()],
+            ['role_key' => 'kasif', 'click_count' => 0, 'created_at' => now(), 'updated_at' => now()],
+            ['role_key' => 'mimar', 'click_count' => 0, 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 

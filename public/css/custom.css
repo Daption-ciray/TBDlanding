@@ -3,64 +3,181 @@
 /* Google Fonts - Cinzel Decorative (başlıklar) + Inter (gövde) */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ===== Root Variables — Aydınlık Tema (Komünite esintili turuncu / altın / siyah / beyaz) ===== */
+/* ===== Theme Variables ===== */
 :root {
-    /* Arka planlar: tam beyaz ve çok açık gri tonları */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f3f4f6;
+    /* Base Dark Theme */
+    --bg-primary: #020617;    /* Pure Black / Deepest Slate */
+    --bg-secondary: #0f172a;  /* Dark Slate */
+    --bg-tertiary: #1e293b;
+    --bg-card: rgba(15, 23, 42, 0.96);
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    /* Role Colors (Default Explorer/Kaşif) */
+    --accent-primary: #facc15;
+    --accent-secondary: #eab308;
+}
+
+/* Role Specific Adjustments */
+body.theme-kasif {
+    /* Kaşif: aydınlık, altın tonlu tema */
+    --bg-primary: #f9fafb;
+    --bg-secondary: #f3f4f6;
+    --bg-tertiary: #e5e7eb;
     --bg-card: rgba(255, 255, 255, 0.96);
-
-    /* Altın ve turuncu tonları */
-    --gold: #facc15;          /* parlak altın sarısı */
-    --gold-light: #fef08a;    /* daha açık altın */
-    --gold-dim: #eab308;      /* koyu altın */
-    --gold-glow: rgba(250, 204, 21, 0.22);
-
-    --orange: #f97316;        /* canlı turuncu */
-    --orange-dim: #ea580c;    /* koyu turuncu */
-    --orange-glow: rgba(249, 115, 22, 0.22);
-
-    /* Vurgu kırmızısı çok hafif kullanılıyor */
-    --crimson: #dc2626;
-    --crimson-dim: rgba(220, 38, 38, 0.12);
-
-    /* Metinler: neredeyse siyah ve gri tonları */
-    --text-primary: #020617;    /* neredeyse siyah */
-    --text-secondary: #111827;  /* koyu gri */
-    --text-muted: #4b5563;      /* orta gri */
-
-    /* Sınır parlaması: altın tabanlı */
-    --border-glow: rgba(250, 204, 21, 0.38);
+    --text-primary: #020617;
+    --text-secondary: #4b5563;
+    --text-muted: #6b7280;
+    --border-color: rgba(15, 23, 42, 0.08);
+    --accent-primary: #facc15;
+    --accent-secondary: #eab308;
 }
 
-/* ===== Global ===== */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+body.theme-mimar {
+    /* Mimar: koyu, mor tonlu tema */
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-tertiary: #1e293b;
+    --bg-card: rgba(15, 23, 42, 0.96);
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent-primary: #c084fc;
+    --accent-secondary: #a855f7;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
+/* Global Styles using variables */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    overflow-x: hidden;
-    margin: 0;
-    padding-top: 3.5rem; /* fixed nav height */
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Kasif (light) parchment text — dark tones */
+.theme-kasif .text-parchment-100 { color: #020617 !important; }
+.theme-kasif .text-parchment-200 { color: #1f2937 !important; }
+.theme-kasif .text-parchment-300 { color: #4b5563 !important; }
+.theme-kasif .text-parchment-400 { color: #6b7280 !important; }
+
+/* Mimar (dark) parchment text — light tones */
+.theme-mimar .text-parchment-100 { color: #ffffff !important; }
+.theme-mimar .text-parchment-200 { color: #e5e7eb !important; }
+.theme-mimar .text-parchment-300 { color: #cbd5e1 !important; }
+.theme-mimar .text-parchment-400 { color: #94a3b8 !important; }
+
+/* Buttons */
+.btn-gold, .btn-wraith-cta, .btn-topbar {
+    color: #020617 !important;
+    text-shadow: none;
+}
+
+/* Fix for footer */
+.footer, .footer-wraith {
+    background: var(--bg-primary) !important;
+    border-top: 1px solid var(--border-color) !important;
+}
+
+.footer-link, .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.footer-link:hover, .nav-link:hover {
+    color: var(--accent-primary) !important;
+}
+
+/* ===== Kasif Light Theme Specifics ===== */
+.theme-kasif .navbar {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(20px);
+}
+
+.theme-kasif .topbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1f2937;
+}
+
+.theme-kasif .topbar span,
+.theme-kasif .topbar a {
+    color: #374151;
+}
+
+.theme-kasif .mobile-menu {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.theme-kasif .info-card,
+.theme-kasif .role-card,
+.theme-kasif .process-card,
+.theme-kasif .faq-item,
+.theme-kasif .stat-pill,
+.theme-kasif .countdown-compact {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #020617 !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.theme-kasif .info-card:hover,
+.theme-kasif .role-card:hover,
+.theme-kasif .process-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(234, 179, 8, 0.3) !important;
+}
+
+.theme-kasif .faq-item:hover {
+    border-color: rgba(234, 179, 8, 0.35) !important;
+}
+
+.theme-kasif .info-card p,
+.theme-kasif .info-card span,
+.theme-kasif .info-card h3,
+.theme-kasif .role-card p,
+.theme-kasif .role-card span,
+.theme-kasif .role-card h3,
+.theme-kasif .process-card p,
+.theme-kasif .process-card h3,
+.theme-kasif .process-card div,
+.theme-kasif .faq-question span,
+.theme-kasif .faq-answer p {
+    color: #1f2937;
+}
+
+.theme-kasif .section-title-wraith,
+.theme-kasif h2.section-title-wraith {
+    color: #020617 !important;
+}
+
+.theme-kasif .footer-wraith {
+    background: #f9fafb !important;
+    border-top-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-kasif .hero-wraith-bg {
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(252, 230, 138, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(234, 179, 8, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%) !important;
+}
+
+.theme-kasif .stat-pill:hover {
+    border-color: rgba(234, 179, 8, 0.35) !important;
+    background: rgba(255, 255, 255, 1) !important;
+}
+
+.theme-kasif .countdown-compact {
+    background: rgba(255, 255, 255, 0.95) !important;
 }
 body.has-topbar {
     padding-top: 7.5rem; /* topbar + nav */
 }
 
-/* BABA temasında üstte/bastaki boşluklarda beyaz görünmesin */
-.theme-baba {
-    background-color: #020617;
-}
 
 /* ===== Noise Texture Overlay (hafif, aydınlık tema) ===== */
 body::before {
@@ -88,8 +205,8 @@ h6 {
 /* ===== Navbar ===== */
 .navbar {
     backdrop-filter: blur(20px) saturate(1.5);
-    background: rgba(250, 248, 243, 0.92);
-    border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
     transition: top 0.3s ease, background 0.4s ease;
 }
 body.has-topbar .navbar {
@@ -97,8 +214,7 @@ body.has-topbar .navbar {
 }
 
 .navbar.scrolled {
-    background: rgba(250, 248, 243, 0.98);
-    box-shadow: 0 4px 24px rgba(26, 21, 16, 0.08), 0 1px 0 rgba(212, 168, 67, 0.15);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
 .nav-link {
@@ -144,7 +260,7 @@ body.has-topbar .navbar {
     inset: 0;
     background:
         radial-gradient(ellipse 80% 50% at 50% 0%, rgba(252, 230, 138, 0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(234, 179, 8, 0.15) 0%, transparent 50%),
         linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
 }
 
@@ -177,7 +293,7 @@ body.has-topbar .navbar {
 .hero-orb-1 {
     width: 300px;
     height: 300px;
-    background: rgba(245, 158, 11, 0.12);
+    background: rgba(234, 179, 8, 0.12);
     top: 15%;
     left: -5%;
     animation-delay: 0s;
@@ -195,7 +311,7 @@ body.has-topbar .navbar {
 .hero-orb-3 {
     width: 200px;
     height: 200px;
-    background: rgba(245, 158, 11, 0.08);
+    background: rgba(234, 179, 8, 0.08);
     top: 50%;
     left: 60%;
     animation-delay: 5s;
@@ -222,7 +338,7 @@ body.has-topbar .navbar {
     line-height: 1.1;
 }
 
-.hero-theme-baba .hero-title {
+.hero-theme-mimar .hero-title {
     color: #fefce8;
     text-shadow:
         0 0 30px rgba(147, 197, 253, 0.7),
@@ -377,41 +493,161 @@ body.has-topbar .navbar {
     box-shadow: 0 12px 40px rgba(26, 21, 16, 0.1), 0 0 24px rgba(212, 168, 67, 0.12);
 }
 
-/* BABA (Mimar) teması: koyu arka plan üzerinde kart ve metinler */
-.theme-baba .info-card {
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
-    border-color: rgba(250, 204, 21, 0.35);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+/* ===== Mimar Dark Theme Specifics ===== */
+.theme-mimar .navbar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
+    backdrop-filter: blur(20px);
 }
 
-.theme-baba .info-card:hover {
-    border-color: rgba(250, 204, 21, 0.55);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
-}
-
-.theme-baba .section-title-wraith,
-.theme-baba .section-voice-label,
-.theme-baba .info-card p,
-.theme-baba .info-card span,
-.theme-baba .info-card h3 {
+.theme-mimar .topbar {
+    background: rgba(15, 23, 42, 0.98) !important;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
     color: #e5e7eb;
 }
 
-.theme-baba .section-voice-label {
-    color: #facc15;
+.theme-mimar .topbar span {
+    color: #cbd5e1;
 }
 
-.theme-baba .text-parchment-100,
-.theme-baba .text-parchment-200,
-.theme-baba .text-parchment-300,
-.theme-baba .text-parchment-400 {
+.theme-mimar .topbar a {
+    color: #c084fc;
+}
+
+.theme-mimar .mobile-menu {
+    background: rgba(15, 23, 42, 0.98);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.theme-mimar .info-card,
+.theme-mimar .role-card,
+.theme-mimar .process-card,
+.theme-mimar .sponsor-card {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
     color: #e5e7eb !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.theme-baba .text-gold-100,
-.theme-baba .text-gold-200,
-.theme-baba .text-gold-300 {
-    color: #fde68a !important;
+.theme-mimar .faq-item {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.theme-mimar .stat-pill,
+.theme-mimar .countdown-compact {
+    background: rgba(15, 23, 42, 0.96) !important;
+    border: 1px solid rgba(168, 85, 247, 0.2) !important;
+    color: #e5e7eb !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.theme-mimar .info-card:hover,
+.theme-mimar .role-card:hover,
+.theme-mimar .process-card:hover {
+    border-color: rgba(168, 85, 247, 0.45) !important;
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+}
+
+.theme-mimar .faq-item:hover {
+    border-color: rgba(168, 85, 247, 0.45) !important;
+}
+
+.theme-mimar .stat-pill:hover {
+    border-color: rgba(168, 85, 247, 0.4) !important;
+    background: rgba(15, 23, 42, 1) !important;
+}
+
+.theme-mimar .info-card p,
+.theme-mimar .info-card span,
+.theme-mimar .info-card h3,
+.theme-mimar .role-card p,
+.theme-mimar .role-card span,
+.theme-mimar .role-card h3,
+.theme-mimar .process-card p,
+.theme-mimar .process-card h3,
+.theme-mimar .process-card div,
+.theme-mimar .faq-question span,
+.theme-mimar .faq-answer p {
+    color: #e5e7eb;
+}
+
+.theme-mimar .section-title-wraith,
+.theme-mimar h2.section-title-wraith {
+    color: #ffffff !important;
+}
+
+.theme-mimar .section-voice-label {
+    color: #c084fc;
+}
+
+.theme-mimar .text-gold-100,
+.theme-mimar .text-gold-200,
+.theme-mimar .text-gold-300 {
+    color: #e9d5ff !important;
+}
+
+.theme-mimar .hero-wraith-bg {
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(88, 28, 135, 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(30, 64, 175, 0.25) 0%, transparent 55%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%) !important;
+}
+
+.theme-mimar .footer-wraith {
+    background: #020617 !important;
+    border-top-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.theme-mimar .footer {
+    background: #020617 !important;
+    border-top-color: rgba(168, 85, 247, 0.2);
+}
+
+.theme-mimar .footer-link {
+    color: #cbd5e1;
+}
+
+.theme-mimar .footer-link:hover {
+    color: #c084fc;
+}
+
+.theme-mimar .nav-link {
+    color: #e5e7eb;
+}
+
+.theme-mimar .nav-link:hover {
+    color: #c084fc;
+}
+
+/* Mimar: border-white/* overrides for dark background */
+.theme-mimar .border-white\/10,
+.theme-mimar .border-white\/5,
+.theme-mimar .border-white\/20 {
+    border-color: rgba(168, 85, 247, 0.15) !important;
+}
+
+/* MİMAR genel metin rengi */
+.theme-mimar,
+.theme-mimar p,
+.theme-mimar span,
+.theme-mimar h1,
+.theme-mimar h2,
+.theme-mimar h3,
+.theme-mimar h4,
+.theme-mimar h5,
+.theme-mimar h6,
+.theme-mimar li {
+    color: #e5e7eb;
+}
+
+.theme-mimar .btn-gold,
+.theme-mimar .btn-wraith-cta,
+.theme-mimar .btn-topbar,
+.theme-mimar .btn-wraith-cta.text-black {
+    color: #020617 !important;
 }
 
 .info-card:hover::before {
@@ -470,20 +706,20 @@ body.has-topbar .navbar {
     opacity: 1;
 }
 
-.role-card-adem::after {
+.role-card-kasif::after {
     background: radial-gradient(ellipse at bottom left, rgba(212, 168, 67, 0.06), transparent 60%);
 }
 
-.role-card-baba::after {
-    background: radial-gradient(ellipse at bottom right, rgba(245, 158, 11, 0.06), transparent 60%);
+.role-card-mimar::after {
+    background: radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.08), transparent 60%);
 }
 
-.role-card-adem {
+.role-card-kasif {
     border-left: 3px solid var(--gold);
 }
 
-.role-card-baba {
-    border-left: 3px solid var(--orange);
+.role-card-mimar {
+    border-left: 3px solid var(--accent-secondary);
 }
 
 /* ===== Timeline ===== */
@@ -588,11 +824,11 @@ body.has-topbar .navbar {
 }
 
 .sponsor-card.supporter::before {
-    background: radial-gradient(ellipse at top, rgba(245, 158, 11, 0.06), transparent 60%);
+    background: radial-gradient(ellipse at top, rgba(168, 85, 247, 0.06), transparent 60%);
 }
 
 .sponsor-card.supporter {
-    border-color: rgba(245, 158, 11, 0.25);
+    border-color: rgba(168, 85, 247, 0.25);
 }
 
 .sponsor-price {
@@ -612,23 +848,6 @@ body.has-topbar .navbar {
     border-color: rgba(212, 168, 67, 0.4);
 }
 
-.theme-baba .faq-item {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(250, 204, 21, 0.35);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-}
-
-.theme-baba .faq-item:hover {
-    border-color: rgba(250, 204, 21, 0.55);
-}
-
-.theme-baba .faq-question {
-    color: #e5e7eb;
-}
-
-.theme-baba .faq-answer p {
-    color: #cbd5f5;
-}
 
 .faq-question {
     cursor: pointer;
@@ -675,8 +894,8 @@ body.has-topbar .navbar {
 }
 
 .particle-purple {
-    background: var(--orange);
-    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+    background: var(--accent-secondary);
+    box-shadow: 0 0 6px rgba(168, 85, 247, 0.5);
     animation: rise 12s linear infinite;
 }
 
@@ -798,13 +1017,13 @@ body.has-topbar .navbar {
     transform: translateX(4px);
 }
 
-/* ===== Wraith-style: Topbar (aydınlık tema) ===== */
+/* ===== Wraith-style: Topbar ===== */
 .topbar {
     position: sticky;
     top: 0;
     z-index: 40;
-    background: rgba(250, 248, 243, 0.98) !important;
-    border-bottom: 1px solid rgba(212, 168, 67, 0.2) !important;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
 }
 .topbar.hidden {
@@ -824,25 +1043,11 @@ body.has-topbar .navbar {
     inset: 0;
     background:
         radial-gradient(ellipse 70% 40% at 50% 0%, rgba(252, 230, 138, 0.4) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(234, 179, 8, 0.12) 0%, transparent 50%),
         linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     pointer-events: none;
 }
 
-/* ADEM vs BABA hero teması — sadece görsel hava farkı */
-.hero-theme-baba .hero-wraith-bg {
-    background:
-        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(88, 28, 135, 0.45) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(30, 64, 175, 0.35) 0%, transparent 55%),
-        linear-gradient(180deg, #020617 0%, #020617 40%, #020617 100%);
-}
-
-.hero-theme-baba .hero-wraith-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.95) 70%);
-}
 
 .code-tagline {
     font-family: 'JetBrains Mono', monospace;
@@ -851,34 +1056,11 @@ body.has-topbar .navbar {
 
 .stat-pill {
     transition: border-color 0.2s ease, background 0.2s ease;
-    background: rgba(255, 255, 255, 0.85) !important;
-    box-shadow: 0 1px 6px rgba(26, 21, 16, 0.06);
-}
-.stat-pill:hover {
-    border-color: rgba(212, 168, 67, 0.4);
-    background: rgba(255, 255, 255, 0.95) !important;
 }
 .countdown-compact {
-    background: rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 1px 6px rgba(26, 21, 16, 0.06);
+    transition: border-color 0.2s ease;
 }
 
-/* BABA hero: stat pill & countdown koyu tema */
-.hero-theme-baba .stat-pill {
-    background: rgba(15, 23, 42, 0.96) !important;
-    border-color: rgba(148, 163, 184, 0.7);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
-}
-
-.hero-theme-baba .stat-pill span {
-    color: #e5e7eb;
-}
-
-.hero-theme-baba .countdown-compact {
-    background: rgba(15, 23, 42, 0.98) !important;
-    border-color: rgba(148, 163, 184, 0.6);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
-}
 
 .btn-wraith-cta {
     box-shadow: 0 2px 12px rgba(212, 168, 67, 0.25);
@@ -932,7 +1114,7 @@ body.has-topbar .navbar {
     bottom: 0;
     width: 4px;
     max-width: 4px;
-    background: linear-gradient(180deg, rgba(245, 158, 11, 0.35), rgba(245, 158, 11, 0.08));
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.35), rgba(168, 85, 247, 0.08));
     border-radius: 4px 0 0 4px;
     pointer-events: none;
 }
@@ -948,119 +1130,9 @@ body.has-topbar .navbar {
     transition: border-color 0.25s ease, background 0.25s ease;
 }
 
-.theme-baba .process-card {
-    background: rgba(15, 23, 42, 0.98);
-    border-color: rgba(250, 204, 21, 0.35);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75);
-}
-
-.theme-baba .process-card:hover {
-    border-color: rgba(250, 204, 21, 0.55);
-}
-
-.theme-baba .role-card {
-    background: radial-gradient(circle at top left, rgba(30, 64, 175, 0.35), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(76, 29, 149, 0.4), transparent 60%),
-        rgba(15, 23, 42, 0.98);
-    border-color: rgba(250, 204, 21, 0.35);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
-}
-
-.theme-baba .role-card:hover {
-    border-color: rgba(250, 204, 21, 0.55);
-}
-
-.theme-baba .role-card-figure {
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.1), transparent 65%);
-}
-
-.theme-baba .role-card h3,
-.theme-baba .role-card p,
-.theme-baba .role-card span {
-    color: #e5e7eb;
-}
-
-.theme-baba .role-card .text-gold-100,
-.theme-baba .role-card .text-gold-200,
-.theme-baba .role-card .text-gold-300 {
-    color: #fde68a !important;
-}
-
-/* Topbar, navbar, footer — BABA koyu teması */
-.theme-baba .topbar {
-    background: rgba(15, 23, 42, 0.98) !important;
-    border-bottom-color: rgba(148, 163, 184, 0.4) !important;
-    color: #e5e7eb;
-}
-
-.theme-baba .topbar a {
-    color: #facc15;
-}
-
-.theme-baba .navbar {
-    background: rgba(15, 23, 42, 0.98);
-    border-bottom-color: rgba(148, 163, 184, 0.4);
-}
-
-.theme-baba .nav-link {
-    color: #e5e7eb;
-}
-
-.theme-baba .nav-link:hover {
-    color: #facc15;
-}
-
-.theme-baba .footer {
-    background: linear-gradient(180deg, #020617, #020617);
-    border-top-color: rgba(148, 163, 184, 0.4);
-}
-
-.theme-baba .footer-link {
-    color: #e5e7eb;
-}
-
-.theme-baba .footer-link:hover {
-    color: #facc15;
-}
-
-/* BABA genel metin rengi — koyu yazı yok */
-.theme-baba,
-.theme-baba p,
-.theme-baba span,
-.theme-baba h1,
-.theme-baba h2,
-.theme-baba h3,
-.theme-baba h4,
-.theme-baba h5,
-.theme-baba h6,
-.theme-baba li {
-    color: #e5e7eb;
-}
-
-/* Fix: Gold buttons should always have black text for readability */
-.theme-baba .btn-gold,
-.theme-baba .btn-wraith-cta,
-.theme-baba .btn-topbar,
-.theme-baba .btn-wraith-cta.text-black {
-    color: #020617 !important;
-}
-
-/* Fix: Contrast for secondary links in dark theme */
-.theme-baba .text-parchment-400 {
-    color: #9ca3af !important;
-}
-.theme-baba .text-parchment-400:hover {
-    color: #facc15 !important;
-}
-
 /* ===== Wraith-style: Footer ===== */
 .footer-wraith {
     background: var(--bg-primary);
-}
-
-.theme-baba .footer-wraith {
-    background: #020617;
-    border-top-color: rgba(148, 163, 184, 0.4);
 }
 
 /* ===== Scrollbar ===== */
@@ -1081,15 +1153,18 @@ body.has-topbar .navbar {
     background: var(--gold);
 }
 
-/* Aydınlık tema: beyaz border'ları okunaklı yap */
-.border-white\/10 {
-    border-color: rgba(26, 21, 16, 0.12) !important;
+/* Kasif: border-white/* overrides for light background */
+.theme-kasif .border-white\/10,
+.theme-kasif .border-white\/5,
+.theme-kasif .border-white\/20 {
+    border-color: rgba(0, 0, 0, 0.08) !important;
 }
-.border-white\/5 {
-    border-color: rgba(26, 21, 16, 0.08) !important;
-}
-.border-white\/20 {
-    border-color: rgba(26, 21, 16, 0.18) !important;
+
+/* Kasif: bg-white/* overlays should be light gray */
+.theme-kasif .bg-white\/5,
+.theme-kasif .bg-white\/\[0\.02\],
+.theme-kasif .bg-white\/\[0\.03\] {
+    background-color: rgba(0, 0, 0, 0.02) !important;
 }
 
 /* ===== Mobile Menu ===== */
@@ -1097,9 +1172,9 @@ body.has-topbar .navbar {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
-    background: rgba(250, 248, 243, 0.98);
+    background: var(--bg-card);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .mobile-menu.open {
@@ -1295,9 +1370,9 @@ body.has-topbar .navbar {
 }
 
 .badge-filter.active {
-    background: rgba(245, 158, 11, 0.1);
-    border-color: rgba(245, 158, 11, 0.3);
-    color: var(--orange);
+    background: rgba(168, 85, 247, 0.1);
+    border-color: rgba(168, 85, 247, 0.3);
+    color: var(--accent-secondary);
 }
 
 .badge-item {
@@ -1401,7 +1476,7 @@ body.has-topbar .navbar {
 }
 
 .viewer-profile-card:hover {
-    border-color: rgba(245, 158, 11, 0.3);
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
 .social-share-btn {
@@ -1416,17 +1491,6 @@ body.has-topbar .navbar {
     transform: scale(0.97);
 }
 
-/* === Mentor/Tester === */
-#mentor-topic,
-#mentor-details,
-#viewer-name,
-#viewer-email {
-    appearance: none;
-}
-
-#mentor-topic option {
-    background: var(--bg-secondary);
-}
 
 /* === Arena Tabs === */
 .arena-tab {

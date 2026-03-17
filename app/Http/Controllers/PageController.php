@@ -17,36 +17,42 @@ class PageController extends Controller
         $roleSelect = config('livingcode.role_select');
         
         try {
-            // Benzersiz IP tıklamalarını (İlgi Oranı) çek
-            $kasifInterest = RoleInteraction::getUniqueClicks('kasif');
-            $mimarInterest = RoleInteraction::getUniqueClicks('mimar');
-            
-            // Gerçek kayıtları (Kota) çek
-            $kasifRegistrations = RoleInteraction::getRegistrations('kasif');
-            $mimarRegistrations = RoleInteraction::getRegistrations('mimar');
+            // Benzersiz tıklamaları (İlgi Oranı) çek
+            // Not: Google Form entegrasyonu kaldırıldığı için artık oranlar tamamen bu veriden hesaplanıyor.
+            $kasifInterest = RoleInteraction::where('role_key', 'kasif')->where('type', 'click')->count();
+            $mimarInterest = RoleInteraction::where('role_key', 'mimar')->where('type', 'click')->count();
         } catch (\Throwable $e) {
             // Veritabanı veya tablo yoksa varsayılan 0
-            $kasifInterest = $mimarInterest = $kasifRegistrations = $mimarRegistrations = 0;
+            $kasifInterest = $mimarInterest = 0;
             Log::warning('Database not ready: ' . $e->getMessage());
         }
 
         // Oranları ve Durumları Hesapla
         foreach (['kasif', 'mimar'] as $key) {
             $interest = ($key === 'kasif') ? $kasifInterest : $mimarInterest;
-            $regs = ($key === 'kasif') ? $kasifRegistrations : $mimarRegistrations;
-            $quota = 50; 
+            $quota = config("livingcode.role_select.$key.quota", 50); 
 
-            $roleSelect[$key]['sync_percent'] = min(100, round(($regs / $quota) * 100));
+            // Sync percent artık ilgiye (tıklamaya) göre doluyor
+            $roleSelect[$key]['sync_percent'] = min(100, round(($interest / $quota) * 100));
             $roleSelect[$key]['quota'] = $quota;
 
             $otherInterest = ($key === 'kasif') ? $mimarInterest : $kasifInterest;
+            $diff = $interest - $otherInterest;
             
-            if ($interest < $otherInterest) {
-                $roleSelect[$key]['status'] = 'Kritik İhtiyaç';
-            } elseif ($interest > $otherInterest) {
-                $roleSelect[$key]['status'] = 'Yüksek Talep';
+            if ($diff >= 15) {
+                $roleSelect[$key]['status'] = 'ÇOK YÜKSEK TALEP';
+            } elseif ($diff >= 8) {
+                $roleSelect[$key]['status'] = 'YÜKSEK TALEP';
+            } elseif ($diff >= 1) {
+                $roleSelect[$key]['status'] = 'ARTAN TALEP';
+            } elseif ($diff <= -15) {
+                $roleSelect[$key]['status'] = 'KRİTİK İHTIYAÇ';
+            } elseif ($diff <= -8) {
+                $roleSelect[$key]['status'] = 'ACİL İHTİYAÇ';
+            } elseif ($diff <= -1) {
+                $roleSelect[$key]['status'] = 'GEREKLİ İHTİYAÇ';
             } else {
-                $roleSelect[$key]['status'] = 'Stabil';
+                $roleSelect[$key]['status'] = 'STABİL';
             }
         }
 
@@ -54,63 +60,6 @@ class PageController extends Controller
             'roleSelect' => $roleSelect,
             'event' => config('livingcode.event'),
         ]);
-    }
-
-    /**
-     * Google Form'dan gelen kayıt bildirimini işle.
-     */
-    public function registerFromGoogleForm(Request $request)
-    {
-        Log::info('Google Form Sync Request Received', [
-            'headers' => $request->headers->all(),
-            'body' => $request->all(),
-            'ip' => $request->ip()
-        ]);
-
-        $secret = $request->header('X-TBD-SECRET') ?? $request->input('secret');
-        if ($secret !== 'TBD_SECURE_KEY_2026') {
-            Log::warning('Google Form Sync: Unauthorized access attempt', [
-                'header_secret' => $request->header('X-TBD-SECRET'),
-                'body_secret' => $request->input('secret'),
-                'ip' => $request->ip()
-            ]);
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        $role = strtolower((string) ($request->input('role') ?? '')); // 'kasif' veya 'mimar'
-        
-        // Alias desteği (adem=kasif, baba=mimar)
-        if ($role === 'adem') $role = 'kasif';
-        if ($role === 'baba') $role = 'mimar';
-
-        $email = $request->input('email') ?? $request->input('mail') ?? 'no-email';
-
-        if (in_array($role, ['kasif', 'mimar'])) {
-            try {
-                $interaction = RoleInteraction::updateOrCreate(
-                    ['role_key' => $role, 'ip_address' => $email, 'type' => 'registration'],
-                    ['updated_at' => now()]
-                );
-                
-                Log::info('Google Form Sync: Registration successful', [
-                    'role' => $role, 
-                    'email' => $email,
-                    'id' => $interaction->id
-                ]);
-
-                return response()->json(['success' => true]);
-            } catch (\Throwable $e) {
-                Log::error('Google Form Sync: Database error', [
-                    'error' => $e->getMessage(),
-                    'role' => $role,
-                    'email' => $email
-                ]);
-                return response()->json(['error' => 'Database error', 'message' => $e->getMessage()], 500);
-            }
-        }
-
-        Log::warning('Google Form Sync: Invalid role received', ['role' => $role]);
-        return response()->json(['error' => 'Invalid role'], 400);
     }
 
     /**
@@ -126,12 +75,42 @@ class PageController extends Controller
         try {
             RoleInteraction::logClick($role, $request->ip());
             session(['livingcode_role' => $role]);
+
+            // Rol bazlı durum ve oran hesapla
+            $kasifInterest = RoleInteraction::where('role_key', 'kasif')->where('type', 'click')->count();
+            $mimarInterest = RoleInteraction::where('role_key', 'mimar')->where('type', 'click')->count();
+            
+            $interest = ($role === 'kasif') ? $kasifInterest : $mimarInterest;
+            $otherInterest = ($role === 'kasif') ? $mimarInterest : $kasifInterest;
+            $diff = $interest - $otherInterest;
+            $quota = config("livingcode.role_select.$role.quota", 50);
+
+            $syncPercent = min(100, round(($interest / $quota) * 100));
+            $statusText = 'STABİL';
+
+            if ($diff >= 15) {
+                $statusText = 'ÇOK YÜKSEK TALEP';
+            } elseif ($diff >= 8) {
+                $statusText = 'YÜKSEK TALEP';
+            } elseif ($diff >= 1) {
+                $statusText = 'ARTAN TALEP';
+            } elseif ($diff <= -15) {
+                $statusText = 'KRİTİK İHTİYAÇ';
+            } elseif ($diff <= -8) {
+                $statusText = 'ACİL İHTİYAÇ';
+            } elseif ($diff <= -1) {
+                $statusText = 'GEREKLİ İHTİYAÇ';
+            }
         } catch (\Throwable $e) {
             Log::warning('welcome: interaction logging failed', ['error' => $e->getMessage(), 'role' => $role]);
+            $syncPercent = 0;
+            $statusText = 'STABİL';
         }
 
         return view('pages.welcome', [
             'role' => $role,
+            'syncPercent' => $syncPercent,
+            'statusText' => $statusText,
             'phases' => config('livingcode.phases'),
             'faqs' => config('livingcode.faqs'),
             'stats' => config('livingcode.stats'),
