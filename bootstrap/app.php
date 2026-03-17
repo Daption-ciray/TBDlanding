@@ -15,10 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Trust Railway / reverse proxy headers (HTTPS, correct host)
+        // Trust reverse proxy headers (HTTPS, correct host)
         $middleware->trustProxies(at: '*');
 
-        // Use Redis for throttling only when REDIS_URL is set (e.g. Railway Redis plugin)
+        // Use Redis for throttling only when REDIS_URL is set
         if (env('REDIS_URL')) {
             $middleware->throttleWithRedis();
         }

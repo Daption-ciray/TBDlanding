@@ -1,8 +1,0 @@
-# Railway deployment configuration
-[build]
-builder = "nixpacks"
-
-[deploy]
-startCommand = "sh start.sh"
-healthCheckPath = "/up"
-healthCheckTimeout = 120
