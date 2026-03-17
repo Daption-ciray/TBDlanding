@@ -1491,17 +1491,6 @@ body.has-topbar .navbar {
     transform: scale(0.97);
 }
 
-/* === Mentor/Tester === */
-#mentor-topic,
-#mentor-details,
-#viewer-name,
-#viewer-email {
-    appearance: none;
-}
-
-#mentor-topic option {
-    background: var(--bg-secondary);
-}
 
 /* === Arena Tabs === */
 .arena-tab {

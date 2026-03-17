@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBadgeGallery();
     initCardMarket();
     initViewerZone();
-    initMentorTester();
+
     initHeroGamification();
 });
 
@@ -815,121 +815,6 @@ function startWatchHeartbeat(viewerId) {
     }, 60000);
 }
 
-/* ===== Mentor & Tester ===== */
-function initMentorTester() {
-    const mentorBtn = document.getElementById('mentor-request-btn');
-    const testerBtn = document.getElementById('tester-request-btn');
-
-    if (mentorBtn) {
-        mentorBtn.addEventListener('click', async () => {
-            const teamId = document.getElementById('mentor-team-id')?.value;
-            const teamPassword = document.getElementById('mentor-team-password')?.value?.trim();
-            const topic = document.getElementById('mentor-topic')?.value;
-            const details = document.getElementById('mentor-details')?.value;
-
-            if (!teamId) {
-                alert('Lütfen takım seçin.');
-                return;
-            }
-            if (!teamPassword) {
-                alert('Lütfen takım şifresini girin.');
-                return;
-            }
-            if (!topic) {
-                alert('Lütfen bir konu seçin.');
-                return;
-            }
-
-            mentorBtn.disabled = true;
-            mentorBtn.textContent = 'Gönderiliyor...';
-
-            const data = await apiFetch('/mentor/request', {
-                method: 'POST',
-                body: JSON.stringify({ team_id: parseInt(teamId, 10), team_password: teamPassword, topic, details }),
-            });
-
-            if (data.error) {
-                alert(data.error);
-            } else {
-                mentorBtn.textContent = 'Talep Gönderildi!';
-                if (data.team_id) {
-                    refreshMentorStatus(data.team_id);
-                }
-                setTimeout(() => { mentorBtn.textContent = 'Mentor Talep Et'; }, 3000);
-            }
-            mentorBtn.disabled = false;
-        });
-    }
-
-    if (testerBtn) {
-        testerBtn.addEventListener('click', async () => {
-            const teamId = document.getElementById('tester-team-id')?.value;
-            const teamPassword = document.getElementById('tester-team-password')?.value?.trim();
-
-            if (!teamId) {
-                alert('Lütfen takım seçin.');
-                return;
-            }
-            if (!teamPassword) {
-                alert('Lütfen takım şifresini girin.');
-                return;
-            }
-
-            testerBtn.disabled = true;
-            testerBtn.textContent = 'Çağrılıyor...';
-
-            const data = await apiFetch('/tester/request', {
-                method: 'POST',
-                body: JSON.stringify({ team_id: parseInt(teamId, 10), team_password: teamPassword }),
-            });
-
-            if (data.error) {
-                alert(data.error);
-            } else {
-                testerBtn.textContent = 'Test Ekibi Çağrıldı!';
-                if (data.team_id) {
-                    refreshTesterStatus(data.team_id);
-                }
-                setTimeout(() => { testerBtn.textContent = 'Test Ekibini Çağır'; }, 3000);
-            }
-            testerBtn.disabled = false;
-        });
-    }
-}
-
-async function refreshMentorStatus(teamId) {
-    const list = document.getElementById('mentor-status-list');
-    if (!list) return;
-
-    const data = await apiFetch('/mentor/status?team_id=' + teamId);
-    if (data.error || !data.data) return;
-
-    list.innerHTML = data.data.map(r => {
-        const statusColors = { pending: 'text-yellow-400', assigned: 'text-blue-400', in_progress: 'text-green-400', resolved: 'text-parchment-300' };
-        const statusLabels = { pending: 'Bekliyor', assigned: 'Atandı', in_progress: 'Devam Ediyor', resolved: 'Çözüldü' };
-        return `<div class="flex items-center justify-between p-2 rounded-lg bg-white/[0.03] text-xs">
-            <span class="text-parchment-200">${escHtml(r.topic)}</span>
-            <span class="${statusColors[r.status] || 'text-parchment-300'}">${statusLabels[r.status] || r.status}</span>
-        </div>`;
-    }).join('');
-}
-
-async function refreshTesterStatus(teamId) {
-    const list = document.getElementById('tester-status-list');
-    if (!list) return;
-
-    const data = await apiFetch('/tester/status?team_id=' + teamId);
-    if (data.error || !data.data) return;
-
-    list.innerHTML = data.data.map(r => {
-        const statusColors = { pending: 'text-yellow-400', testing: 'text-blue-400', completed: 'text-green-400', cancelled: 'text-red-400' };
-        const statusLabels = { pending: 'Bekliyor', testing: 'Test Ediliyor', completed: 'Tamamlandı', cancelled: 'İptal' };
-        return `<div class="flex items-center justify-between p-2 rounded-lg bg-white/[0.03] text-xs">
-            <span class="text-parchment-200">${r.team_name || 'Takım'} - Test talebi</span>
-            <span class="${statusColors[r.status] || 'text-parchment-300'}">${statusLabels[r.status] || r.status}</span>
-        </div>`;
-    }).join('');
-}
 
 /* ===== Hero Gamification ===== */
 function initHeroGamification() {
